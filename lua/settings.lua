@@ -10,6 +10,7 @@ vim.opt.linebreak     = true
 vim.opt.pumblend      = 10
 vim.opt.pumheight     = 15
 vim.opt.wrap          = true
+vim.opt.signcolumn    = 'number'
 -- gui frontend
 vim.opt.guifont       = 'monospace:h16.4'
 vim.g.neovide_cursor_animation_length = 0

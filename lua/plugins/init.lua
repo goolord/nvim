@@ -19,6 +19,7 @@ packer.startup(function()
     use {
         'hrsh7th/nvim-cmp',
         config = require('plugins.completion'),
+        commit = 'b99d7292b024d03a90066d7035c0005c72e83424',
         requires = {
             { 'tzachar/cmp-tabnine', run = './install.sh' },
             'hrsh7th/cmp-buffer',
