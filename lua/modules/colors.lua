@@ -7,33 +7,29 @@ local function hl(group, options)
 end
 
 function _G.apply_colors()
-    local highlights = {
-        -- normal stuff
-        {'SignColumn', {bg = 'NONE'}},
-        {'ColorColumn', {bg = 'NONE', fg = '#928374'}},
-        {'IncSearch', {bg = '#928374', fg = '#282828', gui = 'bold'}},
+    -- normal stuff
+    hl('SignColumn', {bg = 'NONE'})
+    hl('ColorColumn', {bg = 'NONE', fg = '#928374'})
+    hl('IncSearch', {bg = '#928374', fg = '#282828', gui = 'bold'})
 
-        -- luatree
-        {'NvimTreeFolderIcon', {fg = '#D79921'}},
-        {'NvimTreeIndentMarker', {fg = '#928374'}},
+    -- luatree
+    hl('NvimTreeFolderIcon', {fg = '#D79921'})
+    hl('NvimTreeIndentMarker', {fg = '#928374'})
 
-        -- diagnostics
-        {'DiagnosticError', {bg = 'NONE', fg = '#FB4934'}},
-        {'DiagnosticInfo' , {bg = 'NONE', fg = '#D3869B'}},
-        {'DiagnosticWarn' , {bg = 'NONE', fg = '#FABD2F'}},
-        {'DiagnosticHint' , {bg = 'NONE', fg = '#83A598'}},
-        {'DiagnosticUnderlineError', {bg = 'NONE', fg = 'NONE', gui = 'underline'}},
-        {'DiagnosticUnderlineWarn' , {bg = 'NONE', fg = 'NONE', gui = 'underline'}},
+    -- diagnostics
+    hl('DiagnosticError', {bg = 'NONE', fg = '#FB4934'})
+    hl('DiagnosticInfo' , {bg = 'NONE', fg = '#D3869B'})
+    hl('DiagnosticWarn' , {bg = 'NONE', fg = '#FABD2F'})
+    hl('DiagnosticHint' , {bg = 'NONE', fg = '#83A598'})
+    hl('DiagnosticUnderlineError', {bg = 'NONE', fg = 'NONE', gui = 'underline'})
+    hl('DiagnosticUnderlineWarn' , {bg = 'NONE', fg = 'NONE', gui = 'underline'})
 
-        -- coqtail
-        {'CoqtailChecked', {bg = '#1b4723'}},
-        {'CoqtailSent'   , {bg = '#79750e'}},
+    -- coqtail
+    hl('CoqtailChecked', {bg = '#1b4723'})
+    hl('CoqtailSent'   , {bg = '#79750e'})
 
-        -- telescope
-        {'TelescopeNormal', {bg = '#1d2021'}}
-    }
-
-    for _, highlight in pairs(highlights) do hl(highlight[1], highlight[2]) end
+    -- telescope
+    hl('TelescopeNormal', {bg = '#1d2021'})
 end
 
 -- automatically override colourscheme

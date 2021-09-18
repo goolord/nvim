@@ -14,8 +14,8 @@ end
 
 -- ('mode', 'keybindings', 'command', '{noremap=bool', 'silent=bool', expr=bool})
 -- disable keys
-keymap('', '<MiddleMouse>', '<Nop>', {silent = true} )
-keymap('i', '<MiddleMouse>', '<Nop>', {silent = true} )
+keymap('' , '<MiddleMouse>', '<Nop>', {silent = true, nowait = true} )
+keymap('i', '<MiddleMouse>', '<Nop>', {silent = true, nowait = true} )
 -- terminal mode
 keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true})
 -- nvim-tree.lua
@@ -55,7 +55,7 @@ keymap('n', '<Leader>rq', ':TroubleToggle quickfix<CR>', {silent = true} )
 keymap('n', '<Leader>rl', ':TroubleToggle loclist<CR>', {silent = true} )
 keymap('n', '<Leader>ss', ':SaveSession<cr>', {silent = true} )
 keymap('n', '<Leader>sl', ':LoadSession<cr>', {silent = true} )
-keymap('n', '<Leader>D', ':Dashboard<CR>', {silent = true} )
+keymap('n', '<Leader>A', ':Alpha<CR>', {silent = true} )
 -- tabular
 tabularize_bind('','/')
 tabularize_bind('a','/')
