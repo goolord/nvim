@@ -19,15 +19,15 @@ function _G.apply_colors()
 
         -- diagnostics
         {'DiagnosticError', {bg = 'NONE', fg = '#FB4934'}},
-        {'DiagnosticInfo', {bg = 'NONE', fg = '#D3869B'}},
-        {'DiagnosticWarn', {bg = 'NONE', fg = '#FABD2F'}},
-        {'DiagnosticHint', {bg = 'NONE', fg = '#83A598'}},
+        {'DiagnosticInfo' , {bg = 'NONE', fg = '#D3869B'}},
+        {'DiagnosticWarn' , {bg = 'NONE', fg = '#FABD2F'}},
+        {'DiagnosticHint' , {bg = 'NONE', fg = '#83A598'}},
         {'DiagnosticUnderlineError', {bg = 'NONE', fg = 'NONE', gui = 'underline'}},
-        {'DiagnosticUnderlineWarn', {bg = 'NONE', fg = 'NONE', gui = 'underline'}},
+        {'DiagnosticUnderlineWarn' , {bg = 'NONE', fg = 'NONE', gui = 'underline'}},
 
         -- coqtail
         {'CoqtailChecked', {bg = '#1b4723'}},
-        {'CoqtailSent', {bg = '#79750e'}},
+        {'CoqtailSent'   , {bg = '#79750e'}},
 
         -- telescope
         {'TelescopeNormal', {bg = '#1d2021'}}
