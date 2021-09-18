@@ -48,6 +48,10 @@ return function()
             { name = 'calc' },
             { name = 'vsnip' },
         };
+
+        enabled = function ()
+            return vim.o.bt == ''
+        end
     }
 
 end
