@@ -20,18 +20,17 @@ return function()
         buf_keymap('n', 'gl'        , ':lua vim.diagnostic.set_loclist()<CR>'          , {noremap = true , silent = true})
         buf_keymap('n', 'gq'        , ':lua vim.diagnostic.set_qflist()<CR>'           , {noremap = true , silent = true})
 
-        vim.opt_local.signcolumn = 'yes'
-        -- vim.cmd('setlocal signcolumn=yes')
+        buf_set_option('sign_column', 'yes')
     end
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.textDocument.completion.completionItem.resolveSupport = {
-      properties = {
-        'documentation',
-        'detail',
-        'additionalTextEdits',
-      }
+        properties = {
+            'documentation',
+            'detail',
+            'additionalTextEdits',
+        }
     }
 
     lspconfig.hls.setup {
