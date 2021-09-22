@@ -126,4 +126,8 @@ end
 
 packer.startup(packer_use)
 
+vim.cmd(string.format([[
+autocmd User PackerCompileDone call system(['/usr/bin/luajit', '-bg', '%s', '%s'])
+]], packer.config.compile_path, packer.config.compile_path))
+
 return packer
