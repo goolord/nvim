@@ -5,7 +5,7 @@ local packer = require('packer')
 
 packer.init()
 
-packer.startup(function()
+local function packer_use()
     use { 'lewis6991/impatient.nvim', rocks = 'mpack' }
 
     use { 'wbthomason/packer.nvim', opt = true }
@@ -73,7 +73,10 @@ packer.startup(function()
 
     use {
         "~/Dev/alpha-nvim",
-        requires = { 'kyazdani42/nvim-web-devicons' },
+        requires = { 
+            '~/Dev/gamma-ui-nvim',
+            'kyazdani42/nvim-web-devicons',
+        },
         config = require'plugins.alpha'
     }
 
@@ -119,7 +122,8 @@ packer.startup(function()
         rtp = 'plugins/nvim',
         cmd = { 'Ghcid', 'GhcidKill' },
     }
+end
 
-end)
+packer.startup(packer_use)
 
 return packer
