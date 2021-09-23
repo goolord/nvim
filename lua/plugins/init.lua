@@ -89,20 +89,23 @@ local function packer_use()
         config = require('plugins.gruvbox')
     }
 
+    use {
+        'simrat39/rust-tools.nvim',
+        ft = 'rust'
+    }
+
     -- nvim-lsp
     use {
         'neovim/nvim-lspconfig',
         config = require('modules.lsp'),
         after = 'rust-tools.nvim',
-        ft = { 'haskell', 'rust', 'lua' }
+        ft = { 'haskell', 'rust', 'lua', 'lean' }
     }
 
     use {
         'folke/trouble.nvim',
         config = require('plugins.trouble'),
     }
-
-    use 'simrat39/rust-tools.nvim'
 
     -- use {
     --     'nvim-treesitter/nvim-treesitter',
@@ -116,6 +119,10 @@ local function packer_use()
     use 'cespare/vim-toml'
 
     use { 'whonore/Coqtail', ft = 'coq' }
+    use {
+        'Julian/lean.nvim',
+        requires = 'nvim-lua/plenary.nvim'
+    }
 
     use {
         'ndmitchell/ghcid',
