@@ -42,6 +42,10 @@ return function()
     } end
 
     if vim.bo.ft == 'rust' then require('rust-tools').setup {
+        tools = {
+            autoSetHints = false,
+            hover_with_actions = false,
+        },
         server = {
             on_attach = custom_on_attach,
             capabilities = capabilities
