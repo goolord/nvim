@@ -114,14 +114,15 @@ local function packer_use()
     -- }
 
     -- filetype plugins
-    use 'LnL7/vim-nix'
-    use 'edwinb/idris2-vim'
-    use 'cespare/vim-toml'
+    use { 'LnL7/vim-nix', ft = 'nix' }
+    use { 'edwinb/idris2-vim', ft = 'idris' }
+    use { 'cespare/vim-toml', ft = 'toml' }
 
     use { 'whonore/Coqtail', ft = 'coq' }
     use {
         'Julian/lean.nvim',
-        requires = 'nvim-lua/plenary.nvim'
+        requires = 'nvim-lua/plenary.nvim',
+        ft = 'lean'
     }
 
     use {
