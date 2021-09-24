@@ -80,6 +80,15 @@ local function packer_use()
         config = require'plugins.alpha'
     }
 
+    use {
+        "~/Dev/sentinel-nvim",
+        requires = { 
+            '~/Dev/gamma-ui-nvim',
+            'kyazdani42/nvim-web-devicons',
+        },
+        config = function () require'sentinel'.setup() end
+    }
+
     -- git
     use 'tpope/vim-fugitive'
 

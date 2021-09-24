@@ -28,8 +28,7 @@ clap_bind('q','quickfix')  -- :copen
 clap_bind('l','loclist')   -- :lopen
 clap_bind('t','proj_tags') -- :tj
 clap_bind('b','buffers')   -- :ls :b
-clap_bind('r','grep')      -- :grep
-clap_bind('g','grep2')
+clap_bind('g','grep')      -- :grep
 clap_bind('m','maps')
 clap_bind('M','marks')
 clap_bind('j','jumps')
