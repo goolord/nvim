@@ -1,9 +1,9 @@
 local keymap = vim.api.nvim_set_keymap
 
-local function telescope_bind(c, provider)
+local function clap_bind(c, provider)
     keymap(
         'n', '<Leader>f' .. c,
-        '<CMD>Telescope ' .. provider .. '<CR>',
+        '<CMD>Clap ' .. provider .. '<CR>',
         { noremap = true, silent = false }
     )
 end
@@ -21,24 +21,24 @@ keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true})
 -- nvim-tree.lua
 keymap('n', '<Leader>d', '<CMD>NvimTreeToggle<CR>', {noremap = true, silent = false})
 keymap('n', '<Leader>td', '<CMD>NvimTreeFindFile<CR>', {noremap = true, silent = false})
--- telescope
-telescope_bind('f','find_files') -- :find
-telescope_bind('q','quickfix')   -- :copen
-telescope_bind('l','loclist')    -- :lopen
-telescope_bind('t','tags')       -- :tj
-telescope_bind('b','buffers')    -- :ls :b
-telescope_bind('g','live_grep')  -- :grep
-telescope_bind('i','file_browser')
-telescope_bind('k','keymaps')
-telescope_bind('m','marks')
-telescope_bind('j','jumplist')
-telescope_bind('y','registers')
-telescope_bind(':','command_history')
-telescope_bind('/','search_history')
-telescope_bind('h','oldfiles')
-telescope_bind('d','dumb_jump')
-telescope_bind('s','sessions')
-telescope_bind('_','')
+-- clap
+clap_bind('i','filer')
+clap_bind('f','files')     -- :find
+clap_bind('q','quickfix')  -- :copen
+clap_bind('l','loclist')   -- :lopen
+clap_bind('t','proj_tags') -- :tj
+clap_bind('b','buffers')   -- :ls :b
+clap_bind('r','grep')      -- :grep
+clap_bind('g','grep2')
+clap_bind('m','maps')
+clap_bind('M','marks')
+clap_bind('j','jumps')
+clap_bind('y','yanks')
+clap_bind(':','hist:')
+clap_bind('/','hist/')
+clap_bind('h','history')
+clap_bind('d','dumb_jump')
+clap_bind('_','providers')
 -- Delete in search result
 keymap('n', '<Leader>x', '<CMD>%s///g<CR>', {noremap = false, silent = false})
 -- other
