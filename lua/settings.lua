@@ -40,7 +40,8 @@ vim.opt.writebackup   = true
 
 vim.cmd('syntax sync minlines=256')
 
-vim.g.python3_host_prog = '/usr/bin/python3'
-vim.opt.pyxversion = 3
+-- fuck python
+-- vim.g.python3_host_prog = '/usr/bin/python3'
+-- vim.opt.pyxversion = 3
 
 require('modules.diagnostic')
