@@ -12,10 +12,12 @@ return function()
             ['<C-]>'] = { ':lua vim.lsp.buf.definition()<CR>', 'Go to definition' },
             ['<C-e>'] = { ':lua vim.diagnostic.show_line_diagnostics()<CR>', 'Show diagnostics' },
             K = { ':lua vim.lsp.buf.hover()<CR>', 'Hover' },
-            gd = { ':lua vim.lsp.buf.definition()<CR>', 'Go to definition' },
-            ["<Leader>"] = {
+            g = {
                 ['['] = { ':lua vim.diagnostic.goto_prev()<CR>', 'Previous diagnostic' },
                 [']'] = { ':lua vim.diagnostic.goto_next()<CR>', 'Next diagnostic' },
+                d = { ':lua vim.lsp.buf.definition()<CR>', 'Go to definition' },
+            },
+            ["<Leader>"] = {
                 ['fs'] = { ':lua vim.lsp.buf.workspace_symbol()<CR>', 'LSP Symbol' },
                 l = {
                     name = "+LSP",
