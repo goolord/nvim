@@ -1,77 +1,90 @@
+local wk = require("which-key")
+
 local keymap = vim.api.nvim_set_keymap
 
-local function clap_bind(c, provider)
-    keymap(
-        'n', '<Leader>f' .. c,
-        '<CMD>Clap ' .. provider .. '<CR>',
-        { noremap = true, silent = false }
-    )
-end
-
-local function tabularize_bind(c,regex)
-    keymap('', '<Leader>a' .. c, ':Tabularize ' .. regex, {})
-end
-
 -- ('mode', 'keybindings', 'command', '{noremap=bool', 'silent=bool', expr=bool})
+keymap('', '<Space>', '<Leader>', {silent = true} )
 -- disable keys
 keymap('' , '<MiddleMouse>', '<Nop>', {silent = true, nowait = true} )
 keymap('i', '<MiddleMouse>', '<Nop>', {silent = true, nowait = true} )
 -- terminal mode
 keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true})
--- nvim-tree.lua
-keymap('n', '<Leader>d', '<CMD>NvimTreeToggle<CR>', {noremap = true, silent = false})
-keymap('n', '<Leader>td', '<CMD>NvimTreeFindFile<CR>', {noremap = true, silent = false})
--- clap
-clap_bind('i','filer')
-clap_bind('f','files')     -- :find
-clap_bind('q','quickfix')  -- :copen
-clap_bind('l','loclist')   -- :lopen
-clap_bind('t','proj_tags') -- :tj
-clap_bind('b','buffers')   -- :ls :b
-clap_bind('g','grep')      -- :grep
-clap_bind('m','maps')
-clap_bind('M','marks')
-clap_bind('j','jumps')
-clap_bind('y','yanks')
-clap_bind(':','hist:')
-clap_bind('/','hist/')
-clap_bind('h','history')
-clap_bind('d','dumb_jump')
-clap_bind('_','providers')
--- Delete in search result
-keymap('n', '<Leader>x', '<CMD>%s///g<CR>', {noremap = false, silent = false})
+
+local function clap(provider) return '<CMD>Clap ' .. provider .. '<CR>' end
+
+local function tabularize(regex) return ':Tabularize ' .. regex end
+
+wk.register {
+    ["<Leader>"] = {
+        d = { ':NvimTreeToggle<CR>', "Toggle NvimTree" },
+        -- clap
+        f = {
+            name = "Find",
+            i     = { clap'filer'    , 'File exploreer'  },
+            f     = { clap'files'    , 'Files'           }, -- :find
+            q     = { clap'quickfix' , 'Quickfix'        }, -- :copen
+            l     = { clap'loclist'  , 'Loclist'         }, -- :lopen
+            t     = { clap'proj_tags', 'Project tags'    }, -- :tj
+            b     = { clap'buffers'  , 'Buffers'         }, -- :ls :b
+            g     = { clap'grep'     , 'Grep'            }, -- :grep
+            m     = { clap'maps'     , 'Maps'            },
+            M     = { clap'marks'    , 'Marks'           },
+            j     = { clap'jumps'    , 'Jumps'           },
+            y     = { clap'yanks'    , 'Yanks'           },
+            [':'] = { clap'hist:'    , 'Command history' },
+            ['/'] = { clap'hist/'    , 'Search history'  },
+            h     = { clap'history'  , 'File history'    },
+            d     = { clap'dumb_jump', 'Dumb jump'       },
+            ['_'] = { clap'providers', 'Providers'       },
+        },
+        r = {
+            name = "Trouble",
+            r = {':TroubleToggle lsp_workspace_diagnostics <CR>', "Toggle workspace diagnostics"},
+            q = {':TroubleToggle quickfix<CR>', "Toggle quickfix" },
+            l = {':TroubleToggle loclist<CR>', "Toggle loclist" },
+        },
+        s = {
+            name = "Session",
+            s = { ':SaveSession<cr>', 'Save' },
+            l = { ':LoadSession<cr>', 'Load' },
+        },
+        A = { ':Alpha<CR>', "Open alpha" },
+        x = { '<CMD>%s///g<CR>', "Delete search result" },
+    },
+    ['<C-h>'] = { '<C-w>h', 'Window left' },
+    ['<C-j>'] = { '<C-w>j', 'Widnow down' },
+    ['<C-k>'] = { '<C-w>k', 'Window up' },
+    ['<C-l>'] = { '<C-w>l', 'Window right' },
+    ['<esc>'] = { ':noh<CR>', 'Remove search highlights' },
+    ['<C-]>'] = { 'g<C-]>', 'Jump to tag' },
+    ['<A-m>'] = { '@q', 'Run q macro register' },
+}
+
+local align_maps = {
+    ["<Leader>"] = {
+        a = {
+            name = "Align",
+            ['a'] = { tabularize'/'              , 'New regex'           },
+            ['('] = { tabularize'/(/r0<CR>'      , 'Open parenthesis'    },
+            [')'] = { tabularize'/)/l0<CR>'      , 'Close parenthesis'   },
+            ['['] = { tabularize'/[/r0<CR>'      , 'Open bracket'        },
+            [']'] = { tabularize'/]/l0<CR>'      , 'Cloes bracket'       },
+            ['{'] = { tabularize'/{<CR>'         , 'Open curly brace'    },
+            ['}'] = { tabularize'/}<CR>'         , 'Close curly brace'   },
+            [':'] = { tabularize'/:\\+<CR>'      , 'Colon'               },
+            ['<'] = { tabularize'/<\\S*><CR>'    , 'Open angle bracket'  },
+            ['>'] = { tabularize'/\\S*><CR>'     , 'Close angle bracket' },
+            ['='] = { tabularize'/=\\S*<CR>'     , 'Equals'              },
+            [','] = { tabularize'/,/l0r1<CR>'    , 'Comma'               },
+        }
+    }
+}
+wk.register(align_maps, { mode = 'n' })
+wk.register(align_maps, { mode = 'v' })
+wk.register(align_maps, { mode = 'o' })
+
 -- other
-keymap('', '<Space>', '<Leader>', {silent = true} )
 -- breaks <C-I> jump because terminals are dumb
 -- {'n', '<tab>', '<C-W>w', {noremap = true, silent = true} )
-keymap('n', '<C-h>', '<C-w>h', {noremap = true, silent = true} )
-keymap('n', '<C-j>', '<C-w>j', {noremap = true, silent = true} )
-keymap('n', '<C-k>', '<C-w>k', {noremap = true, silent = true} )
-keymap('n', '<C-l>', '<C-w>l', {noremap = true, silent = true} )
-keymap('n', '<esc>', ':noh<CR>', {noremap = false, silent = true} )
-keymap('n', '<Leader>rr', ':TroubleToggle lsp_workspace_diagnostics <CR>', {silent = true} )
-keymap('n', '<Leader>rq', ':TroubleToggle quickfix<CR>', {silent = true} )
-keymap('n', '<Leader>rl', ':TroubleToggle loclist<CR>', {silent = true} )
-keymap('n', '<Leader>ss', ':SaveSession<cr>', {silent = true} )
-keymap('n', '<Leader>sl', ':LoadSession<cr>', {silent = true} )
-keymap('n', '<Leader>A', ':Alpha<CR>', {silent = true} )
--- tabular
-tabularize_bind('','/')
-tabularize_bind('a','/')
-tabularize_bind('(','/(/r0<CR>')
-tabularize_bind(')','/)/l0<CR>')
-tabularize_bind('[','/[/r0<CR>')
-tabularize_bind(']','/]/l0<CR>')
-tabularize_bind('{','/{<CR>')
-tabularize_bind('}','/}<CR>')
-tabularize_bind(':','/:\\+<CR>')
-tabularize_bind('<','/<\\S*><CR>')
-tabularize_bind('=','/=\\S*<CR>')
-tabularize_bind('>','/\\S*><CR>')
-tabularize_bind(',','/,/l0r1<CR>')
--- tag list
-keymap('n', '<C-]>', 'g<C-]>', {noremap = true} )
--- macro
-keymap('n', '<A-m>', '@q', {} )
 
 vim.cmd('command -nargs=+ Rg silent grep <args> <bar> Trouble quickfix')

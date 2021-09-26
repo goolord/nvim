@@ -6,6 +6,10 @@ local function hl(group, options)
     vim.cmd(string.format('hi %s %s %s %s', group, bg, fg, gui))
 end
 
+-- local function link(group_from, group_to)
+--     vim.cmd(string.format('hi link %s %s', group_from, group_to))
+-- end
+
 function _G.apply_colors()
     -- normal stuff
     hl('SignColumn', {bg = 'NONE'})
@@ -24,6 +28,9 @@ function _G.apply_colors()
     hl('DiagnosticHint' , {bg = 'NONE', fg = '#83A598'})
     hl('DiagnosticUnderlineError', {bg = 'NONE', fg = 'NONE', gui = 'underline'})
     hl('DiagnosticUnderlineWarn' , {bg = 'NONE', fg = 'NONE', gui = 'underline'})
+
+    -- lsp
+    hl('LspCodeLens', {bg = "#1d2021", fg = '#928374', gui = 'underline'})
 
     -- coqtail
     hl('CoqtailChecked', {bg = '#1b4723'})

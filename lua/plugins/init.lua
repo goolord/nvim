@@ -80,6 +80,11 @@ local function packer_use()
         config = require'plugins.alpha'
     }
 
+    use {
+        'folke/which-key.nvim',
+        config = require('plugins.which-key')
+    }
+
     -- use {
     --     "~/Dev/sentinel-nvim",
     --     requires = { 

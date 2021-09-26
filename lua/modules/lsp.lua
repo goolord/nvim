@@ -1,30 +1,63 @@
 return function()
+    local wk = require("which-key")
     local lspconfig = require('lspconfig')
 
     local function custom_on_attach(client, bufnr)
-        local function buf_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
         local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+        local opts = { noremap = true, silent = true, buffer = bufnr }
+        local function buf_keymap(km) wk.register(km, opts) end
+
         -- keymaps
-        buf_keymap('n', 'K'         , ':lua vim.lsp.buf.hover()<CR>'                   , {noremap = false, silent = true})
-        buf_keymap('n', '<C-]>'     , ':lua vim.lsp.buf.definition()<CR>'              , {noremap = false, silent = true})
-        buf_keymap('n', 'gA'        , ':lua vim.lsp.buf.code_action()<CR>'             , {noremap = true , silent = true})
-        buf_keymap('n', 'gd'        , ':lua vim.lsp.buf.definition()<CR>'              , {noremap = true , silent = true})
-        buf_keymap('n', 'gD'        , ':lua vim.lsp.buf.type_definition()<CR>'         , {noremap = true , silent = true})
-        buf_keymap('n', '<leader>fs', ':lua vim.lsp.buf.workspace_symbol()<CR>'        , {noremap = true , silent = true})
-        buf_keymap('n', 'gr'        , ':lua vim.lsp.buf.references()<CR>'              , {noremap = true , silent = true})
-        buf_keymap('n', 'gR'        , ':lua vim.lsp.buf.rename()<CR>'                  , {noremap = true , silent = true})
-        buf_keymap('' , '<leader>F' , ':lua vim.lsp.buf.formatting()<CR>'              , {noremap = true , silent = true})
-        buf_keymap('n', '<C-e>'     , ':lua vim.diagnostic.show_line_diagnostics()<CR>', {noremap = true , silent = true})
-        buf_keymap('n', 'g['        , ':lua vim.diagnostic.goto_prev()<CR>'            , {noremap = true , silent = true})
-        buf_keymap('n', 'g]'        , ':lua vim.diagnostic.goto_next()<CR>'            , {noremap = true , silent = true})
-        buf_keymap('n', 'gl'        , ':lua vim.diagnostic.set_loclist()<CR>'          , {noremap = true , silent = true})
-        buf_keymap('n', 'gq'        , ':lua vim.diagnostic.set_qflist()<CR>'           , {noremap = true , silent = true})
+        buf_keymap {
+            ['<C-]>'] = { ':lua vim.lsp.buf.definition()<CR>', 'Go to definition' },
+            ['<C-e>'] = { ':lua vim.diagnostic.show_line_diagnostics()<CR>', 'Show diagnostics' },
+            ['<C-k>'] = { ':lua vim.lsp.buf.signature_help()<CR>', 'Signature help' },
+            K = { ':lua vim.lsp.buf.hover()<CR>', 'Hover' },
+            gd = { ':lua vim.lsp.buf.definition()<CR>', 'Go to definition' },
+            ["<Leader>"] = {
+                ['['] = { ':lua vim.diagnostic.goto_prev()<CR>', 'Previous diagnostic' },
+                [']'] = { ':lua vim.diagnostic.goto_next()<CR>', 'Next diagnostic' },
+                ['fs'] = { ':lua vim.lsp.buf.workspace_symbol()<CR>', 'LSP Symbol' },
+                l = {
+                    name = "+LSP",
+                    R = { ':lua vim.lsp.buf.rename()<CR>', "Rename" },
+                    a = { ':lua vim.lsp.buf.code_action()<CR>', "Codeactions" },
+                    c = {
+                        name = "+codelens",
+                        c = { ':lua vim.lsp.codelens.run()<CR>', 'Run' },
+                        r = { ':lua vim.lsp.codelens.refresh()<CR>', 'Refresh' },
+                    },
+                    i = { ':lua vim.lsp.buf.implementation()<CR>', 'Implementation' },
+                    r = { ':lua vim.lsp.buf.references()<CR>', 'References' },
+                    s = {
+                        name = "+set",
+                        l = { ':lua vim.diagnostic.set_loclist()<CR>', 'Loclist' },
+                        q = { ':lua vim.diagnostic.set_qflist()<CR>', 'Quickfix list' },
+                    },
+                    t = { ':lua vim.lsp.buf.type_definition()<CR>', 'Type definition' },
+                    w = {
+                        name = "+workspace",
+                        a = { ':lua vim.lsp.buf.add_workspace_folder()<CR>', 'Add folder' },
+                        l = { ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', 'List folders' },
+                        r = { ':lua vim.lsp.buf.remove_workspace_folder()<CR>', 'Remove folder' },
+                    },
+                }
+            }
+        }
+        local formatting = { ["<Leader>lf"] = {':lua vim.lsp.buf.formatting()<CR>', 'Formatting'} }
+        wk.register(formatting, { buffer = bufnr, mode = 'n' })
+        wk.register(formatting, { buffer = bufnr, mode = 'v' })
+        wk.register(formatting, { buffer = bufnr, mode = 'o' })
+
         -- nvim-clap-lsp
         vim.lsp.handlers['textDocument/codeAction']     = require'clap-lsp.codeAction'.code_action_handler
         vim.lsp.handlers['textDocument/references']     = require'clap-lsp.locations'.references_handler
         vim.lsp.handlers['textDocument/definition']     = require'clap-lsp.locations'.definition_handler
         vim.lsp.handlers['textDocument/documentSymbol'] = require'clap-lsp.symbols'.document_handler
         vim.lsp.handlers['workspace/symbol']            = require'clap-lsp.symbols'.workspace_handler
+
+        -- bugged
+        -- vim.cmd[[autocmd BufEnter,CursorHold,InsertLeave <buffer> silent! lua vim.lsp.codelens.refresh()]]
     end
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
