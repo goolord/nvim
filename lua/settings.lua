@@ -24,7 +24,7 @@ vim.opt.mouse         = 'a'
 vim.opt.scrolloff     = 5
 vim.opt.shortmess     = 'atToOc'
 vim.opt.sidescrolloff = 10
-vim.opt.timeoutlen    = 500
+vim.opt.timeoutlen    = 400
 vim.opt.ttimeoutlen   = 50
 -- tabs
 vim.opt.list          = true
