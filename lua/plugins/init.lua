@@ -103,12 +103,12 @@ local function packer_use()
         config = require('plugins.gruvbox')
     }
 
+    -- nvim-lsp
     use {
         'simrat39/rust-tools.nvim',
         ft = 'rust'
     }
 
-    -- nvim-lsp
     use {
         'neovim/nvim-lspconfig',
         config = require('modules.lsp'),
