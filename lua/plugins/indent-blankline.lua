@@ -4,7 +4,7 @@ return function()
         show_trailing_blankline_indent = false,
         show_first_indent_level = false,
         filetype_exclude = {
-            'help'   , 'nerdtree',
+            'help'   ,
             'alpha'  , 'Preview' ,
             '__doc__', 'peekaboo',
             'man'    , 'trans'   ,

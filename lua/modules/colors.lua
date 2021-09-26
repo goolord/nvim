@@ -15,6 +15,7 @@ function _G.apply_colors()
     -- luatree
     hl('NvimTreeFolderIcon', {fg = '#D79921'})
     hl('NvimTreeIndentMarker', {fg = '#928374'})
+    hl('NvimTreeNormal', {bg = '#1d2021'})
 
     -- diagnostics
     hl('DiagnosticError', {bg = 'NONE', fg = '#FB4934'})

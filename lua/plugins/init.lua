@@ -63,7 +63,7 @@ local function packer_use()
 
     use {
         'liuchengxu/vim-clap',
-        run = 'Clap install-binary',
+        run = ':Clap install-binary',
         requires = {
             '~/Dev/vim-clap-gruvbox',
             '~/Dev/nvim-clap-lsp',
@@ -80,14 +80,14 @@ local function packer_use()
         config = require'plugins.alpha'
     }
 
-    use {
-        "~/Dev/sentinel-nvim",
-        requires = { 
-            '~/Dev/gamma-ui-nvim',
-            'kyazdani42/nvim-web-devicons',
-        },
-        config = function () require'sentinel'.setup() end
-    }
+    -- use {
+    --     "~/Dev/sentinel-nvim",
+    --     requires = { 
+    --         'nvim-lua/plenary.nvim',
+    --         'kyazdani42/nvim-web-devicons',
+    --     },
+    --     config = function () require'sentinel'.setup() end
+    -- }
 
     -- git
     use 'tpope/vim-fugitive'

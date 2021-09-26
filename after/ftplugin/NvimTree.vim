@@ -1,5 +1,5 @@
-hi NvimTreeNormal guibg=#1d2021
 hi Cursor blend=100
+setlocal nowrap
 
 " hide cursor on Nvim Tree
 augroup HideCursor

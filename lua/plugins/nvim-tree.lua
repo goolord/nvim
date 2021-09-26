@@ -1,9 +1,6 @@
 return function()
-    vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
-    vim.g.nvim_tree_follow = 1
-    vim.g.nvim_tree_indent_markers = 1
-
-    local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+    local tree = require('nvim-tree')
+    local tree_cb = require('nvim-tree.config').nvim_tree_callback
 
     vim.g.nvim_tree_bindings = {
         { key='l'   , cb=tree_cb("edit") },
@@ -14,14 +11,16 @@ return function()
         { key='R'   , cb=tree_cb("refresh") },
         { key='='   , cb=tree_cb("preview") }
     }
-
     vim.g.nvim_tree_icons = {
         default = '',
         symlink = '',
     }
 
-    -- disable word wrap
-    vim.cmd('autocmd FileType NvimTree setlocal nowrap')
+    tree.setup {
+        ignore = {'.git', 'node_modules', '.cache'},
+        update_focused_file = { enable = true },
+    }
+
     vim.cmd[[
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
