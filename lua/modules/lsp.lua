@@ -11,7 +11,6 @@ return function()
         buf_keymap {
             ['<C-]>'] = { ':lua vim.lsp.buf.definition()<CR>', 'Go to definition' },
             ['<C-e>'] = { ':lua vim.diagnostic.show_line_diagnostics()<CR>', 'Show diagnostics' },
-            ['<C-k>'] = { ':lua vim.lsp.buf.signature_help()<CR>', 'Signature help' },
             K = { ':lua vim.lsp.buf.hover()<CR>', 'Hover' },
             gd = { ':lua vim.lsp.buf.definition()<CR>', 'Go to definition' },
             ["<Leader>"] = {
@@ -20,6 +19,7 @@ return function()
                 ['fs'] = { ':lua vim.lsp.buf.workspace_symbol()<CR>', 'LSP Symbol' },
                 l = {
                     name = "+LSP",
+                    k = { ':lua vim.lsp.buf.signature_help()<CR>', 'Signature help' },
                     R = { ':lua vim.lsp.buf.rename()<CR>', "Rename" },
                     a = { ':lua vim.lsp.buf.code_action()<CR>', "Codeactions" },
                     c = {
