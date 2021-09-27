@@ -38,11 +38,13 @@ function _G.apply_colors()
 end
 
 -- automatically override colourscheme
-vim.cmd('augroup NewColor')
-vim.cmd('au!')
-vim.cmd('au ColorScheme * call v:lua.apply_colors()')
-vim.cmd('augroup END')
+vim.cmd[[
+augroup NewColor
+au!
+au ColorScheme * call v:lua.apply_colors()
+augroup END
 
-vim.cmd('colors gruvbox8')
+colors gruvbox8
+]]
 
 vim.g.hs_highlight_debug = 1
