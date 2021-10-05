@@ -1,6 +1,5 @@
 -- gui
 vim.opt.showmode      = false
-vim.opt.bg            = 'dark'
 vim.opt.cursorline    = true
 vim.opt.number        = true
 vim.opt.termguicolors = true

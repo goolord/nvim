@@ -26,7 +26,8 @@ wk.register {
             l     = { clap'loclist'  , 'Loclist'         }, -- :lopen
             t     = { clap'proj_tags', 'Project tags'    }, -- :tj
             b     = { clap'buffers'  , 'Buffers'         }, -- :ls :b
-            g     = { clap'grep'     , 'Grep'            }, -- :grep
+            r     = { clap'grep'     , 'Riprep'          }, -- :grep
+            g     = { clap'grep2'    , 'Grep'            },
             m     = { clap'maps'     , 'Maps'            },
             M     = { clap'marks'    , 'Marks'           },
             j     = { clap'jumps'    , 'Jumps'           },

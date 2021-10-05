@@ -6,9 +6,9 @@ local function hl(group, options)
     vim.cmd(string.format('hi %s %s %s %s', group, bg, fg, gui))
 end
 
--- local function link(group_from, group_to)
---     vim.cmd(string.format('hi link %s %s', group_from, group_to))
--- end
+local function link(group_from, group_to)
+    vim.cmd(string.format('hi link %s %s', group_from, group_to))
+end
 
 function _G.apply_colors()
     -- normal stuff
@@ -16,10 +16,13 @@ function _G.apply_colors()
     hl('ColorColumn', {bg = 'NONE', fg = '#928374'})
     hl('IncSearch', {bg = '#928374', fg = '#282828', gui = 'bold'})
 
+    -- custom
+    hl('DarkNormal', {bg = '#1d2021'})
+
     -- luatree
     hl('NvimTreeFolderIcon', {fg = '#D79921'})
     hl('NvimTreeIndentMarker', {fg = '#928374'})
-    hl('NvimTreeNormal', {bg = '#1d2021'})
+    link('NvimTreeNormal', 'DarkNormal')
 
     -- diagnostics
     hl('DiagnosticError', {bg = 'NONE', fg = '#FB4934'})
