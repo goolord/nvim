@@ -57,7 +57,10 @@ local function packer_use()
     use {
         'Shatur/neovim-session-manager',
         config = function ()
-            vim.g.autoload_last_session = false
+            require('session_manager').setup {
+                autoload_last_session = false,
+                autosave_last_session = true,
+            }
         end
     }
 
