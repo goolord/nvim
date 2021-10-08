@@ -2,14 +2,16 @@ return function()
     local telescope = require('telescope')
     local actions = require('telescope.actions')
 
+    -- Default: { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
     local blank_border = {
-        results =  {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
-        prompt =  {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+        results =  {'─', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+        prompt =  {'─', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
         preview = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
     }
 
     telescope.setup {
         defaults = {
+            -- layout_strategy = 'bottom_pane',
             border = true,
             prompt_title = false,
             results_title = false,
@@ -18,7 +20,8 @@ return function()
             borderchars = blank_border,
             prompt_prefix = '',
             layout_config = {
-                width = 0.85,
+                height = 200.0,
+                width = 200.0,
             },
             mappings = {
                 n = {

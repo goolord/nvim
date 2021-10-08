@@ -11,35 +11,37 @@ local function link(group_from, group_to)
 end
 
 function _G.apply_colors()
+    local dark_bg = '#1d2021'
     -- normal stuff
     hl('SignColumn', {bg = 'NONE'})
     hl('ColorColumn', {bg = 'NONE', fg = '#928374'})
     hl('IncSearch', {bg = '#928374', fg = '#282828', gui = 'bold'})
 
     -- custom
-    hl('DarkNormal', {bg = '#1d2021'})
+    hl('DarkNormal', {bg = dark_bg})
 
     -- luatree
-    hl('NvimTreeFolderIcon', {fg = '#D79921'})
-    hl('NvimTreeIndentMarker', {fg = '#928374'})
+    hl('NvimTreeFolderIcon', {fg = vim.g.terminal_color_3})
+    hl('NvimTreeIndentMarker', {fg = vim.g.terminal_color_8})
     link('NvimTreeNormal', 'DarkNormal')
 
     -- diagnostics
-    hl('DiagnosticError', {bg = 'NONE', fg = '#FB4934'})
-    hl('DiagnosticInfo' , {bg = 'NONE', fg = '#D3869B'})
-    hl('DiagnosticWarn' , {bg = 'NONE', fg = '#FABD2F'})
-    hl('DiagnosticHint' , {bg = 'NONE', fg = '#83A598'})
+    hl('DiagnosticError', {bg = 'NONE', fg = vim.g.terminal_color_9})
+    hl('DiagnosticInfo' , {bg = 'NONE', fg = vim.g.terminal_color_13})
+    hl('DiagnosticWarn' , {bg = 'NONE', fg = vim.g.terminal_color_11})
+    hl('DiagnosticHint' , {bg = 'NONE', fg = vim.g.terminal_color_12})
     hl('DiagnosticUnderlineError', {bg = 'NONE', fg = 'NONE', gui = 'underline'})
     hl('DiagnosticUnderlineWarn' , {bg = 'NONE', fg = 'NONE', gui = 'underline'})
 
     -- lsp
-    hl('LspCodeLens', {bg = "#1d2021", fg = '#928374', gui = 'underline'})
+    hl('LspCodeLens', {bg = dark_bg, fg = vim.g.terminal_color_8, gui = 'underline'})
 
     -- coqtail
     hl('CoqtailChecked', {bg = '#1b4723'})
     hl('CoqtailSent'   , {bg = '#79750e'})
 
     -- telescope
+    hl('TelescopeBorder', {bg = dark_bg, fg = vim.g.terminal_color_8})
     link('TelescopeNormal', 'DarkNormal')
 end
 
