@@ -51,13 +51,6 @@ return function()
         wk.register(formatting, { buffer = bufnr, mode = 'v' })
         wk.register(formatting, { buffer = bufnr, mode = 'o' })
 
-        -- nvim-clap-lsp
-        vim.lsp.handlers['textDocument/codeAction']     = require'clap-lsp.codeAction'.code_action_handler
-        vim.lsp.handlers['textDocument/references']     = require'clap-lsp.locations'.references_handler
-        vim.lsp.handlers['textDocument/definition']     = require'clap-lsp.locations'.definition_handler
-        vim.lsp.handlers['textDocument/documentSymbol'] = require'clap-lsp.symbols'.document_handler
-        vim.lsp.handlers['workspace/symbol']            = require'clap-lsp.symbols'.workspace_handler
-
         -- bugged
         -- vim.cmd[[autocmd BufEnter,CursorHold,InsertLeave <buffer> silent! lua vim.lsp.codelens.refresh()]]
     end

@@ -7,6 +7,10 @@ return function()
         symlink = '',
     }
 
+    vim.g.nvim_tree_show_icons = {
+        folder_arrows = 0,
+    }
+
     tree.setup {
         ignore = {'.git', 'node_modules', '.cache'},
         update_focused_file = { enable = true },

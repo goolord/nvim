@@ -38,6 +38,9 @@ function _G.apply_colors()
     -- coqtail
     hl('CoqtailChecked', {bg = '#1b4723'})
     hl('CoqtailSent'   , {bg = '#79750e'})
+
+    -- telescope
+    link('TelescopeNormal', 'DarkNormal')
 end
 
 -- automatically override colourscheme

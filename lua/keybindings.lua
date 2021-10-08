@@ -10,33 +10,31 @@ keymap('i', '<MiddleMouse>', '<Nop>', {silent = true, nowait = true} )
 -- terminal mode
 keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true})
 
-local function clap(provider) return '<CMD>Clap ' .. provider .. '<CR>' end
+local function telescope(provider) return '<CMD>Telescope ' .. provider .. '<CR>' end
 
 local function tabularize(regex) return ':Tabularize ' .. regex end
 
 wk.register {
     ["<Leader>"] = {
         d = { ':NvimTreeToggle<CR>', "Toggle NvimTree" },
-        -- clap
+        -- telescope
         f = {
             name = "Find",
-            i     = { clap'filer'    , 'File exploreer'  },
-            f     = { clap'files'    , 'Files'           }, -- :find
-            q     = { clap'quickfix' , 'Quickfix'        }, -- :copen
-            l     = { clap'loclist'  , 'Loclist'         }, -- :lopen
-            t     = { clap'proj_tags', 'Project tags'    }, -- :tj
-            b     = { clap'buffers'  , 'Buffers'         }, -- :ls :b
-            r     = { clap'grep'     , 'Riprep'          }, -- :grep
-            g     = { clap'grep2'    , 'Grep'            },
-            m     = { clap'maps'     , 'Maps'            },
-            M     = { clap'marks'    , 'Marks'           },
-            j     = { clap'jumps'    , 'Jumps'           },
-            y     = { clap'yanks'    , 'Yanks'           },
-            [':'] = { clap'hist:'    , 'Command history' },
-            ['/'] = { clap'hist/'    , 'Search history'  },
-            h     = { clap'history'  , 'File history'    },
-            d     = { clap'dumb_jump', 'Dumb jump'       },
-            ['_'] = { clap'providers', 'Providers'       },
+            i     = { telescope'file_browser'   , 'File browser'    },
+            f     = { telescope'find_files'     , 'Files'           }, -- :find
+            q     = { telescope'quickfix'       , 'Quickfix'        }, -- :copen
+            l     = { telescope'loclist'        , 'Loclist'         }, -- :lopen
+            t     = { telescope'tags'           , 'Tags'            }, -- :tj
+            b     = { telescope'buffers'        , 'Buffers'         }, -- :ls :b
+            g     = { telescope'live_grep'      , 'Grep'            },
+            m     = { telescope'keymaps'        , 'Maps'            },
+            M     = { telescope'marks'          , 'Marks'           },
+            j     = { telescope'jumps'          , 'Jumps'           },
+            y     = { telescope'yanks'          , 'Yanks'           },
+            [':'] = { telescope'command_history', 'Command history' },
+            ['/'] = { telescope'search_history' , 'Search history'  },
+            h     = { telescope'history'        , 'File history'    },
+            ['_'] = { telescope''               , 'Providers'       },
         },
         r = {
             name = "Trouble",

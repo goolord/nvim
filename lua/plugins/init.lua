@@ -64,14 +64,15 @@ local function packer_use()
         end
     }
 
+    
     use {
-        'liuchengxu/vim-clap',
-        run = ':Clap install-binary',
+        'nvim-telescope/telescope.nvim',
+        config = require('plugins.telescope'),
         requires = {
-            '~/Dev/vim-clap-gruvbox',
-            '~/Dev/nvim-clap-lsp',
-        },
-        config = require('plugins.clap')
+            'nvim-lua/plenary.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+            { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
+        }
     }
 
     use {
