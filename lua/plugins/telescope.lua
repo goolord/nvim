@@ -20,8 +20,8 @@ return function()
             borderchars = blank_border,
             prompt_prefix = '',
             layout_config = {
-                height = 200.0,
-                width = 200.0,
+                height = 300.0,
+                width = 300.0,
             },
             mappings = {
                 n = {

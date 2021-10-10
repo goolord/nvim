@@ -1,5 +1,5 @@
 -- Improve startup time: neovim/neovim/pull/15436
-require("impatient")
+require('impatient')
 
 -- unload default plugins
 require('plugins.unload')
