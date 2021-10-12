@@ -1,6 +1,5 @@
 return function()
     local telescope = require('telescope')
-    local actions = require('telescope.actions')
 
     -- Default: { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
     local blank_border = {
@@ -22,12 +21,6 @@ return function()
             layout_config = {
                 height = 300.0,
                 width = 300.0,
-            },
-            mappings = {
-                n = {
-                    ["gg"] = actions.move_to_top,
-                    ["G"] = actions.move_to_bottom,
-                }
             },
             selection_caret = ' ',
             entry_prefix = '  ',

@@ -43,6 +43,7 @@ function _G.apply_colors()
     -- telescope
     hl('TelescopeBorder', {bg = dark_bg, fg = vim.g.terminal_color_8})
     link('TelescopeNormal', 'DarkNormal')
+    link('TelescopePreviewBorder', 'Type')
 end
 
 -- automatically override colourscheme
