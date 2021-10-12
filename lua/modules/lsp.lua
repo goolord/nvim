@@ -9,7 +9,6 @@ return function()
 
         -- keymaps
         buf_keymap {
-            ['<C-]>'] = { ':lua vim.lsp.buf.definition()<CR>', 'Go to definition' },
             ['<C-e>'] = { ':lua vim.diagnostic.show_line_diagnostics()<CR>', 'Show diagnostics' },
             K = { ':lua vim.lsp.buf.hover()<CR>', 'Hover' },
             g = {
@@ -50,6 +49,10 @@ return function()
         wk.register(formatting, { buffer = bufnr, mode = 'n' })
         wk.register(formatting, { buffer = bufnr, mode = 'v' })
         wk.register(formatting, { buffer = bufnr, mode = 'o' })
+
+        local gotodef = { ['<C-]>'] = { ':lua vim.lsp.buf.definition()<CR>', 'Go to definition' } }
+        wk.register(gotodef, { buffer = bufnr, mode = 'n' })
+        wk.register(gotodef, { buffer = bufnr, mode = 'v' })
 
         -- bugged
         -- vim.cmd[[autocmd BufEnter,CursorHold,InsertLeave <buffer> silent! lua vim.lsp.codelens.refresh()]]
