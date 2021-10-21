@@ -9,7 +9,7 @@ return function()
 
         -- keymaps
         buf_keymap {
-            ['<C-e>'] = { ':lua vim.diagnostic.show_line_diagnostics()<CR>', 'Show diagnostics' },
+            ['<C-e>'] = { ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>', 'Show diagnostics' },
             K = { ':lua vim.lsp.buf.hover()<CR>', 'Hover' },
             g = {
                 ['['] = { ':lua vim.diagnostic.goto_prev()<CR>', 'Previous diagnostic' },
