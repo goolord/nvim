@@ -48,8 +48,7 @@ local function packer_use()
     }
 
     use {
-        'shadmansaleh/lualine.nvim', -- this is a fork, most up to date atm
-        -- 'hoob3rt/lualine.nvim',
+        'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
         config = require('plugins.statusline')
     }
