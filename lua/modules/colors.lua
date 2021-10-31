@@ -7,7 +7,7 @@ local function hl(group, options)
 end
 
 local function link(group_from, group_to)
-    vim.cmd(string.format('hi link %s %s', group_from, group_to))
+    vim.cmd(string.format('hi! link %s %s', group_from, group_to))
 end
 
 function _G.apply_colors()
@@ -44,6 +44,7 @@ function _G.apply_colors()
     hl('TelescopeBorder', {bg = dark_bg, fg = vim.g.terminal_color_8})
     link('TelescopeNormal', 'DarkNormal')
     link('TelescopePreviewBorder', 'Type')
+    link('TelescopePreviewTitle', 'Type')
 end
 
 -- automatically override colourscheme
