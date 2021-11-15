@@ -57,7 +57,7 @@ local function packer_use()
         'Shatur/neovim-session-manager',
         config = function ()
             require('session_manager').setup {
-                autoload_last_session = false,
+                autoload_mode = require('session_manager.config').AutoloadMode.Disabled,
                 autosave_last_session = true,
             }
         end
