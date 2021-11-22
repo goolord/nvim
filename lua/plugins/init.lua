@@ -75,6 +75,13 @@ local function packer_use()
     }
 
     use {
+        "AckslD/nvim-neoclip.lua",
+        config = function()
+            require('neoclip').setup()
+        end,
+    }
+
+    use {
         "~/Dev/alpha-nvim",
         requires = { 'kyazdani42/nvim-web-devicons' },
         config = require'plugins.alpha'

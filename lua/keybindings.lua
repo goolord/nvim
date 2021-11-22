@@ -30,7 +30,7 @@ wk.register {
             m     = { telescope'keymaps'        , 'Maps'            },
             M     = { telescope'marks'          , 'Marks'           },
             j     = { telescope'jumps'          , 'Jumps'           },
-            y     = { telescope'yanks'          , 'Yanks'           },
+            y     = { telescope'neoclip'        , 'Yanks'           },
             [':'] = { telescope'command_history', 'Command history' },
             ['/'] = { telescope'search_history' , 'Search history'  },
             h     = { telescope'history'        , 'File history'    },
