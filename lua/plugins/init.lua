@@ -73,7 +73,6 @@ local function packer_use()
             { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
         }
     }
-
     use {
         "AckslD/nvim-neoclip.lua",
         config = function()
