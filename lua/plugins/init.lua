@@ -73,12 +73,15 @@ local function packer_use()
             { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
         }
     }
+
     use {
         "AckslD/nvim-neoclip.lua",
         config = function()
             require('neoclip').setup()
         end,
     }
+
+    -- use 'pechorin/any-jump.vim'
 
     use {
         "~/Dev/alpha-nvim",
@@ -93,7 +96,7 @@ local function packer_use()
 
     -- use {
     --     "~/Dev/sentinel-nvim",
-    --     requires = { 
+    --     requires = {
     --         'nvim-lua/plenary.nvim',
     --         'kyazdani42/nvim-web-devicons',
     --     },
