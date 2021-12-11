@@ -89,6 +89,10 @@ local function packer_use()
         config = require'plugins.alpha'
     }
 
+    -- use {
+    --     "glepnir/dashboard-nvim"
+    -- }
+
     use {
         'folke/which-key.nvim',
         config = require('plugins.which-key')
