@@ -18,6 +18,7 @@ return function()
     tree.setup {
         ignore = {'.git', 'node_modules', '.cache'},
         update_focused_file = { enable = true },
+        update_to_buf_dir = { enable = true },
         view = {
             mappings = {
                 list = {
@@ -33,9 +34,4 @@ return function()
         }
     }
 
-    vim.cmd[[
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-        \ execute 'cd '.argv()[0] | execute 'NvimTreeOpen' | wincmd p | q | endif
-    ]]
 end
