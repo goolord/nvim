@@ -81,7 +81,12 @@ local function packer_use()
         end,
     }
 
-    -- use 'pechorin/any-jump.vim'
+    use {
+        'pechorin/any-jump.vim',
+        config = function ()
+            vim.g.any_jump_grouping_enabled = 1
+        end,
+    }
 
     use {
         "~/Dev/alpha-nvim",
