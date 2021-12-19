@@ -14,8 +14,8 @@ function _G.apply_colors()
     local dark_bg = '#1d2021'
     -- normal stuff
     hl('SignColumn', {bg = 'NONE'})
-    hl('ColorColumn', {bg = 'NONE', fg = '#928374'})
-    hl('IncSearch', {bg = '#928374', fg = '#282828', gui = 'bold'})
+    hl('ColorColumn', {bg = 'NONE', fg = vim.g.terminal_color_8})
+    hl('IncSearch', {bg = vim.g.terminal_color_8, fg = vim.g.terminal_color_0, gui = 'bold'})
 
     -- custom
     hl('DarkNormal', {bg = dark_bg})
