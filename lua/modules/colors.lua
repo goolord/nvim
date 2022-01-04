@@ -17,6 +17,12 @@ function _G.apply_colors()
     hl('ColorColumn', {bg = 'NONE', fg = vim.g.terminal_color_8})
     hl('IncSearch', {bg = vim.g.terminal_color_8, fg = vim.g.terminal_color_0, gui = 'bold'})
 
+    -- tabline
+    hl('TabLine',     {bg = vim.g.terminal_color_0})
+    hl('TabLineFill', {bg = dark_bg})
+
+    -- hl('TabLineSel', {bg = vim.g.terminal_color_8})
+
     -- custom
     hl('DarkNormal', {bg = dark_bg})
 
