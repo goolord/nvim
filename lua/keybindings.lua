@@ -34,7 +34,7 @@ wk.register {
             r     = { telescope'registers'      , 'Registers'       },
             [':'] = { telescope'command_history', 'Command history' },
             ['/'] = { telescope'search_history' , 'Search history'  },
-            h     = { telescope'history'        , 'File history'    },
+            h     = { telescope'oldfiles'       , 'File history'    },
             ['_'] = { telescope''               , 'Providers'       },
         },
         r = {

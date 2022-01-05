@@ -110,6 +110,7 @@ function M.render()
         table.insert(tabline, '%' .. tab .. 'X %X')
     end
 
+    -- table.insert(tabline, "%#TabLine#%999@v:lua.require'plugins.tabline'.tabnew@ + %X")
     table.insert(tabline, '%#TabLineFill#')
     table.insert(tabline, separator)
     table.insert(tabline, lsp_status())
@@ -117,6 +118,11 @@ function M.render()
     return table.concat(tabline)
 end
 
+function M.tabnew()
+    vim.cmd('tabnew')
+end
+
 vim.cmd('autocmd User LspProgressUpdate redrawtabline')
+vim.opt.tabline = "%!v:lua.require'plugins.tabline'.render()"
 
 return M
