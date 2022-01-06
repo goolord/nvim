@@ -107,7 +107,9 @@ local function packer_use()
     -- }
 
     use {
-        'folke/which-key.nvim',
+        'zeertzjq/which-key.nvim',
+        branch = 'patch-1',
+        -- 'folke/which-key.nvim',
         config = require('plugins.which-key')
     }
 
