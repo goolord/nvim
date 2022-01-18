@@ -51,10 +51,6 @@ wk.register {
         A = { ':Alpha<CR>', "Open alpha" },
         x = { '<CMD>%s///g<CR>', "Delete search result" },
     },
-    ['<C-h>'] = { '<C-w>h', 'Window left' },
-    ['<C-j>'] = { '<C-w>j', 'Widnow down' },
-    ['<C-k>'] = { '<C-w>k', 'Window up' },
-    ['<C-l>'] = { '<C-w>l', 'Window right' },
     ['<esc>'] = { ':noh<CR>', 'Remove search highlights' },
     ['<C-]>'] = { 'g<C-]>', 'Jump to tag' },
     ['<A-m>'] = { '@q', 'Run q macro register' },
@@ -82,6 +78,17 @@ local align_maps = {
 wk.register(align_maps, { mode = 'n' })
 wk.register(align_maps, { mode = 'v' })
 wk.register(align_maps, { mode = 'o' })
+
+local win_cmds = {
+    ['<C-h>'] = { '<cmd>wincmd h<cr>', 'Window left' },
+    ['<C-j>'] = { '<cmd>wincmd j<cr>', 'Widnow down' },
+    ['<C-k>'] = { '<cmd>wincmd k<cr>', 'Window up' },
+    ['<C-l>'] = { '<cmd>wincmd l<cr>', 'Window right' },
+}
+wk.register(win_cmds, { mode = 'n' })
+wk.register(win_cmds, { mode = 'v' })
+wk.register(win_cmds, { mode = 'o' })
+wk.register(win_cmds, { mode = 'i' })
 
 -- other
 -- breaks <C-I> jump because terminals are dumb
