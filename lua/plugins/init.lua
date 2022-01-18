@@ -15,6 +15,19 @@ local function packer_use()
     use { 'akinsho/toggleterm.nvim', config = require('plugins.toggleterm') }
     use { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } }
 
+    -- colorsceme
+    use 'lifepillar/vim-gruvbox8'
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        -- stupid hack
+        setup = function ()
+            require('plugins.gruvbox')()
+        end,
+        config = require('plugins.statusline')
+    }
+
     -- completion
     use {
         'hrsh7th/nvim-cmp',
@@ -48,12 +61,6 @@ local function packer_use()
     }
 
     use {
-        'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true},
-        config = require('plugins.statusline')
-    }
-
-    use {
         'Shatur/neovim-session-manager',
         config = function ()
             require('session_manager').setup {
@@ -63,7 +70,6 @@ local function packer_use()
         end
     }
 
-    
     use {
         'nvim-telescope/telescope.nvim',
         config = require('plugins.telescope'),
@@ -107,9 +113,7 @@ local function packer_use()
     -- }
 
     use {
-        'zeertzjq/which-key.nvim',
-        branch = 'patch-1',
-        -- 'folke/which-key.nvim',
+        'folke/which-key.nvim',
         config = require('plugins.which-key')
     }
 
@@ -124,12 +128,6 @@ local function packer_use()
 
     -- git
     use 'tpope/vim-fugitive'
-
-    -- colorsceme
-    use {
-        'lifepillar/vim-gruvbox8',
-        config = require('plugins.gruvbox')
-    }
 
     -- nvim-lsp
     use {
