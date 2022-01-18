@@ -35,6 +35,12 @@ return function()
             c = def,
             z = def_bold,
         },
+        terminal = {
+            a = mode(vim.g.terminal_color_15),
+            b = def,
+            c = def,
+            z = def_bold,
+        },
         inactive = {
             a = def,
             b = def,
