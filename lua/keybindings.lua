@@ -1,14 +1,14 @@
 local wk = require("which-key")
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 -- ('mode', 'keybindings', 'command', '{noremap=bool', 'silent=bool', expr=bool})
-keymap('', '<Space>', '<Leader>', {silent = true} )
+keymap('', '<Space>', '<Leader>', {silent = true, remap = true} )
 -- disable keys
-keymap('' , '<MiddleMouse>', '<Nop>', {silent = true, nowait = true} )
-keymap('i', '<MiddleMouse>', '<Nop>', {silent = true, nowait = true} )
+keymap('' , '<MiddleMouse>', '<Nop>', {silent = true, nowait = true, remap = true } )
+keymap('i', '<MiddleMouse>', '<Nop>', {silent = true, nowait = true, remap = true} )
 -- terminal mode
-keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true})
+keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true, remap = true})
 
 local function telescope(provider) return '<CMD>Telescope ' .. provider .. '<CR>' end
 
