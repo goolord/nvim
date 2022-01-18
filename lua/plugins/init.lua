@@ -100,45 +100,19 @@ local function packer_use()
         config = require'plugins.alpha'
     }
 
-    -- use {
-    --     "startup-nvim/startup.nvim",
-    --     requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
-    --     config = function()
-    --         require"startup".setup({theme="startify"})
-    --     end
-    -- }
-
-    -- use {
-    --     "glepnir/dashboard-nvim"
-    -- }
-
     use {
         'folke/which-key.nvim',
         config = require('plugins.which-key')
     }
 
-    -- use {
-    --     "~/Dev/sentinel-nvim",
-    --     requires = {
-    --         'nvim-lua/plenary.nvim',
-    --         'kyazdani42/nvim-web-devicons',
-    --     },
-    --     config = function () require'sentinel'.setup() end
-    -- }
-
     -- git
     use 'tpope/vim-fugitive'
 
     -- nvim-lsp
-    use {
-        'simrat39/rust-tools.nvim',
-        ft = 'rust'
-    }
 
     use {
         'neovim/nvim-lspconfig',
         config = require('modules.lsp'),
-        after = 'rust-tools.nvim',
         ft = { 'haskell', 'rust', 'lua', 'lean' }
     }
 
@@ -156,7 +130,6 @@ local function packer_use()
     -- filetype plugins
     use { 'LnL7/vim-nix', ft = 'nix' }
     use { 'edwinb/idris2-vim', ft = 'idris' }
-    use { 'cespare/vim-toml', ft = 'toml' }
 
     use { 'whonore/Coqtail', ft = 'coq' }
     use {
