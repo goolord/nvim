@@ -19,9 +19,7 @@ function _G.apply_colors()
 
     -- tabline
     hl('TabLine',     {bg = vim.g.terminal_color_0})
-    hl('TabLineFill', {bg = dark_bg})
-
-    -- hl('TabLineSel', {bg = vim.g.terminal_color_8})
+    hl('TabLineFill', {bg = vim.g.terminal_color_0, gui = 'underline'})
 
     -- custom
     hl('DarkNormal', {bg = dark_bg})

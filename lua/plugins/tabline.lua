@@ -63,13 +63,13 @@ local function lsp_status()
 
     for _, name in ipairs(names) do
         local status = statuses[name]
-        local text = name .. ': ' .. status
+        local text = ' ' .. name .. ': ' .. status
 
         table.insert(cells, text)
     end
 
     return forced_space
-    .. highlight(table.concat(cells, ', '), lsp_hl)
+    .. highlight(table.concat(cells, ','), lsp_hl)
 end
 
 function M.render()
@@ -112,6 +112,7 @@ function M.render()
 
     -- table.insert(tabline, "%#TabLine#%999@v:lua.require'plugins.tabline'.tabnew@ + %X")
     table.insert(tabline, '%#TabLineFill#')
+    table.insert(tabline, highlight(' ', 'Comment'))
     table.insert(tabline, separator)
     table.insert(tabline, lsp_status())
 
