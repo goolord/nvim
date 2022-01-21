@@ -52,6 +52,7 @@ local function packer_use()
     use {
         'lukas-reineke/indent-blankline.nvim',
         config = require('plugins.indent-blankline'),
+        disable = true,
         branch = 'develop'
     }
     use {
