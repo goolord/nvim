@@ -20,7 +20,6 @@ wk.register {
         -- telescope
         f = {
             name = "Find",
-            i     = { telescope'file_browser'   , 'File browser'    },
             f     = { telescope'find_files'     , 'Files'           }, -- :find
             q     = { telescope'quickfix'       , 'Quickfix'        }, -- :copen
             l     = { telescope'loclist'        , 'Loclist'         }, -- :lopen
@@ -29,7 +28,7 @@ wk.register {
             g     = { telescope'live_grep'      , 'Grep'            },
             m     = { telescope'keymaps'        , 'Maps'            },
             M     = { telescope'marks'          , 'Marks'           },
-            j     = { telescope'jumps'          , 'Jumps'           },
+            j     = { telescope'jumplist'       , 'Jumps'           },
             y     = { telescope'neoclip'        , 'Yanks'           },
             r     = { telescope'registers'      , 'Registers'       },
             [':'] = { telescope'command_history', 'Command history' },
@@ -94,4 +93,4 @@ wk.register(win_cmds, { mode = 'i' })
 -- breaks <C-I> jump because terminals are dumb
 -- {'n', '<tab>', '<C-W>w', {noremap = true, silent = true} )
 
-vim.cmd('command -nargs=+ Rg silent grep <args> <bar> Trouble quickfix')
+vim.api.nvim_add_user_command('Rg', 'silent grep <args> <bar> Trouble quickfix', { nargs = "+" })

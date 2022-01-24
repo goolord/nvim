@@ -18,7 +18,8 @@ return function()
             "qf"
         },
         buftype = {
-            "terminal"
+            "terminal",
+            "help"
         }
     }
 
