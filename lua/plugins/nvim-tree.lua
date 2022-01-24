@@ -12,6 +12,15 @@ return function()
         folder_arrows = 0,
     }
     vim.g.nvim_tree_indent_markers = 1
+    vim.g.nvim_tree_window_picker_exclude = {
+        filetype = {
+            "packer",
+            "qf"
+        },
+        buftype = {
+            "terminal"
+        }
+    }
 
     local tree = require('nvim-tree')
     local tree_cb = require('nvim-tree.config').nvim_tree_callback
