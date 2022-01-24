@@ -11,6 +11,7 @@ return function()
         files = 1,
         folder_arrows = 0,
     }
+    vim.g.nvim_tree_indent_markers = 1
 
     local tree = require('nvim-tree')
     local tree_cb = require('nvim-tree.config').nvim_tree_callback
