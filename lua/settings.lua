@@ -10,6 +10,8 @@ vim.opt.pumblend      = 10
 vim.opt.pumheight     = 15
 vim.opt.wrap          = true
 vim.opt.signcolumn    = 'number'
+vim.opt.list          = true
+vim.opt.listchars     = { trail = '', lead = '.', tab = '»-»'}
 -- gui frontend
 vim.opt.guifont       = 'monospace:h16.4'
 vim.g.neovide_cursor_animation_length = 0
@@ -26,8 +28,6 @@ vim.opt.sidescrolloff = 10
 vim.opt.timeoutlen    = 400
 vim.opt.ttimeoutlen   = 50
 -- tabs
-vim.opt.list          = true
-vim.opt.listchars     = 'tab:»-»'
 vim.opt.tabstop       = 4
 vim.opt.softtabstop   = 2
 vim.opt.shiftwidth    = 2
