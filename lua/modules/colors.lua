@@ -41,7 +41,7 @@ function _G.apply_colors()
     hl('LspCodeLens', {bg = dark_bg, fg = vim.g.terminal_color_8, gui = 'underline'})
 
     -- coqtail
-    hl('CoqtailChecked', {bg = '#1b4723'})
+    hl('CoqtailChecked', {bg = '#1d3320'})
     hl('CoqtailSent'   , {bg = '#79750e'})
 
     -- telescope

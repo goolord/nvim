@@ -24,7 +24,10 @@ return function()
     }
 
     local tree = require('nvim-tree')
-    local tree_cb = require('nvim-tree.config').nvim_tree_callback
+
+    local function xdg_open(node)
+        os.execute('xdg-open ' .. node.absolute_path)
+    end
 
     tree.setup {
         ignore = {'.git', 'node_modules', '.cache'},
@@ -33,13 +36,14 @@ return function()
         view = {
             mappings = {
                 list = {
-                    { key='l'   , cb=tree_cb("edit") },
-                    { key='o'   , cb=tree_cb("edit") },
-                    { key='<cr>', cb=tree_cb("edit") },
-                    { key='I'   , cb=tree_cb("toggle_ignored") },
-                    { key='H'   , cb=tree_cb("toggle_dotfiles") },
-                    { key='R'   , cb=tree_cb("refresh") },
-                    { key='='   , cb=tree_cb("preview") }
+                    { key='l'   , action = "edit" },
+                    { key='o'   , action = "edit" },
+                    { key='<cr>', action = "edit" },
+                    { key='I'   , action = "toggle_ignored" },
+                    { key='H'   , action = "toggle_dotfiles" },
+                    { key='R'   , action = "refresh" },
+                    { key='='   , action = "preview" },
+                    { key='X'   , action_cb = xdg_open }
                 }
             }
         }
