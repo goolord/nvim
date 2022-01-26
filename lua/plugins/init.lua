@@ -118,6 +118,13 @@ local function packer_use()
     }
 
     use {
+        'j-hui/fidget.nvim',
+        config = function () require('fidget').setup {
+            text = { spinner = 'moon' },
+        } end
+    }
+
+    use {
         'folke/trouble.nvim',
         config = require('plugins.trouble'),
     }

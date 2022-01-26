@@ -34,7 +34,7 @@ function _G.apply_colors()
     hl('DiagnosticInfo' , {bg = 'NONE', fg = vim.g.terminal_color_13})
     hl('DiagnosticWarn' , {bg = 'NONE', fg = vim.g.terminal_color_11})
     hl('DiagnosticHint' , {bg = 'NONE', fg = vim.g.terminal_color_12})
-    hl('DiagnosticUnderlineError', {bg = 'NONE', fg = 'NONE', gui = 'underline'})
+    hl('DiagnosticUnderlineError', {bg = 'NONE', fg = 'NONE', gui = 'undercurl'})
     hl('DiagnosticUnderlineWarn' , {bg = 'NONE', fg = 'NONE', gui = 'underline'})
 
     -- lsp
@@ -50,6 +50,10 @@ function _G.apply_colors()
     link('TelescopePreviewBorder', 'DarkNormal')
     link('TelescopePreviewNormal', 'Normal')
     hl('TelescopePreviewTitle', {bg = 'NONE', fg = vim.g.terminal_color_11, gui = 'underline,bold'})
+
+    -- fidget
+    link('FidgetTitle', 'DarkNormal')
+    link('FidgetTask', 'DarkNormal')
 end
 
 -- automatically override colourscheme
