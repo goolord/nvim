@@ -3,8 +3,8 @@ return function()
 
     -- Default: { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
     local blank_border = {
-        results =  {'─', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
-        prompt =  {'─', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+        results =  {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+        prompt =  {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
         preview = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
     }
 
@@ -13,14 +13,16 @@ return function()
             -- layout_strategy = 'bottom_pane',
             border = true,
             prompt_title = false,
-            results_title = false,
+            -- results_title = false,
             preview_title = false,
             dynamic_preview_title = true,
             borderchars = blank_border,
-            prompt_prefix = '',
+            path_display = { "truncate" },
+            prompt_prefix = '  ',
             layout_config = {
                 height = 300.0,
                 width = 300.0,
+                -- prompt_position="top",
             },
             selection_caret = ' ',
             entry_prefix = '  ',

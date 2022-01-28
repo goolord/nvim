@@ -47,8 +47,13 @@ function _G.apply_colors()
     -- telescope
     hl('TelescopeBorder', {bg = dark_bg, fg = vim.g.terminal_color_8})
     link('TelescopeNormal', 'DarkNormal')
-    link('TelescopePreviewBorder', 'DarkNormal')
+    link('TelescopePreviewBorder', 'Normal')
     link('TelescopePreviewNormal', 'Normal')
+
+    link('TelescopePromptBorder', 'Normal')
+    link('TelescopePromptNormal', 'Normal')
+    link('TelescopePromptTitle', 'Normal')
+
     hl('TelescopePreviewTitle', {bg = 'NONE', fg = vim.g.terminal_color_11, gui = 'underline,bold'})
 
     -- fidget
