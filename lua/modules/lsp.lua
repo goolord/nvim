@@ -73,7 +73,10 @@ return function()
         capabilities = capabilities,
         settings = {
             haskell = {
-                hlintOn = false,
+                plugin = {
+                    hlint = { globalOn = false },
+                    tactics = { globalOn = false },
+                }
             }
         }
     } end

@@ -76,8 +76,10 @@ local function packer_use()
         config = require('plugins.telescope'),
         requires = {
             'nvim-lua/plenary.nvim',
+            -- extensions
             { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
             { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
+            { 'psiska/telescope-hoogle.nvim' }
         }
     }
 
