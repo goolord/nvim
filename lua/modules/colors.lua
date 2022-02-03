@@ -1,13 +1,9 @@
 local function hl(group, options)
-    local bg = options.bg == nil and '' or 'guibg=' .. options.bg
-    local fg = options.fg == nil and '' or 'guifg=' .. options.fg
-    local gui = options.gui == nil and '' or 'gui=' .. options.gui
-
-    vim.cmd(string.format('hi %s %s %s %s', group, bg, fg, gui))
+    vim.api.nvim_set_hl(0, group, options)
 end
 
 local function link(group_from, group_to)
-    vim.cmd(string.format('hi! link %s %s', group_from, group_to))
+    vim.api.nvim_set_hl(0, group_from, vim.api.nvim_get_hl_by_name(group_to, true))
 end
 
 function _G.apply_colors()

@@ -13,7 +13,7 @@ return function()
             -- layout_strategy = 'bottom_pane',
             border = true,
             prompt_title = false,
-            -- results_title = false,
+            results_title = false,
             preview_title = false,
             dynamic_preview_title = true,
             borderchars = blank_border,
