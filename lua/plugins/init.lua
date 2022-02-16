@@ -57,7 +57,6 @@ local function packer_use()
     }
     use {
         'kyazdani42/nvim-tree.lua',
-        commit = '3f4ed9b6c2598ab8304186486a05ae7a328b8d49',
         requires = { 'kyazdani42/nvim-web-devicons' },
         config = require('plugins.nvim-tree')
     }
