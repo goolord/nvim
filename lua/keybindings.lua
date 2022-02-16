@@ -47,6 +47,7 @@ wk.register {
             name = "Session",
             s = { ':SessionManager save_current_session<cr>', 'Save' },
             l = { ':SessionManager load_last_session<cr>', 'Load' },
+            c = { ':SessionManager load_current_dir_session<cr>', 'Load current dir session' },
         },
         A = { ':Alpha<CR>', "Open alpha" },
         x = { '<CMD>%s///g<CR>', "Delete search result" },

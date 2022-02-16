@@ -115,6 +115,8 @@ return function()
         }
     end
 
+    if vim.bo.ft == 'fsharp' then lspconfig.fsautocomplete.setup{} end
+
     if vim.bo.ft == 'lean' then require('lean').setup {
         -- Enable the Lean language server(s)?
         --
