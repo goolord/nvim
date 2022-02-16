@@ -11,11 +11,11 @@ function _G.apply_colors()
     -- normal stuff
     hl('SignColumn', {bg = 'NONE'})
     hl('ColorColumn', {bg = 'NONE', fg = vim.g.terminal_color_8})
-    hl('IncSearch', {bg = vim.g.terminal_color_8, fg = vim.g.terminal_color_0, gui = 'bold'})
+    hl('IncSearch', {bg = vim.g.terminal_color_8, fg = vim.g.terminal_color_0, bold = true})
 
     -- tabline
     hl('TabLine',     {bg = vim.g.terminal_color_0})
-    hl('TabLineFill', {bg = vim.g.terminal_color_0, gui = 'underline'})
+    hl('TabLineFill', {bg = vim.g.terminal_color_0, underline = true})
 
     -- custom
     hl('DarkNormal', {bg = dark_bg})
@@ -30,11 +30,11 @@ function _G.apply_colors()
     hl('DiagnosticInfo' , {bg = 'NONE', fg = vim.g.terminal_color_13})
     hl('DiagnosticWarn' , {bg = 'NONE', fg = vim.g.terminal_color_11})
     hl('DiagnosticHint' , {bg = 'NONE', fg = vim.g.terminal_color_12})
-    hl('DiagnosticUnderlineError', {bg = 'NONE', fg = 'NONE', gui = 'undercurl'})
-    hl('DiagnosticUnderlineWarn' , {bg = 'NONE', fg = 'NONE', gui = 'underline'})
+    hl('DiagnosticUnderlineError', {bg = 'NONE', fg = 'NONE', undercurl = true})
+    hl('DiagnosticUnderlineWarn' , {bg = 'NONE', fg = 'NONE', underline = true})
 
     -- lsp
-    hl('LspCodeLens', {bg = dark_bg, fg = vim.g.terminal_color_8, gui = 'underline'})
+    hl('LspCodeLens', {bg = dark_bg, fg = vim.g.terminal_color_8, underline = true})
 
     -- coqtail
     hl('CoqtailChecked', {bg = '#1d3320'})
@@ -50,7 +50,7 @@ function _G.apply_colors()
     link('TelescopePromptTitle', 'Normal')
 
     hl('TelescopePreviewBorder', {bg = 'NONE', fg = vim.g.terminal_color_11})
-    hl('TelescopePreviewTitle', {bg = 'NONE', fg = vim.g.terminal_color_11, gui = 'bold'})
+    hl('TelescopePreviewTitle', {bg = 'NONE', fg = vim.g.terminal_color_11, bold = true})
 
     -- fidget
     link('FidgetTitle', 'DarkNormal')
