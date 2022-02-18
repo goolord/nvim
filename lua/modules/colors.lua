@@ -9,8 +9,8 @@ end
 function _G.apply_colors()
     local dark_bg = '#1d2021'
     -- normal stuff
-    hl('SignColumn', {bg = 'NONE'})
-    hl('ColorColumn', {bg = 'NONE', fg = vim.g.terminal_color_8})
+    hl('SignColumn', {bg = nil})
+    hl('ColorColumn', {bg = nil, fg = vim.g.terminal_color_8})
     hl('IncSearch', {bg = vim.g.terminal_color_8, fg = vim.g.terminal_color_0, bold = true})
 
     -- tabline
@@ -26,12 +26,12 @@ function _G.apply_colors()
     link('NvimTreeIndentMarker', 'Comment')
 
     -- diagnostics
-    hl('DiagnosticError', {bg = 'NONE', fg = vim.g.terminal_color_9})
-    hl('DiagnosticInfo' , {bg = 'NONE', fg = vim.g.terminal_color_13})
-    hl('DiagnosticWarn' , {bg = 'NONE', fg = vim.g.terminal_color_11})
-    hl('DiagnosticHint' , {bg = 'NONE', fg = vim.g.terminal_color_12})
-    hl('DiagnosticUnderlineError', {bg = 'NONE', fg = 'NONE', undercurl = true})
-    hl('DiagnosticUnderlineWarn' , {bg = 'NONE', fg = 'NONE', underline = true})
+    hl('DiagnosticError', {bg = nil, fg = vim.g.terminal_color_9})
+    hl('DiagnosticInfo' , {bg = nil, fg = vim.g.terminal_color_13})
+    hl('DiagnosticWarn' , {bg = nil, fg = vim.g.terminal_color_11})
+    hl('DiagnosticHint' , {bg = nil, fg = vim.g.terminal_color_12})
+    hl('DiagnosticUnderlineError', {bg = nil, fg = nil, undercurl = true})
+    hl('DiagnosticUnderlineWarn' , {bg = nil, fg = nil, underline = true})
 
     -- lsp
     hl('LspCodeLens', {bg = dark_bg, fg = vim.g.terminal_color_8, underline = true})
@@ -49,8 +49,8 @@ function _G.apply_colors()
     link('TelescopePromptNormal', 'Normal')
     link('TelescopePromptTitle', 'Normal')
 
-    hl('TelescopePreviewBorder', {bg = 'NONE', fg = vim.g.terminal_color_11})
-    hl('TelescopePreviewTitle', {bg = 'NONE', fg = vim.g.terminal_color_11, bold = true})
+    hl('TelescopePreviewBorder', {bg = nil, fg = vim.g.terminal_color_11})
+    hl('TelescopePreviewTitle', {bg = nil, fg = vim.g.terminal_color_11, bold = true})
 
     -- fidget
     link('FidgetTitle', 'DarkNormal')
