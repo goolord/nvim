@@ -70,7 +70,6 @@ function M.tabnew()
     vim.cmd('tabnew')
 end
 
-vim.cmd('autocmd User LspProgressUpdate redrawtabline')
 vim.opt.tabline = "%!v:lua.require'plugins.tabline'.render()"
 
 return M
