@@ -14,6 +14,7 @@ local function packer_use()
     use { 'terrortylor/nvim-comment', config = require('plugins.nvim-comment') }
     use { 'akinsho/toggleterm.nvim', config = require('plugins.toggleterm') }
     use { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } }
+    use 'tpope/vim-abolish'
 
     -- colorsceme
     use 'lifepillar/vim-gruvbox8'
@@ -99,7 +100,7 @@ local function packer_use()
 
     use {
         "~/Dev/alpha-nvim",
-        requires = { 'kyazdani42/nvim-web-devicons' },
+        requires = { 'kyazdani42/nvim-web-devicons', '~/Dev/gamma-ui-nvim' },
         config = require'plugins.alpha'
     }
 
