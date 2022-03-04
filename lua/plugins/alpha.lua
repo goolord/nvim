@@ -1,11 +1,11 @@
 return function()
     -- --[[
     local alpha = require'alpha'
-    local startify = require'alpha.themes.alpha'
-    -- startify.nvim_web_devicons.enabled = false
-    startify.config.opts.noautocmd = true
+    local theta = require'alpha.themes.theta'
+    theta.nvim_web_devicons.highlight = "Normal"
+    theta.config.opts.noautocmd = true
 
-    alpha.setup(startify.config)
+    alpha.setup(theta.config)
     --]]
 
     --[[
