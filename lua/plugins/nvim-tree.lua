@@ -12,16 +12,6 @@ return function()
         folder_arrows = 0,
     }
     vim.g.nvim_tree_indent_markers = 1
-    vim.g.nvim_tree_window_picker_exclude = {
-        filetype = {
-            "packer",
-            "qf"
-        },
-        buftype = {
-            "terminal",
-            "help"
-        }
-    }
 
     local tree = require('nvim-tree')
 
@@ -30,6 +20,18 @@ return function()
     end
 
     tree.setup {
+        window_picker = {
+            exclude = {
+                filetype = {
+                    "packer",
+                    "qf"
+                },
+                buftype = {
+                    "terminal",
+                    "help"
+                }
+            },
+        },
         ignore = {'.git', 'node_modules', '.cache'},
         update_focused_file = { enable = true },
         update_to_buf_dir = { enable = true },

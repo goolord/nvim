@@ -165,10 +165,9 @@ end
 packer.startup(packer_use)
 
 
-vim.api.nvim_create_autocmd {
-    event = "User",
+vim.api.nvim_create_autocmd("User", {
     pattern = "PackerCompileDone",
     callback = function() vim.fn.system({'/usr/bin/luajit', '-bg', packer.config.compile_path, packer.config.compile_path}) end,
-}
+})
 
 return packer
