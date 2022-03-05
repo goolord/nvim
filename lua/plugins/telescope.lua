@@ -43,22 +43,20 @@ return function()
                 override_file_sorter = true,    -- override the file sorter
                 case_mode = "smart_case",       -- ["smart_case", "ignore_case", "respect_case"]
             },
-
-            lsp_handlers = {
-                code_action = {
-                    telescope = require('telescope.themes').get_cursor({
-                        borderchars = blank_border,
-                        layout_config = {
-                            width = 55
-                        },
-                        -- initial_mode = "normal",
-                    }),
-                },
+            ["ui-select"] = {
+                require('telescope.themes').get_cursor({
+                    borderchars = blank_border,
+                    layout_config = {
+                        width = 60
+                    },
+                    initial_mode = "normal",
+                }),
             },
         }
     }
     telescope.load_extension('fzf')
     telescope.load_extension('lsp_handlers')
+    telescope.load_extension('ui-select')
     telescope.load_extension('neoclip')
     telescope.load_extension('hoogle')
 end

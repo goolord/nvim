@@ -80,6 +80,7 @@ local function packer_use()
             -- extensions
             { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
             { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
+            { 'nvim-telescope/telescope-ui-select.nvim' },
             { 'psiska/telescope-hoogle.nvim' }
         }
     }
@@ -102,6 +103,10 @@ local function packer_use()
         "~/Dev/alpha-nvim",
         requires = { 'kyazdani42/nvim-web-devicons', '~/Dev/gamma-ui-nvim' },
         config = require'plugins.alpha'
+    }
+
+    use {
+        "ibhagwan/fzf-lua",
     }
 
     use {
