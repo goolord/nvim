@@ -51,12 +51,6 @@ local function packer_use()
     }
     -- gui
     use {
-        'lukas-reineke/indent-blankline.nvim',
-        config = require('plugins.indent-blankline'),
-        disable = true,
-        branch = 'develop'
-    }
-    use {
         'kyazdani42/nvim-tree.lua',
         requires = { 'kyazdani42/nvim-web-devicons' },
         config = require('plugins.nvim-tree')
@@ -102,11 +96,7 @@ local function packer_use()
     use {
         "~/Dev/alpha-nvim",
         requires = { 'kyazdani42/nvim-web-devicons', '~/Dev/gamma-ui-nvim' },
-        config = require'plugins.alpha'
-    }
-
-    use {
-        "ibhagwan/fzf-lua",
+        config = require('plugins.alpha')
     }
 
     use {
