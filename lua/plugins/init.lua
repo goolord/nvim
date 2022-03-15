@@ -126,7 +126,7 @@ local function packer_use()
 
     -- filetype plugins
     use { 'LnL7/vim-nix', ft = 'nix' }
-    use { 'edwinb/idris2-vim', ft = 'idris' }
+    use { 'edwinb/idris2-vim', ft = 'idris2' }
 
     use { 'whonore/Coqtail', ft = 'coq' }
     use {
@@ -142,8 +142,8 @@ local function packer_use()
     }
 
     use {
-        'ndmitchell/ghcid',
-        rtp = 'plugins/nvim',
+        '~/Dev/ghcid/plugins/nvim',
+        -- rtp = 'plugins/nvim',
         cmd = { 'Ghcid', 'GhcidKill' },
     }
 end
