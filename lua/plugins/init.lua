@@ -11,22 +11,18 @@ local function packer_use()
     use { 'wbthomason/packer.nvim', opt = true }
 
     use 'godlygeek/tabular'
-    use { 'terrortylor/nvim-comment', config = require('plugins.nvim-comment') }
+    use {
+        'terrortylor/nvim-comment',
+        config = function () require('nvim_comment').setup() end
+    }
     use { 'akinsho/toggleterm.nvim', config = require('plugins.toggleterm') }
     use { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } }
     use 'tpope/vim-abolish'
 
-    -- colorsceme
-    use 'lifepillar/vim-gruvbox8'
-
+    -- colorscheme
     use {
-        'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true},
-        -- stupid hack
-        setup = function ()
-            require('plugins.gruvbox')()
-        end,
-        config = require('plugins.statusline')
+        'lifepillar/vim-gruvbox8',
+        config = require('plugins.gruvbox')
     }
 
     -- completion
@@ -50,6 +46,15 @@ local function packer_use()
         }
     }
     -- gui
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        after = 'vim-gruvbox8',
+        config = require('plugins.statusline')
+    }
+
+    require('plugins.tabline')
+
     use {
         'kyazdani42/nvim-tree.lua',
         requires = { 'kyazdani42/nvim-web-devicons' },
@@ -87,13 +92,6 @@ local function packer_use()
     }
 
     use {
-        'pechorin/any-jump.vim',
-        config = function ()
-            vim.g.any_jump_grouping_enabled = 1
-        end,
-    }
-
-    use {
         "~/Dev/alpha-nvim",
         requires = { 'kyazdani42/nvim-web-devicons', '~/Dev/gamma-ui-nvim' },
         config = require('plugins.alpha')
@@ -101,10 +99,9 @@ local function packer_use()
 
     use {
         'folke/which-key.nvim',
-        config = require('plugins.which-key')
+        config = function () require("which-key").setup() end
     }
 
-    -- git
     use 'tpope/vim-fugitive'
 
     -- nvim-lsp
@@ -126,12 +123,6 @@ local function packer_use()
         'folke/trouble.nvim',
         config = require('plugins.trouble'),
     }
-
-    -- use {
-    --     'nvim-treesitter/nvim-treesitter',
-    --     config = require('plugins.treesitter'),
-    --     run = ':TSUpdate',
-    -- }
 
     -- filetype plugins
     use { 'LnL7/vim-nix', ft = 'nix' }

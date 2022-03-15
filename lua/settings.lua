@@ -45,4 +45,3 @@ vim.cmd('syntax sync minlines=256')
 -- vim.opt.pyxversion = 3
 
 require('modules.diagnostic')
-require('plugins.tabline')
