@@ -30,7 +30,7 @@ function _G.apply_colors()
     hl('DiagnosticInfo' , {bg = nil, fg = vim.g.terminal_color_13})
     hl('DiagnosticWarn' , {bg = nil, fg = vim.g.terminal_color_11})
     hl('DiagnosticHint' , {bg = nil, fg = vim.g.terminal_color_12})
-    hl('DiagnosticUnderlineError', {bg = nil, fg = nil, undercurl = true, sp = vim.g.terminal_color_9})
+    hl('DiagnosticUnderlineError', {bg = nil, fg = nil, undercurl = true})
     hl('DiagnosticUnderlineWarn' , {bg = nil, fg = nil, underline = true})
 
     -- lsp
