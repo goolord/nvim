@@ -54,8 +54,8 @@ return function()
     config.options.component_separators = {left = '|', right = ''}
     config.options.section_separators = {left = '', right = ''}
     config.options.icons_enabled = true
-    config.options.globalstatus = true
-    config.extensions = { 'fugitive' }
+    -- config.options.globalstatus = true
+    config.extensions = { 'fugitive', 'nvim-tree' }
     config.sections.lualine_b[2] = {'diff', symbols = { added = ' ', modified = '柳', removed = ' ' }}
 
     require('lualine').setup(config)
