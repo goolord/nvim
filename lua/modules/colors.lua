@@ -21,9 +21,10 @@ function _G.apply_colors()
     hl('DarkNormal', {bg = dark_bg})
 
     -- luatree
-    hl('NvimTreeFolderIcon', {fg = vim.g.terminal_color_3})
-    link('NvimTreeNormal', 'DarkNormal')
-    link('NvimTreeIndentMarker', 'Comment')
+    -- hl('NvimTreeFolderIcon', {fg = vim.g.terminal_color_3})
+    link('NeoTreeNormal', 'DarkNormal')
+    link('NeoTreeNormalNC', 'DarkNormal')
+    link('NeoTreeIndentMarker', 'Comment')
 
     -- diagnostics
     hl('DiagnosticError', {bg = nil, fg = vim.g.terminal_color_9})

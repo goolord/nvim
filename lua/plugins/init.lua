@@ -50,10 +50,16 @@ local function packer_use()
         }
     }
     -- gui
+
     use {
-        'kyazdani42/nvim-tree.lua',
-        requires = { 'kyazdani42/nvim-web-devicons' },
-        config = require('plugins.nvim-tree')
+        'nvim-neo-tree/neo-tree.nvim',
+        branch = "v2.x",
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim"
+        },
+        config = require('plugins.neo-tree')
     }
 
     use {

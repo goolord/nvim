@@ -16,7 +16,7 @@ local function tabularize(regex) return ':Tabularize ' .. regex end
 
 wk.register {
     ["<Leader>"] = {
-        d = { ':NvimTreeToggle<CR>', "Toggle NvimTree" },
+        d = { ':Neotree toggle<CR>', "Toggle NeoTree" },
         -- telescope
         f = {
             name = "Find",
