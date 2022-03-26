@@ -142,8 +142,8 @@ local function packer_use()
     }
 
     use {
-        '~/Dev/ghcid/plugins/nvim',
-        -- rtp = 'plugins/nvim',
+        'ndmitchell/ghcid',
+        rtp = 'plugins/nvim',
         cmd = { 'Ghcid', 'GhcidKill' },
     }
 end
