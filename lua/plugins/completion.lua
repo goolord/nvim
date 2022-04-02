@@ -49,7 +49,6 @@ return function()
             -- { name = 'emoji' },
             -- { name = 'tags' },
             { name = 'path' },
-            { name = 'calc' },
             { name = 'vsnip' },
         };
 

@@ -13,39 +13,27 @@ return function()
         },
         insert = {
             a = mode(vim.g.terminal_color_14),
-            b = def,
-            c = def,
-            z = def_bold,
+            b = def, c = def, z = def_bold,
         },
         visual = {
             a = mode(vim.g.terminal_color_11),
-            b = def,
-            c = def,
-            z = def_bold,
+            b = def, c = def, z = def_bold,
         },
         replace = {
             a = mode(vim.g.terminal_color_9),
-            b = def,
-            c = def,
-            z = def_bold,
+            b = def, c = def, z = def_bold,
         },
         command = {
             a = mode(vim.g.terminal_color_13),
-            b = def,
-            c = def,
-            z = def_bold,
+            b = def, c = def, z = def_bold,
         },
         terminal = {
             a = mode(vim.g.terminal_color_15),
-            b = def,
-            c = def,
-            z = def_bold,
+            b = def, c = def, z = def_bold,
         },
         inactive = {
             a = def,
-            b = def,
-            c = def,
-            z = def_bold,
+            b = def, c = def, z = def_bold,
         },
     }
 

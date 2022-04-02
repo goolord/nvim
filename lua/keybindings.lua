@@ -31,7 +31,7 @@ wk.register {
             j     = { telescope'jumplist'       , 'Jumps'           },
             y     = { telescope'neoclip'        , 'Yanks'           },
             r     = { telescope'registers'      , 'Registers'       },
-            H     = { telescope'hoogle list '   , 'Hoogle'       },
+            H     = { telescope'hoogle list '   , 'Hoogle'          },
             [':'] = { telescope'command_history', 'Command history' },
             ['/'] = { telescope'search_history' , 'Search history'  },
             h     = { telescope'oldfiles'       , 'File history'    },

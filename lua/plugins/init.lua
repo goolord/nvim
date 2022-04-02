@@ -35,7 +35,6 @@ local function packer_use()
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-emoji',
-            'hrsh7th/cmp-calc',
             'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-vsnip',
             'onsails/lspkind-nvim',

@@ -1,5 +1,4 @@
 return function()
-
     vim.g.nvim_tree_icons = {
         default = '',
         symlink = '',
