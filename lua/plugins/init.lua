@@ -153,6 +153,11 @@ local function packer_use()
         rtp = 'plugins/nvim',
         cmd = { 'Ghcid', 'GhcidKill' },
     }
+
+    use {
+        'itchyny/vim-haskell-indent',
+        ft = 'haskell'
+    }
 end
 
 packer.startup(packer_use)
