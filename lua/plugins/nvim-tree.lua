@@ -45,7 +45,7 @@ return function()
                     { key='H'   , action = "toggle_dotfiles" },
                     { key='R'   , action = "refresh" },
                     { key='='   , action = "preview" },
-                    { key='X'   , action_cb = xdg_open }
+                    { key='X'   , action = "xdg_open", action_cb = xdg_open }
                 }
             }
         }

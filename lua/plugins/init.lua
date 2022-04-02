@@ -128,7 +128,14 @@ local function packer_use()
     use { 'LnL7/vim-nix', ft = 'nix' }
     use { 'edwinb/idris2-vim', ft = 'idris2' }
 
-    use { 'whonore/Coqtail', ft = 'coq' }
+    use {
+        'whonore/Coqtail',
+        ft = 'coq',
+        config = function ()
+            vim.g.python3_host_prog = '/usr/bin/python3'
+            vim.opt.pyxversion = 3
+        end
+    }
     use {
         'Julian/lean.nvim',
         requires = 'nvim-lua/plenary.nvim',
