@@ -1,6 +1,11 @@
 return function()
     local cmp = require('cmp')
     local lspkind = require('lspkind')
+    local tabnine = require('cmp_tabnine.config')
+    tabnine:setup {
+        show_prediction_strength = false
+    }
+
     cmp.setup {
         snippet = {
             expand = function(args)
@@ -10,11 +15,10 @@ return function()
 
         formatting = {
             format = function(entry, vim_item)
-                -- vim_item.menu = ({
-                --     nvim_lsp = '[L]',
-                --     buffer   = '[B]',
-                -- })[entry.source.name]
                 vim_item.kind = lspkind.presets.default[vim_item.kind]
+                if entry.source.name == 'cmp_tabnine' then
+                    vim_item.kind = ''
+                end
                 return vim_item
             end
         },
@@ -40,8 +44,8 @@ return function()
 
         sources = {
             -- { name = 'buffer' },
-            { name = 'cmp_tabnine' },
             { name = 'nvim_lsp' },
+            { name = 'cmp_tabnine' },
             -- { name = 'emoji' },
             -- { name = 'tags' },
             { name = 'path' },
@@ -53,5 +57,20 @@ return function()
             return vim.o.bt == ''
         end
     }
+
+    cmp.setup.cmdline('/', {
+      sources = {
+        { name = 'buffer' }
+      }
+    })
+
+    -- `:` cmdline setup.
+    cmp.setup.cmdline(':', {
+      sources = cmp.config.sources({
+        { name = 'path' }
+      }, {
+        { name = 'cmdline' }
+      })
+    })
 
 end

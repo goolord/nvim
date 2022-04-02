@@ -30,7 +30,7 @@ local function packer_use()
         'hrsh7th/nvim-cmp',
         config = require('plugins.completion'),
         requires = {
-            { 'tzachar/cmp-tabnine', run = './install.sh' },
+            { '~/Dev/cmp-tabnine', run = './install.sh' },
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-path',
@@ -152,11 +152,6 @@ local function packer_use()
         'ndmitchell/ghcid',
         rtp = 'plugins/nvim',
         cmd = { 'Ghcid', 'GhcidKill' },
-    }
-
-    use {
-        'itchyny/vim-haskell-indent',
-        ft = 'haskell'
     }
 end
 
