@@ -70,7 +70,8 @@ return function()
         { name = 'path' }
       }, {
         { name = 'cmdline' }
-      })
+      }),
+      enabled = true,
     })
 
 end

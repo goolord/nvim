@@ -36,6 +36,7 @@ local function packer_use()
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-emoji',
             'hrsh7th/cmp-calc',
+            'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-vsnip',
             'onsails/lspkind-nvim',
             {
@@ -156,7 +157,6 @@ local function packer_use()
 end
 
 packer.startup(packer_use)
-
 
 vim.api.nvim_create_autocmd("User", {
     pattern = "PackerCompileDone",
