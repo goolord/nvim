@@ -1,10 +1,6 @@
 return function()
     local cmp = require('cmp')
     local lspkind = require('lspkind')
-    local tabnine = require('cmp_tabnine.config')
-    tabnine:setup {
-        show_prediction_strength = false
-    }
 
     cmp.setup {
         snippet = {
