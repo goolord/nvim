@@ -30,7 +30,7 @@ local function packer_use()
         'hrsh7th/nvim-cmp',
         config = require('plugins.completion'),
         requires = {
-            { '~/Dev/cmp-tabnine', run = './install.sh' },
+            { 'tzachar/cmp-tabnine', run = './install.sh' },
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-path',
