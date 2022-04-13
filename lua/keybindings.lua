@@ -95,8 +95,8 @@ wk.register(win_cmds, { mode = 'i' })
 -- breaks <C-I> jump because terminals are dumb
 -- {'n', '<tab>', '<C-W>w', {noremap = true, silent = true} )
 
-vim.api.nvim_add_user_command('Rg', 'silent grep <args> <bar> Trouble quickfix', { nargs = "+" })
-vim.api.nvim_add_user_command('Notes', function ()
+vim.api.nvim_create_user_command('Rg', 'silent grep <args> <bar> Trouble quickfix', { nargs = "+" })
+vim.api.nvim_create_user_command('Notes', function ()
     local cwd = vim.fn.getcwd()
     vim.cmd("e ~/Dev/notes/" .. cwd:gsub("%s+", "_"):gsub("/","-") .. ".md")
 end, {})

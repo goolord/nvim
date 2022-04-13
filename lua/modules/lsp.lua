@@ -76,6 +76,7 @@ return function()
                 plugin = {
                     hlint = { globalOn = false },
                     tactics = { globalOn = false },
+                    rename = { globalOn = true },
                 }
             }
         }

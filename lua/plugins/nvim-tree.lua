@@ -10,7 +10,6 @@ return function()
         files = 1,
         folder_arrows = 0,
     }
-    vim.g.nvim_tree_indent_markers = 1
 
     local tree = require('nvim-tree')
 
@@ -19,6 +18,11 @@ return function()
     end
 
     tree.setup {
+        renderer = {
+            indent_markers = {
+                enable = true,
+            },
+        },
         window_picker = {
             exclude = {
                 filetype = {
