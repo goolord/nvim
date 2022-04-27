@@ -23,21 +23,27 @@ return function()
                 enable = true,
             },
         },
-        window_picker = {
-            exclude = {
-                filetype = {
-                    "packer",
-                    "qf"
+        actions = {
+            open_file = {
+                window_picker = {
+                    exclude = {
+                        filetype = {
+                            "packer",
+                            "qf"
+                        },
+                        buftype = {
+                            "terminal",
+                            "help"
+                        }
+                    },
                 },
-                buftype = {
-                    "terminal",
-                    "help"
-                }
             },
         },
-        ignore = {'.git', 'node_modules', '.cache'},
+        filters = {
+            exclude = {'.git', 'node_modules', '.cache'},
+        },
         update_focused_file = { enable = true },
-        update_to_buf_dir = { enable = true },
+        hijack_directories = { enable = true },
         view = {
             mappings = {
                 list = {
