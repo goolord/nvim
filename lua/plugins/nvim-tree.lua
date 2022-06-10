@@ -1,15 +1,4 @@
 return function()
-    vim.g.nvim_tree_icons = {
-        default = '',
-        symlink = '',
-    }
-
-    vim.g.nvim_tree_show_icons = {
-        git = 1,
-        folders = 1,
-        files = 1,
-        folder_arrows = 0,
-    }
 
     local tree = require('nvim-tree')
 
@@ -22,6 +11,18 @@ return function()
             indent_markers = {
                 enable = true,
             },
+            icons = {
+                glyphs = {
+                    default = '',
+                    symlink = '',
+                },
+                show = {
+                    git = true,
+                    folder = true,
+                    file = true,
+                    folder_arrow = false,
+                }
+            }
         },
         actions = {
             open_file = {
