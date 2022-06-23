@@ -93,7 +93,7 @@ local function packer_use()
 
     use {
         "~/Dev/alpha-nvim",
-        requires = { 'kyazdani42/nvim-web-devicons', '~/Dev/gamma-ui-nvim' },
+        requires = { 'kyazdani42/nvim-web-devicons' }, -- '~/Dev/gamma-ui-nvim' },
         config = require('plugins.alpha')
     }
 
