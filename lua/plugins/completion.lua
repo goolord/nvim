@@ -20,18 +20,18 @@ return function()
         },
 
         mapping = {
-            ['<C-p>'] = cmp.select_prev_item(),
-            ['<C-n>'] = cmp.select_next_item(),
-            ['<C-d>'] = cmp.mapping(cmp.scroll_docs(-4), { 'i', 'c' }),
-            ['<C-f>'] = cmp.mapping(cmp.scroll_docs(4), { 'i', 'c' }),
-            ['<C-Space>'] = cmp.mapping(cmp.complete(), { 'i', 'c' }),
+            ['<C-p>'] = cmp.mapping.select_prev_item(),
+            ['<C-n>'] = cmp.mapping.select_next_item(),
+            ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+            ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+            ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
             ['<C-e>'] = cmp.mapping({
-                i = cmp.abort(),
-                c = cmp.close(),
+                i = cmp.mapping.abort(),
+                c = cmp.mapping.close(),
             }),
-            ['<CR>'] = cmp.confirm({ select = false }),
-            ['<Tab>'] = cmp.mapping(cmp.select_next_item(), { 'i', 's' }),
-            ['<S-Tab>'] = cmp.mapping(cmp.select_prev_item(), { 'i', 's' })
+            ['<CR>'] = cmp.mapping.confirm({ select = false }),
+            ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+            ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' })
         },
 
         sources = {
