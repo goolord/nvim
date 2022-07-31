@@ -57,7 +57,7 @@ wk.register {
     ['<A-m>'] = { '@q', 'Run q macro register' },
 }
 
-wk.register({
+local align_maps = {
     ["<Leader>"] = {
         a = {
             name = "Align",
@@ -75,7 +75,10 @@ wk.register({
             [','] = { tabularize'/,/l0r1<CR>'    , 'Comma'               },
         }
     }
-}, { mode = '' })
+}
+wk.register(align_maps, { mode = 'n' })
+wk.register(align_maps, { mode = 'v' })
+wk.register(align_maps, { mode = 'o' })
 
 local win_cmds = {
     ['<C-h>'] = { '<cmd>wincmd h<cr>', 'Window left' },
@@ -83,7 +86,9 @@ local win_cmds = {
     ['<C-k>'] = { '<cmd>wincmd k<cr>', 'Window up' },
     ['<C-l>'] = { '<cmd>wincmd l<cr>', 'Window right' },
 }
-wk.register(win_cmds, { mode = '' })
+wk.register(win_cmds, { mode = 'n' })
+wk.register(win_cmds, { mode = 'v' })
+wk.register(win_cmds, { mode = 'o' })
 wk.register(win_cmds, { mode = 'i' })
 
 -- other

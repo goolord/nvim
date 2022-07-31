@@ -3,9 +3,9 @@ return function()
 
     -- Default: { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
     local blank_border = {
-        results = { ' ', ' ', ' ͟', ' ', ' ', ' ', ' ', ' ͟' };
-        prompt = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
-        preview = { ' ͟', ' ', ' ', ' ', ' ͟', ' ͟', ' ', ' ' };
+        results =  {' ', ' ', ' ͟', ' ', ' ', ' ', ' ', ' ͟' };
+        prompt =  {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+        preview =  {' ͟', ' ', ' ', ' ', ' ͟', ' ͟', ' ', ' ' };
     }
 
     telescope.setup {
@@ -38,10 +38,10 @@ return function()
 
         extensions = {
             fzf = {
-                fuzzy = true, -- false will only do exact matching
+                fuzzy = true,                   -- false will only do exact matching
                 override_generic_sorter = true, -- override the generic sorter
-                override_file_sorter = true, -- override the file sorter
-                case_mode = "smart_case", -- ["smart_case", "ignore_case", "respect_case"]
+                override_file_sorter = true,    -- override the file sorter
+                case_mode = "smart_case",       -- ["smart_case", "ignore_case", "respect_case"]
             },
             ["ui-select"] = {
                 require('telescope.themes').get_cursor({
