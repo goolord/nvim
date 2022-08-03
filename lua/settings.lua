@@ -11,7 +11,7 @@ vim.opt.pumheight     = 15
 vim.opt.wrap          = true
 vim.opt.signcolumn    = 'number'
 vim.opt.list          = true
-vim.opt.listchars     = { trail = '.', lead = '.', tab = '»-»'}
+vim.opt.listchars     = { trail = '.', lead = '.', tab = '»-»' }
 -- gui frontend
 vim.opt.guifont       = 'monospace:h16.4'
 vim.g.neovide_cursor_animation_length = 0
@@ -38,6 +38,6 @@ vim.opt.undolevels    = 1000
 vim.opt.undoreload    = 10000
 vim.opt.writebackup   = true
 
-vim.cmd('syntax sync minlines=256')
+vim.cmd.syntax('sync minlines=256')
 
 require('modules.diagnostic')

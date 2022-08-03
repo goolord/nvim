@@ -47,25 +47,26 @@ return function()
         -- experimental = { ghost_text = true },
         -- view = { entries = "native" },
 
-        enabled = function ()
+        enabled = function()
             return vim.o.bt == ''
         end
     }
 
     cmp.setup.cmdline('/', {
-      sources = {
-        { name = 'buffer' }
-      }
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+            { name = 'buffer' }
+        }
     })
 
     -- `:` cmdline setup.
     cmp.setup.cmdline(':', {
-      sources = cmp.config.sources({
-        { name = 'path' }
-      }, {
-        { name = 'cmdline' }
-      }),
-      enabled = true,
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+            { name = 'path' },
+            { name = 'cmdline' }
+        }),
+        enabled = true,
     })
 
 end

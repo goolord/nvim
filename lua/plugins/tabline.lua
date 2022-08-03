@@ -66,9 +66,7 @@ function M.render()
     return table.concat(tabline)
 end
 
-function M.tabnew()
-    vim.cmd('tabnew')
-end
+M.tabnew = vim.cmd.tabnew
 
 vim.opt.tabline = "%!v:lua.require'plugins.tabline'.render()"
 
