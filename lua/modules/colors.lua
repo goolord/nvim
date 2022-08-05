@@ -6,7 +6,7 @@ local function link(group_from, group_to)
     vim.api.nvim_set_hl(0, group_from, vim.api.nvim_get_hl_by_name(group_to, true))
 end
 
-function _G.apply_colors()
+local function apply_colors()
     local dark_bg = '#1d2021'
     -- normal stuff
     hl('SignColumn', {bg = nil})
@@ -58,13 +58,12 @@ function _G.apply_colors()
 end
 
 -- automatically override colourscheme
-vim.cmd[[
-augroup NewColor
-au!
-au ColorScheme * call v:lua.apply_colors()
-augroup END
 
-colors gruvbox8
-]]
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = apply_colors,
+})
+
+vim.cmd.colors('gruvbox8')
 
 vim.g.hs_highlight_debug = 1
