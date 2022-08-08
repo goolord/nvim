@@ -153,10 +153,10 @@ local function packer_use()
         cmd = { 'Ghcid', 'GhcidKill' },
     }
 
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-    }
+    -- use {
+    --     'nvim-treesitter/nvim-treesitter',
+    --     run = ':TSUpdate',
+    -- }
 end
 
 packer.startup(packer_use)
