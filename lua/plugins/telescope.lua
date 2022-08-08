@@ -58,5 +58,4 @@ return function()
     telescope.load_extension('lsp_handlers')
     telescope.load_extension('ui-select')
     telescope.load_extension('neoclip')
-    telescope.load_extension('hoogle')
 end

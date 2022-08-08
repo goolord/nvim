@@ -80,7 +80,6 @@ local function packer_use()
             { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
             { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
             { 'nvim-telescope/telescope-ui-select.nvim' },
-            { 'psiska/telescope-hoogle.nvim' }
         }
     }
 
