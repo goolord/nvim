@@ -16,6 +16,7 @@ vim.opt.listchars     = { trail = '.', lead = '.', tab = '»-»' }
 vim.opt.guifont       = 'monospace:h16.4'
 vim.g.neovide_cursor_animation_length = 0
 -- behavior
+vim.opt.complete      = nil
 vim.opt.completeopt   = 'menu,menuone,noselect'
 vim.opt.grepprg       = 'rg --vimgrep --follow --no-heading'
 vim.opt.hidden        = true
