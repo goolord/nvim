@@ -36,12 +36,12 @@ return function()
 
         sources = {
             { name = 'nvim_lsp' },
-            -- { name = 'buffer' },
             { name = 'cmp_tabnine' },
             -- { name = 'emoji' },
             -- { name = 'tags' },
             { name = 'path' },
             { name = 'vsnip' },
+            { name = 'buffer' },
         };
 
         -- experimental = { ghost_text = true },

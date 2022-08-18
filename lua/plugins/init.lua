@@ -30,7 +30,19 @@ local function packer_use()
         'hrsh7th/nvim-cmp',
         config = require('plugins.completion'),
         requires = {
-            { 'tzachar/cmp-tabnine', run = './install.sh' },
+            { 'tzachar/cmp-tabnine', run = './install.sh',
+                cond = function ()
+                    local cdir = vim.fn.getcwd()
+                    -- version of glibc or something just makes
+                    -- tabnine bootloop
+                    local tn_blacklist =
+                        { '/Users/zach/Dev/well/Health_Engine/well-he-arbiter'
+                        }
+
+                    local no_tabnine = vim.tbl_contains(tn_blacklist, cdir)
+                    return not no_tabnine
+                end
+            },
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-path',
