@@ -15,6 +15,8 @@ vim.opt.listchars     = { trail = '.', lead = '.', tab = '»-»' }
 -- gui frontend
 vim.opt.guifont       = 'monospace:h16.4'
 vim.g.neovide_cursor_animation_length = 0
+vim.g.neovide_refresh_rate = 120
+vim.g.neovide_scroll_animation_length = 0
 -- behavior
 vim.opt.complete      = nil
 vim.opt.completeopt   = 'menu,menuone,noselect'

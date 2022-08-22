@@ -12,4 +12,3 @@ require('settings')
 
 -- neovim keybindings
 require('keybindings')
-

@@ -5,7 +5,7 @@ local packer = require('packer')
 
 packer.init()
 
-local function packer_use()
+local function packer_use(use)
     use { 'lewis6991/impatient.nvim', rocks = 'mpack' }
 
     use { 'wbthomason/packer.nvim', opt = true }
@@ -163,6 +163,10 @@ local function packer_use()
         'ndmitchell/ghcid',
         rtp = 'plugins/nvim',
         cmd = { 'Ghcid', 'GhcidKill' },
+    }
+
+    use {
+        'purescript-contrib/purescript-vim'
     }
 
     -- use {
