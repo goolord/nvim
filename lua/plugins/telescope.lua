@@ -33,6 +33,10 @@ return function()
                     -- e.g. git_{create, delete, ...}_branch for the git_branches picker
                     ["<C-h>"] = "which_key"
                 },
+                n = {
+                    ["<C-d>"] = function(buf) require'telescope.actions.set'.shift_selection(buf, 10) end,
+                    ["<C-u>"] = function(buf) require'telescope.actions.set'.shift_selection(buf, -10) end,
+                }
             },
         },
 
