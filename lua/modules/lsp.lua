@@ -45,7 +45,7 @@ return function()
                 }
             }
         }
-        local formatting = { ["<Leader>lf"] = {':lua vim.lsp.buf.formatting()<CR>', 'Formatting'} }
+        local formatting = { ["<Leader>lf"] = {':lua vim.lsp.buf.format { async = true } <CR>', 'Formatting'} }
         wk.register(formatting, { buffer = bufnr, mode = 'n' })
         wk.register(formatting, { buffer = bufnr, mode = 'v' })
         wk.register(formatting, { buffer = bufnr, mode = 'o' })
