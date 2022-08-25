@@ -1,5 +1,6 @@
 return function()
     local cmp = require('cmp')
+    local cmp_buffer = require('cmp_buffer')
     local lspkind = require('lspkind')
 
     cmp.setup {
@@ -49,6 +50,13 @@ return function()
                     end
                 }
             },
+        };
+
+        sorting = {
+            comparators = {
+                function(...) return cmp_buffer:compare_locality(...) end,
+                -- The rest of your comparators...
+            }
         };
 
         -- experimental = { ghost_text = true },
