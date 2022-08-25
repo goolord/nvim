@@ -25,10 +25,7 @@ local function packer_use(use)
         config = require('plugins.gruvbox')
     }
 
-    use {
-        'Mofiqul/vscode.nvim',
-        cmd = "colorscheme vscode"
-    }
+    use 'Mofiqul/vscode.nvim'
 
     -- completion
     use {

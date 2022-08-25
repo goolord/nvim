@@ -60,7 +60,7 @@ end
 -- automatically override colourscheme
 
 vim.api.nvim_create_autocmd("ColorScheme", {
-    pattern = "*",
+    pattern = "gruvbox8",
     callback = apply_colors,
 })
 
