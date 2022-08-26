@@ -2,8 +2,8 @@ local function hl(group, options)
     vim.api.nvim_set_hl(0, group, options)
 end
 
-local function link(group_from, group_to)
-    vim.api.nvim_set_hl(0, group_from, vim.api.nvim_get_hl_by_name(group_to, true))
+local function link(group_from, group_to, options)
+    vim.api.nvim_set_hl(0, group_from, vim.tbl_extend("force", vim.api.nvim_get_hl_by_name(group_to, true), options or {}))
 end
 
 local function apply_colors()
@@ -53,8 +53,8 @@ local function apply_colors()
     hl('TelescopePreviewTitle', {bg = nil, fg = vim.g.terminal_color_11, bold = true})
 
     -- fidget
-    link('FidgetTitle', 'DarkNormal')
-    link('FidgetTask', 'DarkNormal')
+    link('FidgetTitle', 'Pmenu', {blend=10})
+    link('FidgetTask', 'Pmenu', {blend=10})
 end
 
 -- automatically override colourscheme
