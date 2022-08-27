@@ -58,15 +58,14 @@ function M.render()
         table.insert(tabline, '%' .. tab .. 'X %X')
     end
 
-    -- table.insert(tabline, "%#TabLine#%999@v:lua.require'plugins.tabline'.tabnew@ + %X")
+    -- table.insert(tabline, "%#Pmenu#%999@v:lua.require'plugins.tabline'.tabnew@ + %X")
     table.insert(tabline, '%#TabLineFill#')
-    table.insert(tabline, highlight(' ', 'Comment'))
     table.insert(tabline, separator)
 
     return table.concat(tabline)
 end
 
-M.tabnew = vim.cmd.tabnew
+function M.tabnew () vim.cmd.tabnew() end
 
 vim.opt.tabline = "%!v:lua.require'plugins.tabline'.render()"
 

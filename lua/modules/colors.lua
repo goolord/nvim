@@ -14,8 +14,8 @@ local function apply_colors()
     hl('IncSearch', {bg = vim.g.terminal_color_8, fg = vim.g.terminal_color_0, bold = true})
 
     -- tabline
-    hl('TabLine',     {bg = vim.g.terminal_color_0})
-    hl('TabLineFill', {bg = vim.g.terminal_color_0, underline = true})
+    hl('TabLine',     {bg = vim.g.terminal_color_0, fg = vim.g.terminal_color_8})
+    hl('TabLineFill', {bg = vim.g.terminal_color_0, fg = vim.g.terminal_color_8, underline = true})
 
     -- custom
     hl('DarkNormal', {bg = dark_bg})
