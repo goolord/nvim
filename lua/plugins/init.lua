@@ -97,6 +97,11 @@ local function packer_use(use)
         }
     }
 
+    require('packer').use({
+        'weilbith/nvim-code-action-menu',
+        cmd = 'CodeActionMenu',
+    })
+
     use {
         "AckslD/nvim-neoclip.lua",
         config = function()

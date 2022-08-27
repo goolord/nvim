@@ -2,6 +2,9 @@ return function()
     local wk = require("which-key")
     local lspconfig = require('lspconfig')
 
+    vim.g.code_action_menu_show_details = false
+    vim.g.code_action_menu_window_border = 'none'
+
     local function custom_on_attach(client, bufnr)
         local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
         local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -22,7 +25,8 @@ return function()
                     name = "+LSP",
                     k = { ':lua vim.lsp.buf.signature_help()<CR>', 'Signature help' },
                     R = { ':lua vim.lsp.buf.rename()<CR>', "Rename" },
-                    a = { ':lua vim.lsp.buf.code_action()<CR>', "Codeactions" },
+                    -- a = { ':lua vim.lsp.buf.code_action()<CR>', "Codeactions" },
+                    a = { ':CodeActionMenu<CR>', "Codeactions" },
                     c = {
                         name = "+codelens",
                         c = { ':lua vim.lsp.codelens.run()<CR>', 'Run' },
