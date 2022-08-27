@@ -97,16 +97,14 @@ local function packer_use(use)
         }
     }
 
-    require('packer').use({
+    use {
         'weilbith/nvim-code-action-menu',
         cmd = 'CodeActionMenu',
-    })
+    }
 
     use {
         "AckslD/nvim-neoclip.lua",
-        config = function()
-            require('neoclip').setup()
-        end,
+        config = function() require('neoclip').setup() end,
     }
 
     use {
@@ -186,7 +184,7 @@ packer.startup(packer_use)
 
 vim.api.nvim_create_autocmd("User", {
     pattern = "PackerCompileDone",
-    callback = function() vim.fn.system({'/usr/bin/luajit', '-bg', packer.config.compile_path, packer.config.compile_path}) end,
+    callback = function() vim.fn.system({'/usr/bin/env', 'luajit', '-bg', packer.config.compile_path, packer.config.compile_path}) end,
 })
 
 return packer
