@@ -68,7 +68,7 @@ return function()
         }
     }
 
-    if vim.bo.ft == 'haskell' then lspconfig.hls.setup {
+    lspconfig.hls.setup {
         on_attach = custom_on_attach,
         capabilities = capabilities,
         settings = {
@@ -80,91 +80,41 @@ return function()
                 }
             }
         }
-    } end
+    }
 
-    if vim.bo.ft == 'rust' then lspconfig.rust_analyzer.setup {
+    lspconfig.rust_analyzer.setup {
         on_attach = custom_on_attach,
         capabilities = capabilities
-    } end
+    }
 
-    if vim.bo.ft == 'lua' then
-        local runtime_path = vim.split(package.path, ';')
-        table.insert(runtime_path, "lua/?.lua")
-        table.insert(runtime_path, "lua/?/init.lua")
+    lspconfig.purescriptls.setup {
+        on_attach = custom_on_attach,
+        capabilities = capabilities
+    }
 
-        lspconfig.sumneko_lua.setup {
-            on_attach = custom_on_attach,
-            cmd = {'lua-language-server'};
-            settings = {
-                Lua = {
-                    runtime = {
-                        version = 'LuaJIT',
-                        path = runtime_path,
-                    },
-                    diagnostics = {
-                        globals = {'vim'},
-                    },
-                    workspace = {
-                        library = vim.api.nvim_get_runtime_file("", true),
-                    },
-                    telemetry = { enable = false },
+    local runtime_path = {}
+    lspconfig.sumneko_lua.setup {
+        on_attach = function(client, bufnr)
+            runtime_path = vim.split(package.path, ';')
+            table.insert(runtime_path, "lua/?.lua")
+            table.insert(runtime_path, "lua/?/init.lua")
+            custom_on_attach(client, bufnr)
+        end,
+        cmd = {'lua-language-server'};
+        settings = {
+            Lua = {
+                runtime = {
+                    version = 'LuaJIT',
+                    path = runtime_path,
                 },
+                diagnostics = {
+                    globals = {'vim'},
+                },
+                workspace = {
+                    library = vim.api.nvim_get_runtime_file("", true),
+                },
+                telemetry = { enable = false },
             },
-        }
-    end
-
-    if vim.bo.ft == 'fsharp' then lspconfig.fsautocomplete.setup{} end
-
-    if vim.bo.ft == 'lean' then require('lean').setup {
-        -- Enable the Lean language server(s)?
-        --
-        -- false to disable, otherwise should be a table of options to pass to
-        --  `leanls` and/or `lean3ls`.
-        --
-        -- See https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#leanls for details.
-
-        -- Lean 4
-        lsp = { on_attach = custom_on_attach },
-
-        -- Abbreviation support
-        abbreviations = {
-            -- Set one of the following to true to enable abbreviations
-            builtin = true, -- built-in expander
-            compe = false, -- nvim-compe source
-            snippets = false, -- snippets.nvim source
-            -- additional abbreviations:
-            extra = {
-                -- Add a \wknight abbreviation to insert ♘
-                --
-                -- Note that the backslash is implied, and that you of
-                -- course may also use a snippet engine directly to do
-                -- this if so desired.
-                wknight = '♘',
-            },
-            -- Change if you don't like the backslash
-            -- (comma is a popular choice on French keyboards)
-            leader = ' ',
         },
-
-        -- Enable suggested mappings?
-        --
-        -- false by default, true to enable
-        mappings = true,
-
-        -- Infoview support
-        infoview = {
-            -- Automatically open an infoview on entering a Lean buffer?
-            autoopen = true,
-            -- Set the infoview windows' widths
-            width = 50,
-        },
-
-        -- Progress bar support
-        progress_bars = {
-            -- Enable the progress bars?
-            enable = true,
-            -- Use a different priority for the signs
-            priority = 10,
-        },
-    } end
+    }
 end

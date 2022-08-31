@@ -120,7 +120,7 @@ local function packer_use(use)
     use {
         'neovim/nvim-lspconfig',
         config = require('modules.lsp'),
-        ft = { 'haskell', 'rust', 'lua', 'lean' }
+        ft = { 'haskell', 'rust', 'lua', 'purescript' }
     }
 
     use {
@@ -146,17 +146,6 @@ local function packer_use(use)
             vim.g.python3_host_prog = '/usr/bin/python3'
             vim.opt.pyxversion = 3
         end
-    }
-    use {
-        'Julian/lean.nvim',
-        requires = 'nvim-lua/plenary.nvim',
-        ft = 'lean'
-    }
-
-    use {
-        'fsharp/vim-fsharp',
-        run = 'make fsautocomplete',
-        ft = 'fsharp'
     }
 
     use {
