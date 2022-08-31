@@ -36,6 +36,7 @@ local function apply_colors()
     -- lsp
     hl('LspCodeLens', {bg = dark_bg, fg = vim.g.terminal_color_8, underline = true})
     link('CodeActionMenuMenuTitle', 'Pmenu')
+    link('CodeActionMenuMenuSelection', 'PmenuSel')
 
     -- coqtail
     hl('CoqtailChecked', {bg = '#1d3320'})

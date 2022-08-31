@@ -3,7 +3,7 @@ return function()
     local lspconfig = require('lspconfig')
 
     vim.g.code_action_menu_show_details = false
-    vim.g.code_action_menu_window_border = 'none'
+    vim.g.code_action_menu_window_border = 'solid'
 
     local function custom_on_attach(client, bufnr)
         local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
