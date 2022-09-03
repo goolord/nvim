@@ -25,6 +25,11 @@ local function packer_use(use)
         config = require('plugins.gruvbox')
     }
 
+    use {
+        'metalelf0/jellybeans-nvim',
+        requires = 'rktjmp/lush.nvim'
+    }
+
     use 'Mofiqul/vscode.nvim'
 
     -- completion
@@ -60,6 +65,7 @@ local function packer_use(use)
         }
     }
     -- gui
+    use 'kyazdani42/nvim-web-devicons'
     use {
         'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
