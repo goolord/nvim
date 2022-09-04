@@ -1,3 +1,5 @@
+Colors = {}
+
 local function hl(group, options)
     vim.api.nvim_set_hl(0, group, options)
 end
@@ -34,12 +36,11 @@ local function colormod(a, v1, v2, v3)
     )
 end
 
-local dark_bg = '#000000'
-
 local function apply_colors()
     local black = parse_rgb(vim.g.terminal_color_0)
     local def_comment = parse_rgb(vim.g.terminal_color_8)
-    dark_bg = colormod(black, -10, -10, -10)
+    local dark_bg = colormod(black, -10, -10, -10)
+    Colors.dark_bg = dark_bg
     local light_bg = colormod(black, 20, 20, 20)
     local comment = colormod(def_comment, 50, 50, 40)
     hl('EndOfBuffer', { fg = vim.g.terminal_color_0 })
@@ -110,7 +111,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 })
 
 return {
-    dark_bg = dark_bg,
     parse_rgb = parse_rgb,
     rgb_to_string = rgb_to_string,
 }

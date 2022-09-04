@@ -1,6 +1,6 @@
 return function()
     local colors = require('modules.colors')
-    local function mode(x) return { bg = colors.dark_bg, fg = x, gui = 'bold' } end
+    local function mode(x) return { bg = Colors.dark_bg, fg = x, gui = 'bold' } end
     local black = colors.parse_rgb(vim.g.terminal_color_0)
     local statusline = colors.rgb_to_string(black[1] + 15, black[2] + 15, black[3] + 15)
     local def = { bg = statusline, fg = vim.g.terminal_color_15 }
