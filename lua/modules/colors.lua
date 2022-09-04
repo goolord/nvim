@@ -1,3 +1,6 @@
+vim.opt.bg = 'dark'
+vim.g.hs_highlight_debug = 1
+
 Colors = {}
 
 local function hl(group, options)
@@ -16,9 +19,6 @@ local function parse_rgb(s)
     end
     return res
 end
-
-vim.opt.bg = 'dark'
-vim.g.hs_highlight_debug = 1
 
 local function rgb_to_string(r, g, b)
     return string.format("#%02x%02x%02x", r, g, b)
@@ -64,7 +64,6 @@ local function apply_colors()
     hl('NvimTreeFolderIcon', {fg = vim.g.terminal_color_3})
     link('NvimTreeNormal', 'DarkNormal')
     link('NvimTreeIndentMarker', 'Comment')
-
     -- diagnostics
     hl('DiagnosticError', {bg = nil, fg = vim.g.terminal_color_9})
     hl('DiagnosticInfo' , {bg = nil, fg = vim.g.terminal_color_13})
@@ -96,6 +95,9 @@ local function apply_colors()
     -- fidget
     link('FidgetTitle', 'Pmenu', {blend=10})
     link('FidgetTask', 'Pmenu', {blend=10})
+
+    -- WhichKey
+    link('WhichKeyFloat', 'Pmenu')
 end
 
 -- automatically override colourscheme
