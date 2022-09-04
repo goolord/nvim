@@ -37,6 +37,7 @@ local function apply_colors()
     hl('IncSearch', {bg = vim.g.terminal_color_8, fg = vim.g.terminal_color_0, bold = true})
     hl('NonText', {fg = light_bg})
     hl('Comment', {fg = comment})
+    link('LineNr', 'Comment')
 
     -- tabline
     hl('TabLine',     {bg = vim.g.terminal_color_0, fg = vim.g.terminal_color_8})
@@ -85,12 +86,16 @@ end
 
 -- automatically override colourscheme
 
+vim.cmd.colors('base16-gruvbox-material-dark-hard')
+apply_colors()
+
 vim.api.nvim_create_autocmd("ColorScheme", {
     pattern = "*",
-    callback = apply_colors,
+    callback = function ()
+        apply_colors()
+        require('plugins.statusline')()
+    end,
 })
-
-vim.cmd.colors('base16-gruvbox-material-dark-hard')
 
 return {
     dark_bg = dark_bg,
