@@ -41,6 +41,7 @@ local function apply_colors()
     local def_comment = parse_rgb(vim.g.terminal_color_8)
     local dark_bg = colormod(black, -10, -10, -10)
     Colors.dark_bg = dark_bg
+    Colors.statusline = rgb_to_string(black[1] + 15, black[2] + 15, black[3] + 15)
     local light_bg = colormod(black, 20, 20, 20)
     local comment = colormod(def_comment, 50, 50, 40)
     hl('EndOfBuffer', { fg = vim.g.terminal_color_0 })
