@@ -22,14 +22,26 @@ local function rgb_to_string(r, g, b)
     return string.format("#%02x%02x%02x", r, g, b)
 end
 
+local function checked_add(a, b)
+    return math.max(0,math.min(0xff, a + b))
+end
+
+local function colormod(a, v1, v2, v3)
+    return rgb_to_string(
+        checked_add(a[1], v1),
+        checked_add(a[2], v2),
+        checked_add(a[3], v3)
+    )
+end
+
 local dark_bg = '#000000'
 
 local function apply_colors()
     local black = parse_rgb(vim.g.terminal_color_0)
     local def_comment = parse_rgb(vim.g.terminal_color_8)
-    dark_bg = rgb_to_string(black[1] - 10, black[2] - 10, black[3] - 10)
-    local light_bg = rgb_to_string(black[1] + 20, black[2] + 20, black[3] + 20)
-    local comment = rgb_to_string(def_comment[1] + 50, def_comment[2] + 50, def_comment[3] + 40)
+    dark_bg = colormod(black, -10, -10, -10)
+    local light_bg = colormod(black, 20, 20, 20)
+    local comment = colormod(def_comment, 50, 50, 40)
     hl('EndOfBuffer', { fg = vim.g.terminal_color_0 })
     -- normal stuff
     hl('SignColumn', {bg = nil})
