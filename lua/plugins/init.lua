@@ -21,16 +21,11 @@ local function packer_use(use)
 
     -- colorscheme
     use {
-        'lifepillar/vim-gruvbox8',
-        config = require('plugins.gruvbox')
+        'RRethy/nvim-base16',
+        config = function ()
+            require('modules.colors')
+        end
     }
-
-    use {
-        'metalelf0/jellybeans-nvim',
-        requires = 'rktjmp/lush.nvim'
-    }
-
-    use 'Mofiqul/vscode.nvim'
 
     -- completion
     use {
@@ -69,7 +64,7 @@ local function packer_use(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
-        after = 'vim-gruvbox8',
+        after = 'nvim-base16',
         config = require('plugins.statusline')
     }
 
