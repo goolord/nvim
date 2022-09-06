@@ -52,6 +52,7 @@ local function apply_colors()
     hl('NonText', {fg = light_bg})
     hl('Comment', {fg = comment})
     link('LineNr', 'Comment')
+    hl('WinSeparator', {fg = vim.g.terminal_color_8, bg = dark_bg})
 
     -- tabline
     hl('TabLine',     {bg = vim.g.terminal_color_0, fg = vim.g.terminal_color_8})
