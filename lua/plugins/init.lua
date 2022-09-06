@@ -18,7 +18,6 @@ local function packer_use(use)
     use { 'akinsho/toggleterm.nvim', config = require('plugins.toggleterm') }
     use { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } }
     use 'tpope/vim-abolish'
-
     -- colorscheme
     use {
         'RRethy/nvim-base16',
@@ -112,7 +111,9 @@ local function packer_use(use)
 
     use {
         'folke/which-key.nvim',
-        config = function () require("which-key").setup() end
+        config = function () require("which-key").setup {
+            disable = { buftypes  = {'prompt'} }
+        } end
     }
 
     use 'tpope/vim-fugitive'
