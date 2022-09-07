@@ -1,6 +1,7 @@
 return function()
     local cmp = require('cmp')
     local cmp_buffer = require('cmp_buffer')
+    local compare = require('cmp.config.compare')
     local lspkind = require('lspkind')
 
     cmp.setup {
@@ -52,12 +53,22 @@ return function()
             },
         };
 
-        sorting = {
-            comparators = {
-                function(...) return cmp_buffer:compare_locality(...) end,
-                -- The rest of your comparators...
-            }
-        };
+        -- sorting = {
+        --     comparators = {
+        --                 compare.offset,
+        --                 compare.exact,
+        --                 -- compare.scopes,
+        --                 compare.score,
+        --                 compare.recently_used,
+        --                 compare.locality,
+        --                 compare.kind,
+        --                 compare.sort_text,
+        --                 compare.length,
+        --                 compare.order,
+        --                 compare.locality
+        --         -- The rest of your comparators...
+        --     }
+        -- };
 
         -- experimental = { ghost_text = true },
         -- view = { entries = "native" },
