@@ -88,10 +88,10 @@ local function apply_colors()
 
     link('TelescopePromptBorder', 'Normal')
     link('TelescopePromptNormal', 'Normal')
-    link('TelescopePromptTitle', 'Normal')
+    hl('TelescopePromptTitle', {bg = vim.g.terminal_color_1, fg = vim.g.terminal_color_0, bold = true})
 
     hl('TelescopePreviewBorder', {bg = nil, fg = vim.g.terminal_color_11})
-    hl('TelescopePreviewTitle', {bg = nil, fg = vim.g.terminal_color_11, bold = true})
+    hl('TelescopePreviewTitle', {bg = vim.g.terminal_color_11, fg = vim.g.terminal_color_0, bold = true})
 
     -- fidget
     link('FidgetTitle', 'Pmenu', {blend=10})

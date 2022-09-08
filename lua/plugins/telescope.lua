@@ -3,18 +3,20 @@ return function()
 
     -- Default: { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
     local blank_border = {
-        results =  {' ', ' ', '▁', ' ', ' ', ' ', '▁', '▁' };
+        results =  {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+        -- results =  {' ', ' ', '▁', ' ', ' ', ' ', '▁', '▁' };
         prompt =  {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
-        preview =  {'─', ' ', ' ', ' ', '─', '─', ' ', ' ' };
+        preview =  {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+        -- preview =  {'─', ' ', ' ', ' ', '─', '─', ' ', ' ' };
     }
 
     telescope.setup {
         defaults = {
             -- layout_strategy = 'bottom_pane',
             border = true,
-            prompt_title = false,
+            prompt_title = true,
             results_title = false,
-            preview_title = false,
+            preview_title = true,
             dynamic_preview_title = true,
             borderchars = blank_border,
             path_display = { "truncate" },
