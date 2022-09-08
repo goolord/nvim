@@ -37,11 +37,11 @@ local function packer_use(use)
                     -- version of glibc or something just makes
                     -- tabnine bootloop
                     local tn_blacklist =
-                        { '/Users/zach/Dev/well/Health_Engine/well-he-arbiter'
+                        { '/Users/zach/Dev/well/Health_Engine/well%-he%-arbiter.*'
                         }
 
-                    local no_tabnine = vim.tbl_contains(tn_blacklist, cdir)
-                    return not no_tabnine
+                    local no_tabnine = vim.tbl_filter(function(dir) return string.match(cdir, dir) ~= nil end, tn_blacklist)
+                    return vim.tbl_isempty(no_tabnine)
                 end
             },
             'hrsh7th/cmp-buffer',
