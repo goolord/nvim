@@ -1,6 +1,8 @@
 vim.opt.bg = 'dark'
 vim.g.hs_highlight_debug = 1
 
+local base16 = require('base16-colorscheme')
+
 Colors = {}
 
 local function hl(group, options)
@@ -102,7 +104,7 @@ local function apply_colors()
 
     -- indent
     link('IndentBlanklineChar', 'NonText', { bold = true })
-    hl('IndentBlanklineContextChar', {fg = vim.g.terminal_color_4, bold = true})
+    hl('IndentBlanklineContextChar', {fg = base16.colors.base02, bold = true})
 end
 
 -- automatically override colourscheme
