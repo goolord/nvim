@@ -38,21 +38,21 @@ end
 
 local function apply_colors()
     local black = parse_rgb(vim.g.terminal_color_0)
-    local def_comment = parse_rgb(vim.g.terminal_color_8)
-    local dark_bg = colormod(black, -10, -10, -10)
+    -- local def_comment = parse_rgb(vim.g.terminal_color_8)
+    local dark_bg = colormod(black, -6, -6, -6)
     Colors.dark_bg = dark_bg
     Colors.statusline = rgb_to_string(black[1] + 15, black[2] + 15, black[3] + 15)
     local light_bg = colormod(black, 25, 25, 25)
-    local comment = colormod(def_comment, 50, 50, 40)
+    -- local comment = colormod(def_comment, 50, 50, 40)
     hl('EndOfBuffer', { fg = vim.g.terminal_color_0 })
     -- normal stuff
     hl('SignColumn', {bg = nil})
     hl('ColorColumn', {bg = nil, fg = vim.g.terminal_color_8})
     hl('IncSearch', {bg = vim.g.terminal_color_8, fg = vim.g.terminal_color_0, bold = true})
     hl('NonText', {fg = light_bg})
-    hl('Comment', {fg = comment})
+    -- hl('Comment', {fg = comment})
     link('LineNr', 'Comment')
-    hl('WinSeparator', {fg = vim.g.terminal_color_8, bg = dark_bg})
+    hl('WinSeparator', {fg = light_bg, bg = dark_bg})
 
     -- tabline
     hl('TabLine',     {bg = vim.g.terminal_color_0, fg = vim.g.terminal_color_8})
@@ -103,7 +103,7 @@ end
 
 -- automatically override colourscheme
 
-vim.cmd.colors('base16-gruvbox-material-dark-medium')
+-- vim.cmd.colors('base16-gruvbox-material-dark-medium')
 apply_colors()
 
 vim.api.nvim_create_autocmd("ColorScheme", {
