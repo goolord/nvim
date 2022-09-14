@@ -111,9 +111,7 @@ local function packer_use(use)
 
     use {
         'folke/which-key.nvim',
-        config = function () require("which-key").setup {
-            disable = { buftypes  = {'prompt'} }
-        } end
+        config = require("which-key").setup
     }
 
     use 'tpope/vim-fugitive'
