@@ -102,7 +102,7 @@ local function apply_colors()
 
     -- indent
     link('IndentBlanklineChar', 'NonText', { bold = true })
-    link('IndentBlanklineContextChar', 'Title', { bold = true })
+    hl('IndentBlanklineContextChar', {fg = vim.g.terminal_color_4, bold = true})
 end
 
 -- automatically override colourscheme
