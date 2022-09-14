@@ -23,7 +23,7 @@ local function packer_use(use)
         'RRethy/nvim-base16',
         config = function ()
             require('base16-colorscheme').setup({
-                base00 = '#1F1F1F', base01 = '#383838', base02 = '#264f78', base03 = '#727272',
+                base00 = '#1F1F1F', base01 = '#282828', base02 = '#264f78', base03 = '#727272',
                 base04 = '#7E7E7E', base05 = '#E0E0E0', base06 = '#FAFAFA', base07 = '#E0E0E0',
                 base08 = '#CC6666', base09 = '#DE935F', base0A = '#F0C674', base0B = '#B5BD68',
                 base0C = '#CC6666', base0D = '#81A2BE', base0E = '#B294BB', base0F = '#9E9E9E',
@@ -66,6 +66,17 @@ local function packer_use(use)
     }
     -- gui
     use 'kyazdani42/nvim-web-devicons'
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function ()
+            require("indent_blankline").setup {
+                show_end_of_line = true,
+                show_current_context = true,
+                show_first_indent_level = false,
+                char = '▏',
+            }
+        end
+    }
     use {
         'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
@@ -165,10 +176,10 @@ local function packer_use(use)
         'purescript-contrib/purescript-vim'
     }
 
-    -- use {
-    --     'nvim-treesitter/nvim-treesitter',
-    --     run = ':TSUpdate',
-    -- }
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+    }
 end
 
 packer.startup(packer_use)

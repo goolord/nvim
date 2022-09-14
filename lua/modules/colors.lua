@@ -99,6 +99,10 @@ local function apply_colors()
 
     -- WhichKey
     link('WhichKeyFloat', 'Pmenu')
+
+    -- indent
+    link('IndentBlanklineChar', 'NonText', { bold = true })
+    link('IndentBlanklineContextChar', 'Title', { bold = true })
 end
 
 -- automatically override colourscheme
