@@ -94,6 +94,7 @@ local function apply_colors()
 
     hl('TelescopePreviewBorder', {bg = nil, fg = vim.g.terminal_color_11})
     hl('TelescopePreviewTitle', {bg = vim.g.terminal_color_11, fg = vim.g.terminal_color_0, bold = true})
+    link('TelescopePreviewLine', 'Visual')
 
     -- fidget
     link('FidgetTitle', 'Pmenu', {blend=10})
