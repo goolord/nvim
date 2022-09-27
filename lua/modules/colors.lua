@@ -110,7 +110,7 @@ end
 
 -- automatically override colourscheme
 
--- vim.cmd.colors('base16-gruvbox-material-dark-medium')
+vim.cmd.colors('base16-tomorrow-min')
 apply_colors()
 
 vim.api.nvim_create_autocmd("ColorScheme", {
