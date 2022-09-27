@@ -88,7 +88,6 @@ local win_cmds = {
 wk.register(win_cmds, { mode = 'n' })
 wk.register(win_cmds, { mode = 'v' })
 wk.register(win_cmds, { mode = 'o' })
-wk.register(win_cmds, { mode = 'i' })
 
 -- other
 -- breaks <C-I> jump because terminals are dumb
