@@ -99,6 +99,15 @@ vim.api.nvim_create_user_command('Notes', function ()
     vim.cmd.e("~/Dev/notes/" .. cwd:gsub("%s+", "_"):gsub("/","-") .. ".md")
 end, {})
 vim.api.nvim_create_user_command('E', function (files)
-    local xs = vim.tbl_map(function(x) return vim.fn.systemlist('fd -p ' .. x)[1] end, files.fargs)
+    local xs = vim.tbl_map(function(x)
+        local res = vim.fn.systemlist('fd -p ' .. x)[1]
+        if type(res) == "table" then res = res[1] end
+        if res == ""
+            then return x
+            else return res:match"(.-)%s*$"
+        end
+    end, files.fargs)
     vim.cmd.e(table.concat(xs, " "))
 end, {nargs="*"})
+
+-- keymap('' , 'gf', function () vim.cmd.E(vim.fn.expand('<cfile>')) end, {silent = true, remap = true } )

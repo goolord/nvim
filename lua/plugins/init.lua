@@ -59,7 +59,7 @@ local function packer_use(use)
         }
     }
     -- gui
-    use 'kyazdani42/nvim-web-devicons'
+    use 'nvim-tree/nvim-web-devicons'
     use {
         'lukas-reineke/indent-blankline.nvim',
         config = function ()
@@ -74,7 +74,7 @@ local function packer_use(use)
     }
     use {
         'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        requires = {'nvim-tree/nvim-web-devicons', opt = true},
         after = 'nvim-base16',
         config = require('plugins.statusline')
     }
@@ -82,8 +82,8 @@ local function packer_use(use)
     require('plugins.tabline')
 
     use {
-        'kyazdani42/nvim-tree.lua',
-        requires = { 'kyazdani42/nvim-web-devicons' },
+        'nvim-tree/nvim-tree.lua',
+        requires = { 'nvim-tree/nvim-web-devicons' },
         config = function () require('plugins.nvim-tree')() end,
         after = 'nvim-base16'
     }
@@ -117,7 +117,7 @@ local function packer_use(use)
 
     use {
         "~/Dev/alpha-nvim",
-        requires = { 'kyazdani42/nvim-web-devicons' }, -- '~/Dev/gamma-ui-nvim' },
+        requires = { 'nvim-tree/nvim-web-devicons' }, -- '~/Dev/gamma-ui-nvim' },
         config = require('plugins.alpha')
     }
 
