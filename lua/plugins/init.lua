@@ -1,37 +1,50 @@
 vim.cmd.packadd('packer.nvim')
 vim.cmd.packadd('cfilter')
 
-local packer = require('packer')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--single-branch",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
+  })
+end
+vim.opt.runtimepath:prepend(lazypath)
 
-packer.init()
+require("lazy").setup({
+    { 'lewis6991/impatient.nvim', rocks = 'mpack' };
 
-local function packer_use(use)
-    use { 'lewis6991/impatient.nvim', rocks = 'mpack' }
+    { 'wbthomason/packer.nvim', lazy = true };
 
-    use { 'wbthomason/packer.nvim', opt = true }
-
-    use 'godlygeek/tabular'
-    use {
+    { 'godlygeek/tabular' };
+    {
         'terrortylor/nvim-comment',
         config = function () require('nvim_comment').setup() end
-    }
-    use { 'akinsho/toggleterm.nvim', config = require('plugins.toggleterm') }
-    use { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } }
-    use 'tpope/vim-abolish'
+    };
+    { 'akinsho/toggleterm.nvim', config = require('plugins.toggleterm') };
+    { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } };
+    { 'tpope/vim-abolish' };
     -- colorscheme
-    use {
+    {
         'RRethy/nvim-base16',
         config = function ()
             require('modules.colors')
-        end
-    }
+            require('plugins.tabline')
+        end,
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        }
+    };
 
     -- completion
-    use {
+    {
         'hrsh7th/nvim-cmp',
         config = require('plugins.completion'),
-        requires = {
-            { 'tzachar/cmp-tabnine', run = './install.sh',
+        dependencies = {
+            { 'tzachar/cmp-tabnine', build = './install.sh',
                 cond = function ()
                     local cdir = vim.fn.getcwd()
                     -- version of glibc or something just makes
@@ -53,14 +66,14 @@ local function packer_use(use)
             'onsails/lspkind-nvim',
             {
                 'hrsh7th/vim-vsnip',
-                requires = 'hrsh7th/vim-vsnip-integ',
+                dependencies = 'hrsh7th/vim-vsnip-integ',
                 config = require('plugins.snippets')
             }
         }
-    }
+    };
     -- gui
-    use 'nvim-tree/nvim-web-devicons'
-    use {
+    { 'nvim-tree/nvim-web-devicons' };
+    {
         'lukas-reineke/indent-blankline.nvim',
         config = function ()
             require("indent_blankline").setup {
@@ -71,109 +84,114 @@ local function packer_use(use)
                 char = '▏',
             }
         end
-    }
-    use {
+    };
+    {
         'nvim-lualine/lualine.nvim',
-        requires = {'nvim-tree/nvim-web-devicons', opt = true},
-        after = 'nvim-base16',
-        config = require('plugins.statusline')
-    }
+        dependencies = {
+            'RRethy/nvim-base16',
+            'nvim-tree/nvim-web-devicons'
+        },
+        config = function ()
+            require('plugins.statusline')()
+        end
+    };
 
-    require('plugins.tabline')
-
-    use {
+    {
         'nvim-tree/nvim-tree.lua',
-        requires = { 'nvim-tree/nvim-web-devicons' },
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function () require('plugins.nvim-tree')() end,
-        after = 'nvim-base16'
-    }
+    };
 
-    use {
+    {
         'Shatur/neovim-session-manager',
         config = function ()
             require('session_manager').setup {
                 autoload_mode = require('session_manager.config').AutoloadMode.Disabled,
                 autosave_last_session = true,
             }
-        end
-    }
+        end,
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        }
+    };
 
-    use {
+    {
         'nvim-telescope/telescope.nvim',
         config = require('plugins.telescope'),
-        requires = {
+        dependencies = {
             'nvim-lua/plenary.nvim',
             -- extensions
-            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
             { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
             { 'nvim-telescope/telescope-ui-select.nvim' },
+            { "AckslD/nvim-neoclip.lua" },
         }
-    }
+    };
 
-    use {
+    {
         "AckslD/nvim-neoclip.lua",
         config = function() require('neoclip').setup() end,
-    }
+    };
 
-    use {
-        "~/Dev/alpha-nvim",
-        requires = { 'nvim-tree/nvim-web-devicons' }, -- '~/Dev/gamma-ui-nvim' },
+    {
+        dir = "~/Dev/alpha-nvim",
+        dependencies = { 'nvim-tree/nvim-web-devicons' }, -- '~/Dev/gamma-ui-nvim' },
         config = require('plugins.alpha')
-    }
+    };
 
-    use {
+    {
         'folke/which-key.nvim',
         config = function() require("which-key").setup() end
-    }
+    };
 
-    use 'tpope/vim-fugitive'
+    { 'tpope/vim-fugitive' };
 
     -- nvim-lsp
 
-    use {
+    {
         'neovim/nvim-lspconfig',
         config = require('modules.lsp'),
-        ft = { 'haskell', 'rust', 'lua', 'purescript' }
-    }
+        ft = { 'haskell', 'rust', 'lua', 'purescript', 'elm' }
+    };
 
-    use {
+    {
         'j-hui/fidget.nvim',
         config = function () require('fidget').setup {
             text = { spinner = 'moon' },
         } end
-    }
+    };
 
-    use {
+    {
         'folke/trouble.nvim',
         config = require('plugins.trouble'),
-    }
+    };
 
     -- filetype plugins
-    use { 'LnL7/vim-nix', ft = 'nix' }
-    use { 'edwinb/idris2-vim', ft = 'idris2' }
+    { 'LnL7/vim-nix', ft = 'nix' };
+    { 'edwinb/idris2-vim', ft = 'idris2' };
 
-    use {
+    {
         'whonore/Coqtail',
         ft = 'coq',
         config = function ()
             vim.g.python3_host_prog = '/usr/bin/python3'
             vim.opt.pyxversion = 3
         end
-    }
+    };
 
-    use {
+    {
         'ndmitchell/ghcid',
         rtp = 'plugins/nvim',
         cmd = { 'Ghcid', 'GhcidKill' },
-    }
+    };
 
-    use {
+    {
         'purescript-contrib/purescript-vim'
-    }
+    };
 
-    use {
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
+        build = ':TSUpdate',
         config = function ()
             require'nvim-treesitter.configs'.setup {
                 highlight = {
@@ -184,14 +202,17 @@ local function packer_use(use)
                 incremental_selection = { enable = true, keymaps = { init_selection = '<CR>', scope_incremental = '<CR>', node_incremental = '<TAB>', node_decremental = '<S-TAB>', }, },
             }
         end
-    }
-end
+    };
 
-packer.startup(packer_use)
-
-vim.api.nvim_create_autocmd("User", {
-    pattern = "PackerCompileDone",
-    callback = function() vim.fn.system({'/usr/bin/env', 'luajit', '-bg', packer.config.compile_path, packer.config.compile_path}) end,
+}, {
+  -- defaults = { lazy = true },
+  dev = { path = "~/Dev" },
+  -- install = { colorscheme = { "tokyonight", "habamax" } },
+  checker = { enabled = false },
+  performance = {
+    cache = {
+      enabled = true,
+      -- disable_events = {},
+    },
+  },
 })
-
-return packer

@@ -60,18 +60,18 @@ local align_maps = {
     ["<Leader>"] = {
         a = {
             name = "Align",
-            ['a'] = { tabularize'/'              , 'New regex'           },
-            ['('] = { tabularize'/(/r0<CR>'      , 'Open parenthesis'    },
-            [')'] = { tabularize'/)/l0<CR>'      , 'Close parenthesis'   },
-            ['['] = { tabularize'/[/r0<CR>'      , 'Open bracket'        },
-            [']'] = { tabularize'/]/l0<CR>'      , 'Cloes bracket'       },
-            ['{'] = { tabularize'/{<CR>'         , 'Open curly brace'    },
-            ['}'] = { tabularize'/}<CR>'         , 'Close curly brace'   },
-            [':'] = { tabularize'/:\\+<CR>'      , 'Colon'               },
-            ['<'] = { tabularize'/<\\S*><CR>'    , 'Open angle bracket'  },
-            ['>'] = { tabularize'/\\S*><CR>'     , 'Close angle bracket' },
-            ['='] = { tabularize'/=\\S*<CR>'     , 'Equals'              },
-            [','] = { tabularize'/,/l0r1<CR>'    , 'Comma'               },
+            ['a'] = { tabularize'/'          , 'New regex'           },
+            ['('] = { tabularize'/(/r0<CR>'  , 'Open parenthesis'    },
+            [')'] = { tabularize'/)/l0<CR>'  , 'Close parenthesis'   },
+            ['['] = { tabularize'/[/r0<CR>'  , 'Open bracket'        },
+            [']'] = { tabularize'/]/l0<CR>'  , 'Cloes bracket'       },
+            ['{'] = { tabularize'/{<CR>'     , 'Open curly brace'    },
+            ['}'] = { tabularize'/}<CR>'     , 'Close curly brace'   },
+            [':'] = { tabularize'/:\\+<CR>'  , 'Colon'               },
+            ['<'] = { tabularize'/<\\S*><CR>', 'Open angle bracket'  },
+            ['>'] = { tabularize'/\\S*><CR>' , 'Close angle bracket' },
+            ['='] = { tabularize'/=\\S*<CR>' , 'Equals'              },
+            [','] = { tabularize'/,/l0r1<CR>', 'Comma'               },
         }
     }
 }
