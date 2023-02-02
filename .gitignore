@@ -1,4 +1,5 @@
-.netrwkist
-plugin/packer_compiled.lua
-lua/packer_compiled.lua
+/.netrwkist
+/plugin/packer_compiled.lua
+/lua/packer_compiled.lua
 .luarc.json
+/lazy-lock.json
