@@ -2,7 +2,7 @@ return function()
     local alpha = require'alpha'
     -- --[[
     local startify = require'alpha.themes.startify'
-    -- startify.nvim_web_devicons.highlight = "Normal"
+    -- startify.nvim_web_devicons.highlight = "Error"
     startify.nvim_web_devicons.enabled = false
     startify.config.opts.noautocmd = true
 

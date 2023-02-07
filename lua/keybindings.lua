@@ -110,4 +110,9 @@ vim.api.nvim_create_user_command('E', function (files)
     vim.cmd.e(table.concat(xs, " "))
 end, {nargs="*"})
 
+
+-- menus
+vim.cmd('unmenu PopUp.How-to\\ disable\\ mouse')
+vim.cmd('unmenu PopUp.-1-')
+
 -- keymap('' , 'gf', function () vim.cmd.E(vim.fn.expand('<cfile>')) end, {silent = true, remap = true } )

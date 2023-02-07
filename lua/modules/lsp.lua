@@ -54,8 +54,15 @@ return function()
         wk.register(gotodef, { buffer = bufnr, mode = 'n' })
         wk.register(gotodef, { buffer = bufnr, mode = 'v' })
 
-        -- bugged
-        -- vim.cmd[[autocmd BufEnter,CursorHold,InsertLeave <buffer> silent! lua vim.lsp.codelens.refresh()]]
+        if client.server_capabilities.code_lens then
+            vim.cmd.amenu('PopUp.Run\\ Codelens :lua vim.lsp.codelens.run()<CR>')
+            vim.api.nvim_create_autocmd({"BufEnter", "CursorHold", "InsertLeave"}, {
+                pattern = "<buffer>",
+                callback = function ()
+                    vim.lsp.codelens.refresh()
+                end,
+            })
+        end
     end
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
