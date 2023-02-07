@@ -9,48 +9,48 @@ return function()
 
         -- keymaps
         buf_keymap {
-            ['<C-e>'] = { ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>', 'Show diagnostics' },
-            K = { ':lua vim.lsp.buf.hover()<CR>', 'Hover' },
+            ['<C-e>'] = { function () vim.diagnostic.open_float(0, {scope="line"}) end, 'Show diagnostics' },
+            K = { vim.lsp.buf.hover, 'Hover' },
             g = {
-                ['['] = { ':lua vim.diagnostic.goto_prev()<CR>', 'Previous diagnostic' },
-                [']'] = { ':lua vim.diagnostic.goto_next()<CR>', 'Next diagnostic' },
-                d = { ':lua vim.lsp.buf.definition()<CR>', 'Go to definition' },
+                ['['] = { vim.diagnostic.goto_prev, 'Previous diagnostic' },
+                [']'] = { vim.diagnostic.goto_next, 'Next diagnostic' },
+                d = { vim.lsp.buf.definition, 'Go to definition' },
             },
             ["<Leader>"] = {
-                ['fs'] = { ':lua vim.lsp.buf.workspace_symbol()<CR>', 'LSP Symbol' },
+                ['fs'] = { vim.lsp.buf.workspace_symbol, 'LSP Symbol' },
                 l = {
                     name = "+LSP",
-                    k = { ':lua vim.lsp.buf.signature_help()<CR>', 'Signature help' },
-                    R = { ':lua vim.lsp.buf.rename()<CR>', "Rename" },
-                    a = { ':lua vim.lsp.buf.code_action()<CR>', "Codeactions" },
+                    k = { vim.lsp.buf.signature_help, 'Signature help' },
+                    R = { vim.lsp.buf.rename, "Rename" },
+                    a = { vim.lsp.buf.code_action, "Codeactions" },
                     c = {
                         name = "+codelens",
-                        c = { ':lua vim.lsp.codelens.run()<CR>', 'Run' },
-                        r = { ':lua vim.lsp.codelens.refresh()<CR>', 'Refresh' },
+                        c = { vim.lsp.codelens.run, 'Run' },
+                        r = { vim.lsp.codelens.refresh, 'Refresh' },
                     },
-                    i = { ':lua vim.lsp.buf.implementation()<CR>', 'Implementation' },
-                    r = { ':lua vim.lsp.buf.references()<CR>', 'References' },
+                    i = { vim.lsp.buf.implementation, 'Implementation' },
+                    r = { vim.lsp.buf.references, 'References' },
                     s = {
                         name = "+set",
-                        l = { ':lua vim.diagnostic.set_loclist()<CR>', 'Loclist' },
-                        q = { ':lua vim.diagnostic.set_qflist()<CR>', 'Quickfix list' },
+                        l = { vim.diagnostic.set_loclist, 'Loclist' },
+                        q = { vim.diagnostic.set_qflist, 'Quickfix list' },
                     },
-                    t = { ':lua vim.lsp.buf.type_definition()<CR>', 'Type definition' },
+                    t = { vim.lsp.buf.type_definition, 'Type definition' },
                     w = {
                         name = "+workspace",
-                        a = { ':lua vim.lsp.buf.add_workspace_folder()<CR>', 'Add folder' },
-                        l = { ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', 'List folders' },
-                        r = { ':lua vim.lsp.buf.remove_workspace_folder()<CR>', 'Remove folder' },
+                        a = { vim.lsp.buf.add_workspace_folder, 'Add folder' },
+                        l = { function () print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, 'List folders' },
+                        r = { vim.lsp.buf.remove_workspace_folder, 'Remove folder' },
                     },
                 }
             }
         }
-        local formatting = { ["<Leader>lf"] = {':lua vim.lsp.buf.format { async = true } <CR>', 'Formatting'} }
+        local formatting = { ["<Leader>lf"] = {function () vim.lsp.buf.format { async = true }  end, 'Formatting'} }
         wk.register(formatting, { buffer = bufnr, mode = 'n' })
         wk.register(formatting, { buffer = bufnr, mode = 'v' })
         wk.register(formatting, { buffer = bufnr, mode = 'o' })
 
-        local gotodef = { ['<C-]>'] = { ':lua vim.lsp.buf.definition()<CR>', 'Go to definition' } }
+        local gotodef = { ['<C-]>'] = { vim.lsp.buf.definition, 'Go to definition' } }
         wk.register(gotodef, { buffer = bufnr, mode = 'n' })
         wk.register(gotodef, { buffer = bufnr, mode = 'v' })
 
