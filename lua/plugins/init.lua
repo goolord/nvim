@@ -17,8 +17,6 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
     { 'lewis6991/impatient.nvim', rocks = 'mpack' };
 
-    { 'wbthomason/packer.nvim', lazy = true };
-
     { 'godlygeek/tabular' };
     {
         'terrortylor/nvim-comment',
@@ -32,11 +30,12 @@ require("lazy").setup({
         'RRethy/nvim-base16',
         config = function ()
             require('modules.colors')
-            require('plugins.tabline')
         end,
         dependencies = {
             'nvim-tree/nvim-web-devicons',
-        }
+        },
+        lazy = false,
+        priority = 1000,
     };
 
     -- completion
@@ -216,3 +215,5 @@ require("lazy").setup({
     },
   },
 })
+
+require('plugins.tabline')
