@@ -30,7 +30,8 @@ return function()
                     exclude = {
                         filetype = {
                             "packer",
-                            "qf"
+                            "qf",
+                            "Trouble",
                         },
                         buftype = {
                             "terminal",
