@@ -163,6 +163,15 @@ require("lazy").setup({
     {
         'folke/trouble.nvim',
         config = require('plugins.trouble'),
+        cmd = { 'TodoTrouble', 'TodoTelescope' },
+    };
+
+    {
+        'folke/todo-comments.nvim',
+        config = function ()
+            require("todo-comments").setup {
+            }
+        end,
     };
 
     -- filetype plugins
