@@ -163,7 +163,6 @@ require("lazy").setup({
     {
         'folke/trouble.nvim',
         config = require('plugins.trouble'),
-        cmd = { 'TodoTrouble', 'TodoTelescope' },
     };
 
     {

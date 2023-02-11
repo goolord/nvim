@@ -41,6 +41,7 @@ wk.register {
             r = {':TroubleToggle workspace_diagnostics <CR>', "Toggle workspace diagnostics"},
             q = {':TroubleToggle quickfix<CR>', "Toggle quickfix" },
             l = {':TroubleToggle loclist<CR>', "Toggle loclist" },
+            t = {':TodoTrouble<CR>', "Toggle todos" },
         },
         s = {
             name = "Session",
