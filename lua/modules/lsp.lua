@@ -100,7 +100,7 @@ return function()
     }
 
     local runtime_path = {}
-    lspconfig.sumneko_lua.setup {
+    lspconfig.lua_ls.setup {
         on_attach = function(client, bufnr)
             runtime_path = vim.split(package.path, ';')
             table.insert(runtime_path, "lua/?.lua")
