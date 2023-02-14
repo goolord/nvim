@@ -10,7 +10,7 @@ local function hl(group, options)
 end
 
 local function link(group_from, group_to, options)
-    vim.api.nvim_set_hl(0, group_from, vim.tbl_extend("force", vim.api.nvim_get_hl_by_name(group_to, true), options or {}))
+    vim.api.nvim_set_hl(0, group_from, vim.tbl_extend("force", { link = group_to }, options or {}))
 end
 
 local function parse_rgb(s)
@@ -92,7 +92,7 @@ local function apply_colors()
     link('TelescopePromptNormal', 'Normal')
     hl('TelescopePromptTitle', {bg = vim.g.terminal_color_1, fg = vim.g.terminal_color_0, bold = true})
 
-    hl('TelescopePreviewBorder', {bg = nil, fg = vim.g.terminal_color_11})
+    hl('TelescopePreviewBorder', {bg = nil, fg = dark_bg, bold = true})
     hl('TelescopePreviewTitle', {bg = vim.g.terminal_color_11, fg = vim.g.terminal_color_0, bold = true})
     link('TelescopePreviewLine', 'Visual')
 
