@@ -98,7 +98,7 @@ vim.api.nvim_create_user_command('Rg', 'silent grep <args> <bar> Trouble quickfi
 vim.api.nvim_create_user_command('Notes', function ()
     local cwd = vim.fn.getcwd()
     vim.cmd.e("~/Dev/notes/" .. cwd:gsub("%s+", "_"):gsub("/","-") .. ".md")
-end, {})
+end, {nargs=0})
 vim.api.nvim_create_user_command('E', function (files)
     local xs = vim.tbl_map(function(x)
         local res = vim.fn.systemlist('fd -p ' .. x)[1]
@@ -111,6 +111,18 @@ vim.api.nvim_create_user_command('E', function (files)
     vim.cmd.e(table.concat(xs, " "))
 end, {nargs="*"})
 
+-- TODO: Remove once fixed in dressing.nvim
+vim.api.nvim_create_user_command('CloseAllFloatingWindows', function()
+    local closed_windows = {}
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local config = vim.api.nvim_win_get_config(win)
+        if config.relative ~= "" then -- is_floating_window?
+            vim.api.nvim_win_close(win, false) -- do not force
+            table.insert(closed_windows, win)
+        end
+    end
+    print(string.format('Closed %d windows: %s', #closed_windows, vim.inspect(closed_windows))) end
+, {nargs=0})
 
 -- menus
 vim.cmd('unmenu PopUp.How-to\\ disable\\ mouse')
