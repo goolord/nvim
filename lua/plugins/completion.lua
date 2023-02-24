@@ -7,8 +7,8 @@ return function()
     cmp.setup {
         snippet = {
             expand = function(args)
-                vim.fn['vsnip#anonymous'](args.body)
-            end
+                require("luasnip").lsp_expand(args.body)
+            end,
         },
 
         formatting = {
@@ -42,7 +42,7 @@ return function()
             -- { name = 'emoji' },
             -- { name = 'tags' },
             { name = 'path' },
-            { name = 'vsnip' },
+            { name = 'luasnip' },
             {
                 name = 'buffer',
                 option = {
