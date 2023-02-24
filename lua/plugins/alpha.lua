@@ -5,6 +5,7 @@ return function()
     -- startify.nvim_web_devicons.highlight = "Error"
     startify.nvim_web_devicons.enabled = false
     startify.config.opts.noautocmd = true
+    -- startify.section.mru.opts = { inherit = { position = "center", width = 65 } }
 
     alpha.setup(startify.config)
     --]]

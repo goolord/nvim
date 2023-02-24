@@ -1,4 +1,3 @@
-vim.cmd.packadd('packer.nvim')
 vim.cmd.packadd('cfilter')
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
