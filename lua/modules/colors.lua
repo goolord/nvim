@@ -1,8 +1,6 @@
 vim.opt.bg = 'dark'
 vim.g.hs_highlight_debug = 1
 
-local base16 = require('base16-colorscheme')
-
 Colors = {}
 
 local function hl(group, options)
@@ -12,6 +10,8 @@ end
 local function link(group_from, group_to, options)
     vim.api.nvim_set_hl(0, group_from, vim.tbl_extend("force", { link = group_to }, options or {}))
 end
+
+local function get_hl(group) return vim.api.nvim_get_hl_by_name(group, true) end
 
 local function parse_rgb(s)
     local tail_s = s:sub(2)
@@ -107,7 +107,7 @@ local function apply_colors()
 
     -- indent
     link('IndentBlanklineChar', 'NonText', { bold = true })
-    hl('IndentBlanklineContextChar', {fg = base16.colors.base02, bold = true})
+    hl('IndentBlanklineContextChar', {fg = get_hl('StatusLine').background, bold = true})
 end
 
 vim.api.nvim_create_autocmd("ColorScheme", {
