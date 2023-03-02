@@ -2,12 +2,9 @@ return function()
 
     local tree = require('nvim-tree')
 
-    local function xdg_open(node)
-        os.execute('xdg-open ' .. node.absolute_path)
-    end
-
     tree.setup {
         renderer = {
+            highlight_git = true,
             indent_markers = {
                 enable = true,
             },
@@ -42,21 +39,22 @@ return function()
             },
         },
         filters = {
-            exclude = {'.git', 'node_modules', '.cache'},
+            dotfiles = true,
         },
+        git = { ignore = false },
         update_focused_file = { enable = true },
         hijack_directories = { enable = true },
         view = {
             mappings = {
                 list = {
-                    { key='l'   , action = "edit" },
-                    { key='o'   , action = "edit" },
-                    { key='<cr>', action = "edit" },
-                    { key='I'   , action = "toggle_ignored" },
-                    { key='H'   , action = "toggle_dotfiles" },
-                    { key='R'   , action = "refresh" },
-                    { key='='   , action = "preview" },
-                    { key='X'   , action = "xdg_open", action_cb = xdg_open }
+                    { key = 'l', action = "edit" },
+                    { key = 'o', action = "edit" },
+                    { key = '<cr>', action = "edit" },
+                    { key = 'I', action = "toggle_ignored" },
+                    { key = 'H', action = "toggle_dotfiles" },
+                    { key = 'R', action = "refresh" },
+                    { key = '=', action = "preview" },
+                    { key = 'X', action = "system_open" }
                 }
             }
         }
