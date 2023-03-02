@@ -41,7 +41,8 @@ require("lazy").setup({
     colorscheme;
 
     {
-        dir = '~/Dev/nvim-colorscheme-convert',
+        'goolord/nvim-colorscheme-convert',
+        dev = true,
     },
 
     -- search/replace in multiple files
@@ -165,8 +166,9 @@ require("lazy").setup({
     };
 
     {
-        dir = "~/Dev/alpha-nvim",
-        dependencies = { 'nvim-tree/nvim-web-devicons' }, -- '~/Dev/gamma-ui-nvim' },
+        'goolord/alpha-nvim',
+        dev = true,
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = require('plugins.alpha')
     };
 
