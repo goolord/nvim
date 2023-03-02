@@ -110,11 +110,6 @@ local function apply_colors()
     hl('IndentBlanklineContextChar', {fg = base16.colors.base02, bold = true})
 end
 
--- automatically override colourscheme
-
-vim.cmd.colors('base16-tomorrow-min')
-apply_colors()
-
 vim.api.nvim_create_autocmd("ColorScheme", {
     pattern = "*",
     callback = function ()

@@ -13,6 +13,20 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
+local colorscheme =
+    {
+        'RRethy/nvim-base16',
+        config = function()
+            require('modules.colors')
+            vim.cmd.colors('base16-tomorrow-min')
+        end,
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        },
+        lazy = false,
+        priority = 1000,
+    }
+
 require("lazy").setup({
     { 'lewis6991/impatient.nvim', rocks = 'mpack' };
 
@@ -24,18 +38,11 @@ require("lazy").setup({
     { 'akinsho/toggleterm.nvim', config = require('plugins.toggleterm') };
     { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } };
     { 'tpope/vim-abolish' };
-    -- colorscheme
+    colorscheme;
+
     {
-        'RRethy/nvim-base16',
-        config = function()
-            require('modules.colors')
-        end,
-        dependencies = {
-            'nvim-tree/nvim-web-devicons',
-        },
-        lazy = false,
-        priority = 1000,
-    };
+        dir = '~/Dev/nvim-colorscheme-convert',
+    },
 
     -- search/replace in multiple files
     {
@@ -83,13 +90,14 @@ require("lazy").setup({
                 show_first_indent_level = false,
                 show_trailing_blankline_indent = false,
                 char = '▏',
+                context_char = '▏',
             }
         end
     };
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
-            'RRethy/nvim-base16',
+            colorscheme[1],
             'nvim-tree/nvim-web-devicons'
         },
         config = function()

@@ -56,7 +56,8 @@ return function()
                     { key = 'H', action = "toggle_dotfiles" },
                     { key = 'R', action = "refresh" },
                     { key = '=', action = "preview" },
-                    { key = 'X', action = "system_open" }
+                    { key = 'X', action = "system_open" },
+                    { key = '?', action = "toggle_help" },
                 }
             }
         }
