@@ -63,11 +63,12 @@ local function apply_colors()
     -- custom
     hl('DarkNormal', {bg = dark_bg})
 
-    -- luatree
+    -- nvim-tree
     hl('NvimTreeFolderIcon', {fg = vim.g.terminal_color_3})
     link('NvimTreeNormal', 'DarkNormal')
     link('NvimTreeIndentMarker', 'Comment')
     link('NvimTreeRootFolder', 'StatusLine')
+
     -- diagnostics
     hl('DiagnosticError', {bg = nil, fg = vim.g.terminal_color_9})
     hl('DiagnosticInfo' , {bg = nil, fg = vim.g.terminal_color_13})

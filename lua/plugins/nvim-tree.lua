@@ -4,11 +4,13 @@ return function()
 
     tree.setup {
         renderer = {
-            highlight_git = true,
+            highlight_opened_files = "name",
+            -- highlight_git = true,
             indent_markers = {
                 enable = true,
             },
             icons = {
+                git_placement = "after",
                 glyphs = {
                     default = '',
                     symlink = '',

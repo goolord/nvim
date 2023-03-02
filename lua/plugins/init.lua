@@ -145,7 +145,8 @@ require("lazy").setup({
                         },
                         initial_mode = "normal",
                     }),
-                }
+                },
+                input = { enabled = false },
             }
         end
     },
