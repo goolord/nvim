@@ -1,11 +1,13 @@
 return function()
-
+    local function hl(group, options)
+        vim.api.nvim_set_hl(0, group, options)
+    end
     local tree = require('nvim-tree')
 
     tree.setup {
         renderer = {
             highlight_opened_files = "name",
-            -- highlight_git = true,
+            highlight_git = true,
             indent_markers = {
                 enable = true,
             },
@@ -62,5 +64,8 @@ return function()
             }
         }
     }
+
+    hl('NvimTreeFileDirty', {})
+    hl('NvimTreeFileStaged', {})
 
 end
