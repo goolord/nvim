@@ -125,8 +125,14 @@ return function()
         },
     }
 
-    lspconfig.elmls.setup{
+    lspconfig.elmls.setup {
         on_attach = custom_on_attach,
         capabilities = capabilities
     }
+
+    lspconfig.cssls.setup {
+        on_attach = custom_on_attach,
+        capabilities = capabilities
+    }
+
 end

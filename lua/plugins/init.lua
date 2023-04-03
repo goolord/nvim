@@ -184,7 +184,7 @@ require("lazy").setup({
     {
         'neovim/nvim-lspconfig',
         config = require('modules.lsp'),
-        ft = { 'haskell', 'rust', 'lua', 'purescript', 'elm' }
+        ft = { 'haskell', 'rust', 'lua', 'purescript', 'elm', 'css', 'scss', 'sass', 'less' }
     };
 
     {
