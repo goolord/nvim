@@ -45,12 +45,6 @@ require("lazy").setup({
         dev = true,
     },
 
-    -- search/replace in multiple files
-    {
-        "windwp/nvim-spectre",
-        cmd = 'Spectre'
-    },
-
     -- completion
     {
         'hrsh7th/nvim-cmp',
