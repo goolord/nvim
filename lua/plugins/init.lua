@@ -18,7 +18,7 @@ local colorscheme =
         'RRethy/nvim-base16',
         config = function()
             require('modules.colors')
-            vim.cmd.colors('base16-tomorrow-min')
+            vim.cmd.colors('base16-gruvbox-material-dark-medium')
         end,
         dependencies = {
             'nvim-tree/nvim-web-devicons',
