@@ -217,7 +217,10 @@ require("lazy").setup({
 
     {
         'ndmitchell/ghcid',
-        rtp = 'plugins/nvim',
+        config = function(plugin)
+            vim.opt.rtp:append(plugin.dir .. "/plugins/nvim/")
+        end,
+        lazy = false,
         cmd = { 'Ghcid', 'GhcidKill' },
     };
 
