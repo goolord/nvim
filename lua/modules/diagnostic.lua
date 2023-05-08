@@ -1,6 +1,6 @@
 local sign = vim.fn.sign_define
 
-sign("DiagnosticSignError", {text = "ﰸ ", texthl = "DiagnosticError", linehl = "NONE"})
+sign("DiagnosticSignError", {text = " ", texthl = "DiagnosticError", linehl = "NONE"})
 sign("DiagnosticSignWarn" , {text = " ", texthl = "DiagnosticWarn" , linehl = "NONE"})
 sign("DiagnosticSignInfo" , {text = " ", texthl = "DiagnosticInfo" , linehl = "NONE"})
 sign("DiagnosticSignHint" , {text = " ", texthl = "DiagnosticHint" , linehl = "NONE"})

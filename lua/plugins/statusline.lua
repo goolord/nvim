@@ -44,7 +44,7 @@ return function()
     config.options.icons_enabled = true
     -- config.options.globalstatus = true
     config.extensions = { 'fugitive', 'nvim-tree' }
-    config.sections.lualine_b[2] = { 'diff', symbols = { added = ' ', modified = '柳', removed = ' ' } }
+    config.sections.lualine_b[2] = { 'diff', symbols = { added = ' ', modified = ' ', removed = ' ' } }
     config.sections.lualine_c[1] = { 'filename', path = 1 }
 
     require('lualine').setup(config)
