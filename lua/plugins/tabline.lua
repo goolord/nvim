@@ -55,7 +55,7 @@ function M.render()
             ' ',
             modified == 1 and '[+] ' or '',
         }))
-        table.insert(tabline, '%' .. tab .. 'X %X')
+        table.insert(tabline, '%' .. tab .. 'X󰅙 %X')
     end
 
     -- table.insert(tabline, "%#Pmenu#%999@v:lua.require'plugins.tabline'.tabnew@ + %X")
