@@ -38,6 +38,16 @@ require("lazy").setup({
     { 'akinsho/toggleterm.nvim', config = require('plugins.toggleterm') };
     { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } };
     { 'tpope/vim-abolish' };
+    {
+        'smjonas/live-command.nvim',
+        config = function()
+            require("live-command").setup {
+                commands = {
+                    S = { cmd = "Subvert"}, -- must be defined before we import vim-abolish
+                },
+            }
+        end
+    };
     colorscheme;
 
     {
@@ -184,9 +194,9 @@ require("lazy").setup({
     {
         'j-hui/fidget.nvim',
         config = function() require('fidget').setup {
-                text = { spinner = 'moon' },
-            }
-        end
+            text = { spinner = 'moon' },
+        } end,
+        branch = 'legacy'
     };
 
     {
