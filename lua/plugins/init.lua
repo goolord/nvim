@@ -89,14 +89,16 @@ require("lazy").setup({
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
-            require("indent_blankline").setup {
+            require("ibl").setup {
                 show_end_of_line = true,
-                show_current_context = true,
-                show_first_indent_level = false,
-                show_trailing_blankline_indent = false,
                 char = '▏',
                 context_char = '▏',
             }
+           local hooks = require "ibl.hooks"
+           hooks.register(
+             hooks.type.WHITESPACE,
+             hooks.builtin.hide_first_space_indent_level
+           )
         end
     };
     {
