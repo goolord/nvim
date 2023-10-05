@@ -90,9 +90,8 @@ require("lazy").setup({
         'lukas-reineke/indent-blankline.nvim',
         config = function()
             require("ibl").setup {
-                show_end_of_line = true,
-                char = '▏',
-                context_char = '▏',
+                scope = { show_end = false, show_start = false },
+                indent = { char = '▏' },
             }
            local hooks = require "ibl.hooks"
            hooks.register(
