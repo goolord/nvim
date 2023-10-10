@@ -106,8 +106,8 @@ local function apply_colors()
     link('WhichKeyFloat', 'Pmenu')
 
     -- indent
-    link('IndentBlanklineChar', 'NonText', { bold = true })
-    hl('IndentBlanklineContextChar', {fg = get_hl('StatusLine').background, bold = true})
+    link('IblIndent', 'NonText', { bold = true })
+    hl('IblScope', {fg = get_hl('StatusLine').background, bold = true})
 end
 
 vim.api.nvim_create_autocmd("ColorScheme", {
