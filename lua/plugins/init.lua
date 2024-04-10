@@ -31,10 +31,6 @@ require("lazy").setup({
     { 'lewis6991/impatient.nvim', rocks = 'mpack' };
 
     { 'godlygeek/tabular' };
-    {
-        'terrortylor/nvim-comment',
-        config = function() require('nvim_comment').setup() end
-    };
     { 'akinsho/toggleterm.nvim', config = require('plugins.toggleterm') };
     { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } };
     { 'tpope/vim-abolish' };
@@ -189,7 +185,7 @@ require("lazy").setup({
     {
         'neovim/nvim-lspconfig',
         config = require('modules.lsp'),
-        ft = { 'haskell', 'rust', 'lua', 'purescript', 'elm', 'css', 'scss', 'sass', 'less' }
+        ft = { 'haskell', 'rust', 'lua', 'purescript', 'elm', 'css', 'scss', 'sass', 'less', 'typescript' }
     };
 
     {

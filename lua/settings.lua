@@ -12,7 +12,7 @@ vim.opt.wrap          = true
 vim.opt.signcolumn    = 'number'
 vim.opt.list          = true
 vim.opt.listchars     = { trail = '.', tab = '»-»' }
-vim.opt.smoothscroll  = true
+-- vim.opt.smoothscroll  = true
 -- gui frontend
 vim.opt.guifont       = 'monospace:h16.4'
 vim.g.neovide_cursor_animation_length = 0

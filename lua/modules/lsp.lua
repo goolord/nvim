@@ -76,6 +76,7 @@ return function()
     }
 
     lspconfig.hls.setup {
+        cmd = { 'static-ls' },
         on_attach = custom_on_attach,
         capabilities = capabilities,
         settings = {
@@ -131,6 +132,11 @@ return function()
     }
 
     lspconfig.cssls.setup {
+        on_attach = custom_on_attach,
+        capabilities = capabilities
+    }
+
+    lspconfig.tsserver.setup {
         on_attach = custom_on_attach,
         capabilities = capabilities
     }
