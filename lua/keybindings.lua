@@ -39,9 +39,9 @@ wk.register {
         },
         r = {
             name = "Trouble",
-            r = {':TroubleToggle workspace_diagnostics <CR>', "Toggle workspace diagnostics"},
-            q = {':TroubleToggle quickfix<CR>', "Toggle quickfix" },
-            l = {':TroubleToggle loclist<CR>', "Toggle loclist" },
+            r = {':Trouble workspace_diagnostics <CR>', "Toggle workspace diagnostics"},
+            q = {':Trouble quickfix<CR>', "Toggle quickfix" },
+            l = {':Trouble loclist<CR>', "Toggle loclist" },
             t = {':TodoTrouble<CR>', "Toggle todos" },
         },
         s = {
