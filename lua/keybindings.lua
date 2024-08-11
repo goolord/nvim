@@ -14,82 +14,63 @@ local function telescope(provider) return '<CMD>Telescope ' .. provider .. '<CR>
 
 local function tabularize(regex) return ':Tabularize ' .. regex end
 
-wk.register {
-    ["<Leader>"] = {
-        d = { ':NvimTreeToggle<CR>', "Toggle NvimTree" },
-        -- telescope
-        f = {
-            name = "Find",
-            f     = { telescope'find_files'     , 'Files'           }, -- :find
-            q     = { telescope'quickfix'       , 'Quickfix'        }, -- :copen
-            l     = { telescope'loclist'        , 'Loclist'         }, -- :lopen
-            t     = { telescope'tags'           , 'Tags'            }, -- :tj
-            b     = { telescope'buffers'        , 'Buffers'         }, -- :ls :b
-            g     = { telescope'live_grep'      , 'Grep'            },
-            m     = { telescope'keymaps'        , 'Maps'            },
-            M     = { telescope'marks'          , 'Marks'           },
-            j     = { telescope'jumplist'       , 'Jumps'           },
-            y     = { telescope'neoclip'        , 'Yanks'           },
-            r     = { telescope'registers'      , 'Registers'       },
-            x     = { telescope'resume'         , 'Resume last'     },
-            [':'] = { telescope'command_history', 'Command history' },
-            ['/'] = { telescope'search_history' , 'Search history'  },
-            h     = { telescope'oldfiles'       , 'File history'    },
-            ['_'] = { telescope''               , 'Providers'       },
-        },
-        r = {
-            name = "Trouble",
-            r = {':Trouble workspace_diagnostics <CR>', "Toggle workspace diagnostics"},
-            q = {':Trouble quickfix<CR>', "Toggle quickfix" },
-            l = {':Trouble loclist<CR>', "Toggle loclist" },
-            t = {':TodoTrouble<CR>', "Toggle todos" },
-        },
-        s = {
-            name = "Session",
-            s = { ':SessionManager save_current_session<cr>', 'Save' },
-            l = { ':SessionManager load_last_session<cr>', 'Load' },
-            c = { ':SessionManager load_current_dir_session<cr>', 'Load current dir session' },
-        },
-        A = { ':Alpha<CR>', "Open alpha" },
-        x = { '<CMD>%s///g<CR>', "Delete search result" },
-    },
-    ['<esc>'] = { ':noh<CR>', 'Remove search highlights' },
-    ['<C-]>'] = { 'g<C-]>', 'Jump to tag' },
-    ['<A-m>'] = { '@q', 'Run q macro register' },
+wk.add {
+  { "<A-m>", "@q", desc = "Run q macro register" },
+  { "<C-]>", "g<C-]>", desc = "Jump to tag" },
+  { "<Leader>A", ":Alpha<CR>", desc = "Open alpha" },
+  { "<Leader>d", ":NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
+  { "<Leader>f", group = "Find" },
+  { "<Leader>f/", telescope'search_history', desc = "Search history" },
+  { "<Leader>f:", telescope'command_history', desc = "Command history" },
+  { "<Leader>fM", telescope'marks', desc = "Marks" },
+  { "<Leader>f_", telescope'', desc = "Providers" },
+  { "<Leader>fb", telescope'buffers', desc = "Buffers" },
+  { "<Leader>ff", telescope'find_files', desc = "Files" },
+  { "<Leader>fg", telescope'live_grep', desc = "Grep" },
+  { "<Leader>fh", telescope'oldfiles', desc = "File history" },
+  { "<Leader>fj", telescope'jumplist', desc = "Jumps" },
+  { "<Leader>fl", telescope'loclist', desc = "Loclist" },
+  { "<Leader>fm", telescope'keymaps', desc = "Maps" },
+  { "<Leader>fq", telescope'quickfix', desc = "Quickfix" },
+  { "<Leader>fr", telescope'registers', desc = "Registers" },
+  { "<Leader>ft", telescope'tags', desc = "Tags" },
+  { "<Leader>fx", telescope'resume', desc = "Resume last" },
+  { "<Leader>fy", telescope'neoclip', desc = "Yanks" },
+  { "<Leader>r", group = "Trouble" },
+  { "<Leader>rl", ":Trouble loclist<CR>", desc = "Toggle loclist" },
+  { "<Leader>rq", ":Trouble quickfix<CR>", desc = "Toggle quickfix" },
+  { "<Leader>rr", ":Trouble workspace_diagnostics <CR>", desc = "Toggle workspace diagnostics" },
+  { "<Leader>rt", ":TodoTrouble<CR>", desc = "Toggle todos" },
+  { "<Leader>s", group = "Session" },
+  { "<Leader>sc", ":SessionManager load_current_dir_session<cr>", desc = "Load current dir session" },
+  { "<Leader>sl", ":SessionManager load_last_session<cr>", desc = "Load" },
+  { "<Leader>ss", ":SessionManager save_current_session<cr>", desc = "Save" },
+  { "<Leader>x", "<CMD>%s///g<CR>", desc = "Delete search result" },
+  { "<esc>", ":noh<CR>", desc = "Remove search highlights" },
 }
 
-local align_maps = {
-    ["<Leader>"] = {
-        a = {
-            name = "Align",
-            ['a'] = { tabularize'/'          , 'New regex'           },
-            ['('] = { tabularize'/(/r0<CR>'  , 'Open parenthesis'    },
-            [')'] = { tabularize'/)/l0<CR>'  , 'Close parenthesis'   },
-            ['['] = { tabularize'/[/r0<CR>'  , 'Open bracket'        },
-            [']'] = { tabularize'/]/l0<CR>'  , 'Cloes bracket'       },
-            ['{'] = { tabularize'/{<CR>'     , 'Open curly brace'    },
-            ['}'] = { tabularize'/}<CR>'     , 'Close curly brace'   },
-            [':'] = { tabularize'/:\\+<CR>'  , 'Colon'               },
-            ['<'] = { tabularize'/<\\S*><CR>', 'Open angle bracket'  },
-            ['>'] = { tabularize'/\\S*><CR>' , 'Close angle bracket' },
-            ['='] = { tabularize'/=\\S*<CR>' , 'Equals'              },
-            [','] = { tabularize'/,/l0r1<CR>', 'Comma'               },
-        }
-    }
+wk.add {
+    { "<Leader>a", group = "Align" },
+    { "<Leader>aa", tabularize'/'          , desc = 'New regex'           },
+    { "<Leader>a(", tabularize'/(/r0<CR>'  , desc = 'Open parenthesis'    },
+    { "<Leader>a)", tabularize'/)/l0<CR>'  , desc = 'Close parenthesis'   },
+    { "<Leader>a[", tabularize'/[/r0<CR>'  , desc = 'Open bracket'        },
+    { "<Leader>a]", tabularize'/]/l0<CR>'  , desc = 'Cloes bracket'       },
+    { "<Leader>a{", tabularize'/{<CR>'     , desc = 'Open curly brace'    },
+    { "<Leader>a}", tabularize'/}<CR>'     , desc = 'Close curly brace'   },
+    { "<Leader>a:", tabularize'/:\\+<CR>'  , desc = 'Colon'               },
+    { "<Leader>a<", tabularize'/<\\S*><CR>', desc = 'Open angle bracket'  },
+    { "<Leader>a>", tabularize'/\\S*><CR>' , desc = 'Close angle bracket' },
+    { "<Leader>a=", tabularize'/=\\S*<CR>' , desc = 'Equals'              },
+    { "<Leader>a,", tabularize'/,/l0r1<CR>', desc = 'Comma'               },
 }
-wk.register(align_maps, { mode = 'n' })
-wk.register(align_maps, { mode = 'v' })
-wk.register(align_maps, { mode = 'o' })
 
-local win_cmds = {
-    ['<C-h>'] = { '<cmd>wincmd h<cr>', 'Window left' },
-    ['<C-j>'] = { '<cmd>wincmd j<cr>', 'Widnow down' },
-    ['<C-k>'] = { '<cmd>wincmd k<cr>', 'Window up' },
-    ['<C-l>'] = { '<cmd>wincmd l<cr>', 'Window right' },
+wk.add {
+    { "<C-h>", '<cmd>wincmd h<cr>', desc = 'Window left' },
+    { "<C-j>", '<cmd>wincmd j<cr>', desc = 'Widnow down' },
+    { "<C-k>", '<cmd>wincmd k<cr>', desc = 'Window up' },
+    { "<C-l>", '<cmd>wincmd l<cr>', desc = 'Window right' },
 }
-wk.register(win_cmds, { mode = 'n' })
-wk.register(win_cmds, { mode = 'v' })
-wk.register(win_cmds, { mode = 'o' })
 
 -- other
 -- breaks <C-I> jump because terminals are dumb

@@ -3,56 +3,35 @@ return function()
     local lspconfig = require('lspconfig')
 
     local function custom_on_attach(client, bufnr)
-        local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-        local opts = { noremap = true, silent = true, buffer = bufnr }
-        local function buf_keymap(km) wk.register(km, opts) end
-
         -- keymaps
-        buf_keymap {
-            ['<C-e>'] = { function () vim.diagnostic.open_float(0, {scope="line"}) end, 'Show diagnostics' },
-            K = { vim.lsp.buf.hover, 'Hover' },
-            g = {
-                ['['] = { vim.diagnostic.goto_prev, 'Previous diagnostic' },
-                [']'] = { vim.diagnostic.goto_next, 'Next diagnostic' },
-                d = { vim.lsp.buf.definition, 'Go to definition' },
-            },
-            ["<Leader>"] = {
-                ['fs'] = { vim.lsp.buf.workspace_symbol, 'LSP Symbol' },
-                l = {
-                    name = "+LSP",
-                    k = { vim.lsp.buf.signature_help, 'Signature help' },
-                    R = { vim.lsp.buf.rename, "Rename" },
-                    a = { vim.lsp.buf.code_action, "Codeactions" },
-                    c = {
-                        name = "+codelens",
-                        c = { vim.lsp.codelens.run, 'Run' },
-                        r = { vim.lsp.codelens.refresh, 'Refresh' },
-                    },
-                    i = { vim.lsp.buf.implementation, 'Implementation' },
-                    r = { vim.lsp.buf.references, 'References' },
-                    s = {
-                        name = "+set",
-                        l = { vim.diagnostic.set_loclist, 'Loclist' },
-                        q = { vim.diagnostic.set_qflist, 'Quickfix list' },
-                    },
-                    t = { vim.lsp.buf.type_definition, 'Type definition' },
-                    w = {
-                        name = "+workspace",
-                        a = { vim.lsp.buf.add_workspace_folder, 'Add folder' },
-                        l = { function () print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, 'List folders' },
-                        r = { vim.lsp.buf.remove_workspace_folder, 'Remove folder' },
-                    },
-                }
-            }
+        wk.add {
+            { noremap = true, silent = true, buffer = bufnr },
+            { "<C-e>", function () vim.diagnostic.open_float(0, {scope="line"}) end, desc = 'Show diagnostics' },
+            { "K", vim.lsp.buf.hover, desc = 'Hover' },
+            { "g[", vim.diagnostic.goto_prev, desc = 'Previous diagnostic' },
+            { "g]", vim.diagnostic.goto_next, desc = 'Next diagnostic' },
+            { "gd", vim.lsp.buf.definition, desc = 'Go to definition' },
+            { "<Leader>fs", vim.lsp.buf.workspace_symbol, desc = 'LSP Symbol' },
+            { "<Leader>l", name = "+LSP" },
+            { "<Leader>lk", vim.lsp.buf.signature_help, desc = 'Signature help' },
+            { "<Leader>lR", vim.lsp.buf.rename, desc = "Rename" },
+            { "<Leader>la", vim.lsp.buf.code_action, desc = "Codeactions" },
+            { "<Leader>lc", name = "+codelens" },
+            { "<Leader>lc", vim.lsp.codelens.refresh, desc = 'Refresh' },
+            { "<Leader>lc", vim.lsp.codelens.run, desc ='Run' },
+            { "<Leader>li", vim.lsp.buf.implementation, desc = 'Implementation' },
+            { "<Leader>lr", vim.lsp.buf.references, desc = 'References' },
+            { "<Leader>ls", name = "+set" },
+            { "<Leader>lsl", vim.diagnostic.set_loclist, desc= 'Loclist' },
+            { "<Leader>lsq", vim.diagnostic.set_qflist, desc ='Quickfix list' },
+            { "<Leader>lt", vim.lsp.buf.type_definition, desc = 'Type definition' },
+            { "<Leader>lw", name = "+workspace" },
+            { "<Leader>lwaa", vim.lsp.buf.add_workspace_folder, desc = 'Add folder' },
+            { "<Leader>lwal", function () print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, desc = 'List folders' },
+            { "<Leader>lwar", vim.lsp.buf.remove_workspace_folder, desc = 'Remove folder' },
+            { "<Leader>lf", function () vim.lsp.buf.format { async = true }  end, desc = 'Formatting' },
+            { "<C-]>", vim.lsp.buf.definition, desc = 'Go to definition' }
         }
-        local formatting = { ["<Leader>lf"] = {function () vim.lsp.buf.format { async = true }  end, 'Formatting'} }
-        wk.register(formatting, { buffer = bufnr, mode = 'n' })
-        wk.register(formatting, { buffer = bufnr, mode = 'v' })
-        wk.register(formatting, { buffer = bufnr, mode = 'o' })
-
-        local gotodef = { ['<C-]>'] = { vim.lsp.buf.definition, 'Go to definition' } }
-        wk.register(gotodef, { buffer = bufnr, mode = 'n' })
-        wk.register(gotodef, { buffer = bufnr, mode = 'v' })
 
         if client.server_capabilities.code_lens then
             vim.cmd.amenu('PopUp.Run\\ Codelens :lua vim.lsp.codelens.run()<CR>')
@@ -76,7 +55,7 @@ return function()
     }
 
     lspconfig.hls.setup {
-        cmd = { 'static-ls' },
+        -- cmd = { 'static-ls' },
         on_attach = custom_on_attach,
         capabilities = capabilities,
         settings = {
