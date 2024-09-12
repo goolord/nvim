@@ -82,6 +82,7 @@ require("lazy").setup({
     };
     -- gui
     { 'nvim-tree/nvim-web-devicons' };
+    { 'echasnovski/mini.icons' };
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
@@ -169,7 +170,7 @@ require("lazy").setup({
     {
         'goolord/alpha-nvim',
         dev = true,
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        dependencies = { 'echasnovski/mini.icons' },
         config = require('plugins.alpha')
     };
 

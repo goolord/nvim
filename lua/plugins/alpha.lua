@@ -3,7 +3,7 @@ return function()
     -- --[[
     local startify = require'alpha.themes.startify'
     -- startify.nvim_web_devicons.highlight = "Error"
-    startify.nvim_web_devicons.enabled = false
+    startify.file_icons.enabled = false
     startify.config.opts.noautocmd = true
     -- startify.section.mru.opts = { inherit = { position = "center", width = 65 } }
 

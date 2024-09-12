@@ -114,6 +114,18 @@ local function apply_colors()
     -- indent
     link('IblIndent', 'NonText', { bold = true })
     hl('IblScope', {fg = get_hl('StatusLine').background, bold = true})
+
+
+    -- mini.icons
+    hl('MiniIconsAzure' , { fg = vim.g.terminal_color_12 } )
+    hl('MiniIconsBlue'  , { fg = vim.g.terminal_color_4  } )
+    hl('MiniIconsCyan'  , { fg = vim.g.terminal_color_6  } )
+    hl('MiniIconsGreen' , { fg = vim.g.terminal_color_2  } )
+    hl('MiniIconsGrey'  , { fg = vim.g.terminal_color_7  } )
+    hl('MiniIconsOrange', { fg = vim.g.terminal_color_3  } )
+    hl('MiniIconsPurple', { fg = vim.g.terminal_color_5  } )
+    hl('MiniIconsRed'   , { fg = vim.g.terminal_color_1  } )
+    hl('MiniIconsYellow', { fg = vim.g.terminal_color_11 } )
 end
 
 vim.api.nvim_create_autocmd("ColorScheme", {
