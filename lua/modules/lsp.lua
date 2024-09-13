@@ -115,7 +115,7 @@ return function()
         capabilities = capabilities
     }
 
-    lspconfig.tsserver.setup {
+    lspconfig.ts_ls.setup {
         on_attach = custom_on_attach,
         capabilities = capabilities
     }
