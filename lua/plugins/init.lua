@@ -53,7 +53,9 @@ require("lazy").setup({
 
     -- completion
     {
-        'hrsh7th/nvim-cmp',
+        -- 'hrsh7th/nvim-cmp',
+        'iguanacucumber/magazine.nvim',
+        name = 'nvim-cmp',
         config = require('plugins.completion'),
         dependencies = {
             { 'tzachar/cmp-tabnine', build = './install.sh',
