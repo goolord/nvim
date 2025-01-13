@@ -53,32 +53,32 @@ require("lazy").setup({
 
     -- completion
     {
-        -- 'hrsh7th/nvim-cmp',
-        'iguanacucumber/magazine.nvim',
-        name = 'nvim-cmp',
-        config = require('plugins.completion'),
-        dependencies = {
-            { 'tzachar/cmp-tabnine', build = './install.sh',
-                cond = function()
-                    local cdir = vim.fn.getcwd()
-                    -- version of glibc or something just makes
-                    -- tabnine bootloop
-                    local tn_blacklist =
-                    { '/Users/zach/Dev/well/Health_Engine/well%-he%-arbiter.*'
-                    }
+        'Saghen/blink.cmp',
+        version = '*',
+        opts = {
+            keymap = {
+                preset = 'default',
 
-                    local no_tabnine = vim.tbl_filter(function(dir) return string.match(cdir, dir) ~= nil end,
-                        tn_blacklist)
-                    return vim.tbl_isempty(no_tabnine)
-                end
+                ['<Tab>'] = { 'select_next', 'fallback' },
+                ['<C-n>'] = { 'select_next', 'fallback' },
+                ['<S-Tab>'] = { 'select_prev', 'fallback' },
+                ['<C-p>'] = { 'select_prev', 'fallback' },
             },
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-emoji',
-            'hrsh7th/cmp-cmdline',
-            'saadparwaiz1/cmp_luasnip',
-            'onsails/lspkind-nvim',
+            appearance = {
+                use_nvim_cmp_as_default = true,
+                nerd_font_variant = 'mono'
+            },
+            completion = {
+                list = { selection = { preselect = false } },
+            },
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+        },
+        opts_extend = { "sources.default" },
+        dependencies = {
+            colorscheme[1],
+            'rafamadriz/friendly-snippets',
             require('plugins.snippets'),
         }
     };
@@ -188,6 +188,7 @@ require("lazy").setup({
 
     {
         'neovim/nvim-lspconfig',
+        dependencies = { 'saghen/blink.cmp' },
         config = require('modules.lsp'),
         ft = { 'haskell', 'rust', 'lua', 'purescript', 'elm', 'css', 'scss', 'sass', 'less', 'typescript' }
     };
