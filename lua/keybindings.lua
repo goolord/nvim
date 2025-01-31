@@ -39,7 +39,7 @@ wk.add {
   { "<Leader>r", group = "Trouble" },
   { "<Leader>rl", ":Trouble loclist<CR>", desc = "Toggle loclist" },
   { "<Leader>rq", ":Trouble quickfix<CR>", desc = "Toggle quickfix" },
-  { "<Leader>rr", ":Trouble workspace_diagnostics <CR>", desc = "Toggle workspace diagnostics" },
+  { "<Leader>rr", ":Trouble diagnostics <CR>", desc = "Toggle diagnostics" },
   { "<Leader>rt", ":TodoTrouble<CR>", desc = "Toggle todos" },
   { "<Leader>s", group = "Session" },
   { "<Leader>sc", ":SessionManager load_current_dir_session<cr>", desc = "Load current dir session" },
