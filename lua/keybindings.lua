@@ -36,6 +36,7 @@ wk.add {
   { "<Leader>ft", telescope'tags', desc = "Tags" },
   { "<Leader>fx", telescope'resume', desc = "Resume last" },
   { "<Leader>fy", telescope'neoclip', desc = "Yanks" },
+  { "<Leader>fs", telescope'lsp_dynamic_workspace_symbols', desc = "Workspace symbols" },
   { "<Leader>r", group = "Trouble" },
   { "<Leader>rl", ":Trouble loclist<CR>", desc = "Toggle loclist" },
   { "<Leader>rq", ":Trouble quickfix<CR>", desc = "Toggle quickfix" },

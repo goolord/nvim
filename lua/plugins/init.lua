@@ -14,37 +14,37 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 local colorscheme =
-    {
-        'RRethy/nvim-base16',
-        config = function()
-            require('modules.colors')
-            vim.cmd.colors('base16-tomorrow-min')
-        end,
-        dependencies = {
-            'nvim-tree/nvim-web-devicons',
-        },
-        lazy = false,
-        priority = 1000,
-    }
+{
+    'RRethy/nvim-base16',
+    config = function()
+        require('modules.colors')
+        vim.cmd.colors('base16-tomorrow-min')
+    end,
+    dependencies = {
+        'nvim-tree/nvim-web-devicons',
+    },
+    lazy = false,
+    priority = 1000,
+}
 
 require("lazy").setup({
-    { 'lewis6991/impatient.nvim', rocks = 'mpack' };
+    { 'lewis6991/impatient.nvim', rocks = 'mpack' },
 
-    { 'godlygeek/tabular' };
-    { 'akinsho/toggleterm.nvim', config = require('plugins.toggleterm') };
-    { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } };
-    { 'tpope/vim-abolish' };
+    { 'godlygeek/tabular' },
+    { 'akinsho/toggleterm.nvim',  config = require('plugins.toggleterm') },
+    { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } },
+    { 'tpope/vim-abolish' },
     {
         'smjonas/live-command.nvim',
         config = function()
             require("live-command").setup {
                 commands = {
-                    S = { cmd = "Subvert"}, -- must be defined before we import vim-abolish
+                    S = { cmd = "Subvert" }, -- must be defined before we import vim-abolish
                 },
             }
         end
-    };
-    colorscheme;
+    },
+    colorscheme,
 
     {
         'goolord/nvim-colorscheme-convert',
@@ -81,10 +81,10 @@ require("lazy").setup({
             'rafamadriz/friendly-snippets',
             require('plugins.snippets'),
         }
-    };
+    },
     -- gui
-    { 'nvim-tree/nvim-web-devicons' };
-    { 'echasnovski/mini.icons' };
+    { 'nvim-tree/nvim-web-devicons' },
+    { 'echasnovski/mini.icons' },
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
@@ -92,13 +92,13 @@ require("lazy").setup({
                 scope = { show_end = false, show_start = false },
                 indent = { char = '▏' },
             }
-           local hooks = require "ibl.hooks"
-           hooks.register(
-             hooks.type.WHITESPACE,
-             hooks.builtin.hide_first_space_indent_level
-           )
+            local hooks = require "ibl.hooks"
+            hooks.register(
+                hooks.type.WHITESPACE,
+                hooks.builtin.hide_first_space_indent_level
+            )
         end
-    };
+    },
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
@@ -108,14 +108,14 @@ require("lazy").setup({
         config = function()
             require('plugins.statusline')()
         end
-    };
+    },
 
     {
         'nvim-tree/nvim-tree.lua',
         commit = "8b8d457e07d279976a9baac6bbff5aa036afdc5f",
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function() require('plugins.nvim-tree')() end,
-    };
+    },
 
     {
         'Shatur/neovim-session-manager',
@@ -128,7 +128,7 @@ require("lazy").setup({
         dependencies = {
             'nvim-lua/plenary.nvim',
         }
-    };
+    },
 
     {
         'nvim-telescope/telescope.nvim',
@@ -140,24 +140,24 @@ require("lazy").setup({
             { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
             { "AckslD/nvim-neoclip.lua" },
         }
-    };
+    },
 
     -- better vim.ui
     {
         "stevearc/dressing.nvim",
-        config = function ()
+        config = function()
             require('dressing').setup {
                 select = { telescope = require('telescope.themes').get_cursor({
-                        borderchars = {
-                            results =  {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
-                            prompt =  {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
-                            preview =  {' ', ' ', ' ', '▏', '▏', ' ', ' ', '▏' };
-                        },
-                        layout_config = {
-                            width = 60
-                        },
-                        initial_mode = "normal",
-                    }),
+                    borderchars = {
+                        results = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+                        prompt = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+                        preview = { ' ', ' ', ' ', '▏', '▏', ' ', ' ', '▏' },
+                    },
+                    layout_config = {
+                        width = 60
+                    },
+                    initial_mode = "normal",
+                }),
                 },
                 input = { enabled = false },
             }
@@ -167,22 +167,22 @@ require("lazy").setup({
     {
         "AckslD/nvim-neoclip.lua",
         config = function() require('neoclip').setup() end,
-    };
+    },
 
     {
         'goolord/alpha-nvim',
         dev = true,
         dependencies = { 'echasnovski/mini.icons' },
         config = require('plugins.alpha')
-    };
+    },
 
     {
         'folke/which-key.nvim',
         dependencies = { 'echasnovski/mini.icons' },
         config = function() require("which-key").setup() end
-    };
+    },
 
-    { 'tpope/vim-fugitive' };
+    { 'tpope/vim-fugitive' },
 
     -- nvim-lsp
 
@@ -191,20 +191,22 @@ require("lazy").setup({
         dependencies = { 'saghen/blink.cmp' },
         config = require('modules.lsp'),
         ft = { 'haskell', 'rust', 'lua', 'purescript', 'elm', 'css', 'scss', 'sass', 'less', 'typescript' }
-    };
+    },
 
     {
         'j-hui/fidget.nvim',
-        config = function() require('fidget').setup {
-            text = { spinner = 'moon' },
-        } end,
+        config = function()
+            require('fidget').setup {
+                text = { spinner = 'moon' },
+            }
+        end,
         branch = 'legacy'
-    };
+    },
 
     {
         'folke/trouble.nvim',
         config = require('plugins.trouble'),
-    };
+    },
 
     {
         'folke/todo-comments.nvim',
@@ -212,11 +214,11 @@ require("lazy").setup({
             require("todo-comments").setup {
             }
         end,
-    };
+    },
 
     -- filetype plugins
-    { 'LnL7/vim-nix', ft = 'nix' };
-    { 'edwinb/idris2-vim', ft = 'idris2' };
+    { 'LnL7/vim-nix',      ft = 'nix' },
+    { 'edwinb/idris2-vim', ft = 'idris2' },
 
     {
         'whonore/Coqtail',
@@ -225,7 +227,7 @@ require("lazy").setup({
             vim.g.python3_host_prog = '/usr/bin/python3'
             vim.opt.pyxversion = 3
         end
-    };
+    },
 
     {
         'ndmitchell/ghcid',
@@ -234,11 +236,11 @@ require("lazy").setup({
         end,
         lazy = false,
         cmd = { 'Ghcid', 'GhcidKill' },
-    };
+    },
 
     {
         'purescript-contrib/purescript-vim'
-    };
+    },
 
     {
         'nvim-treesitter/nvim-treesitter',
@@ -255,7 +257,7 @@ require("lazy").setup({
                         node_decremental = '<S-TAB>', }, },
             }
         end
-    };
+    },
 
 }, {
     -- defaults = { lazy = true },
