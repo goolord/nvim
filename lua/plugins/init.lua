@@ -269,6 +269,19 @@ require("lazy").setup({
             enabled = true,
             -- disable_events = {},
         },
+        disabled_plugins = {
+            "gzip",
+            "netrwPlugin",
+            "tarPlugin",
+            "tohtml",
+            "tutor",
+            "zipPlugin",
+            "fzf",
+            "vimball",
+            "spellfile",
+            "getscript",
+            "rrhelper",
+        },
     },
 })
 

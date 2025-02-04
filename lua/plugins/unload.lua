@@ -1,5 +1,4 @@
 -- built in
-vim.g.loaded_2html_plugin = 1
 vim.g.loaded_getscriptPlugin = 1
 vim.g.loaded_gzip = 1
 vim.g.loaded_logiPat = 1
