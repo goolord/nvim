@@ -63,6 +63,8 @@ require("lazy").setup({
                 ['<C-n>'] = { 'select_next', 'fallback' },
                 ['<S-Tab>'] = { 'select_prev', 'fallback' },
                 ['<C-p>'] = { 'select_prev', 'fallback' },
+                ['<Up>'] = {},
+                ['<Down>'] = {},
             },
             appearance = {
                 use_nvim_cmp_as_default = true,
@@ -112,7 +114,6 @@ require("lazy").setup({
 
     {
         'nvim-tree/nvim-tree.lua',
-        commit = "8b8d457e07d279976a9baac6bbff5aa036afdc5f",
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function() require('plugins.nvim-tree')() end,
     },
