@@ -75,6 +75,7 @@ require("lazy").setup({
             },
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
+                providers = { lsp = { fallbacks = {} } },
             },
         },
         opts_extend = { "sources.default" },
@@ -155,7 +156,10 @@ require("lazy").setup({
                         preview = { ' ', ' ', ' ', '▏', '▏', ' ', ' ', '▏' },
                     },
                     layout_config = {
-                        width = 60
+                        width = function (self, max_columns, max_lines)
+                            local resolver = require "telescope.config.resolve"
+                            return resolver.resolve_width({0.5, max = max_columns - 5, min = 70 })(self, max_columns, max_lines)
+                        end
                     },
                     initial_mode = "normal",
                 }),
