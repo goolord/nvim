@@ -74,9 +74,10 @@ require("lazy").setup({
                 list = { selection = { preselect = false } },
             },
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
+                default = { 'buffer', 'lsp', 'path', 'snippets'},
                 providers = { lsp = { fallbacks = {} } },
             },
+            fuzzy = { implementation = "prefer_rust_with_warning" },
         },
         opts_extend = { "sources.default" },
         dependencies = {
