@@ -44,16 +44,27 @@ return function()
         end
     end
 
+    local function static_ls_index_file(file)
+        local queryOutput = vim.system({"sqlite3", ".hiedb", 'select hieFile from mods where hs_src = \'' .. file .. '\';' }):wait()
+        local hifile = "." .. string.sub(queryOutput.stdout:gsub("\n$", ""), string.len(vim.fn.getcwd()) + 1)
+        local srcBaseDir = hifile:match("(.-).hiefiles")
+
+        vim.system({"hiedb", "-D", ".hiedb", "index", hifile, "--src-base-dir", srcBaseDir})
+    end
     local function static_ls_on_attach (client, bufnr)
+        local file = io.open(".hiedb", "r")
+        if file then
+            file:close()
+        else
+            vim.system({"hiedb", "init", ".hiedb"})
+            vim.system({"fd", ".hiefiles", "-u", "-x", "hiedb", "-D", ".hiedb", "index", "{}", "--src-base-dir", "{//}"}) -- initialize hiedb if it doesn't exist
+        end
+        static_ls_index_file(vim.api.nvim_buf_get_name(bufnr))
         vim.api.nvim_create_autocmd("LspNotify", {
             pattern = "*",
             callback = function (args)
                 if args.data.method == 'textDocument/didSave' then
-                    local queryOutput = vim.system({"sqlite3", ".hiedb", 'select hieFile from mods where hs_src = \'' .. args.file .. '\';' }):wait()
-                    local hifile = "." .. string.sub(queryOutput.stdout:gsub("\n$", ""), string.len(vim.fn.getcwd()) + 1)
-                    local srcBaseDir = hifile:match("(.-).hiefiles")
-
-                    vim.system({"hiedb", "-D", ".hiedb", "index", hifile, "--src-base-dir", srcBaseDir})
+                    static_ls_index_file(args.file)
                 end
             end,
         })
