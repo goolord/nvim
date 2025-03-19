@@ -44,6 +44,22 @@ return function()
         end
     end
 
+    local function static_ls_on_attach (client, bufnr)
+        vim.api.nvim_create_autocmd("LspNotify", {
+            pattern = "*",
+            callback = function (args)
+                if args.data.method == 'textDocument/didSave' then
+                    local queryOutput = vim.system({"sqlite3", ".hiedb", 'select hieFile from mods where hs_src = \'' .. args.file .. '\';' }):wait()
+                    local hifile = "." .. string.sub(queryOutput.stdout:gsub("\n$", ""), string.len(vim.fn.getcwd()) + 1)
+                    local srcBaseDir = hifile:match("(.-).hiefiles")
+
+                    vim.system({"hiedb", "-D", ".hiedb", "index", hifile, "--src-base-dir", srcBaseDir})
+                end
+            end,
+        })
+        custom_on_attach(client, bufnr)
+    end
+
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
     capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -56,8 +72,9 @@ return function()
     }
 
     lspconfig.hls.setup {
-        -- cmd = { 'static-ls' },
-        on_attach = custom_on_attach,
+        cmd = { 'static-ls' },
+        on_attach = static_ls_on_attach,
+        -- on_attach = custom_on_attach,
         capabilities = capabilities,
         settings = {
             haskell = {

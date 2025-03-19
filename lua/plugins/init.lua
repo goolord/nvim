@@ -245,6 +245,10 @@ require("lazy").setup({
     },
 
     {
+        'jecaro/ghcid-error-file.nvim'
+    },
+
+    {
         'purescript-contrib/purescript-vim'
     },
 

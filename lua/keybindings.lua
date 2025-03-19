@@ -99,3 +99,20 @@ vim.cmd('unmenu PopUp.How-to\\ disable\\ mouse')
 vim.cmd('unmenu PopUp.-1-')
 
 -- keymap('' , 'gf', function () vim.cmd.E(vim.fn.expand('<cfile>')) end, {silent = true, remap = true } )
+
+
+vim.api.nvim_create_user_command(
+  'Cf',
+  function(opts)
+    require('ghcid-error-file').cf(opts.args)
+  end,
+  {
+    nargs = '?',
+    complete = 'file',
+  })
+
+vim.api.nvim_create_user_command(
+  'CfResetBaseDir',
+  require('ghcid-error-file').cfResetBaseDir,
+  {}
+)
