@@ -57,7 +57,7 @@ return function()
             file:close()
         else
             vim.system({"hiedb", "init", ".hiedb"})
-            vim.system({"fd", ".hiefiles", "-u", "-x", "hiedb", "-D", ".hiedb", "index", "{}", "--src-base-dir", "{//}"}) -- initialize hiedb if it doesn't exist
+            vim.system({"fd", ".hiefiles", "-u", "-j", "1", "-x", "hiedb", "-D", ".hiedb", "index", "{}", "--src-base-dir", "{//}"}) -- initialize hiedb if it doesn't exist
         end
         static_ls_index_file(vim.api.nvim_buf_get_name(bufnr))
         vim.api.nvim_create_autocmd("LspNotify", {
@@ -83,9 +83,9 @@ return function()
     }
 
     lspconfig.hls.setup {
-        cmd = { 'static-ls' },
-        on_attach = static_ls_on_attach,
-        -- on_attach = custom_on_attach,
+        -- cmd = { 'static-ls' },
+        -- on_attach = static_ls_on_attach,
+        on_attach = custom_on_attach,
         capabilities = capabilities,
         settings = {
             haskell = {
