@@ -203,7 +203,7 @@ require("lazy").setup({
         'j-hui/fidget.nvim',
         config = function()
             require('fidget').setup {
-                progress = { display = { progress_icon = { pattern = 'moon', period = 2 } } },
+                text = { spinner = 'moon' },
             }
         end,
         branch = 'legacy'
