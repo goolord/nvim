@@ -149,22 +149,20 @@ require("lazy").setup({
                 },
             },
             input = { enabled = true },
-        }
-    },
-
-    {
-        "gbprod/yanky.nvim",
-        opts = {
+        },
+        dependencies = {
         },
     },
 
     {
-        "aznhe21/actions-preview.nvim",
+        "gbprod/yanky.nvim",
+        opts = {},
+        dependencies = { 'folke/snacks.nvim' },
     },
 
     {
-        "AckslD/nvim-neoclip.lua",
-        config = function() require('neoclip').setup() end,
+        "aznhe21/actions-preview.nvim",
+        dependencies = 'folke/snacks.nvim'
     },
 
     {
