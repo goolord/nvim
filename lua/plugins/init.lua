@@ -159,6 +159,10 @@ require("lazy").setup({
     },
 
     {
+        "aznhe21/actions-preview.nvim",
+    },
+
+    {
         "AckslD/nvim-neoclip.lua",
         config = function() require('neoclip').setup() end,
     },

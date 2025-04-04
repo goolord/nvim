@@ -15,7 +15,7 @@ return function()
             { "<Leader>l", name = "+LSP" },
             { "<Leader>lk", vim.lsp.buf.signature_help, desc = 'Signature help' },
             { "<Leader>lR", vim.lsp.buf.rename, desc = "Rename" },
-            { "<Leader>la", vim.lsp.buf.code_action, desc = "Codeactions" },
+            { "<Leader>la", require("actions-preview").code_actions , desc = "Codeactions" },
             { "<Leader>lc", name = "+codelens" },
             { "<Leader>lc", vim.lsp.codelens.refresh, desc = 'Refresh' },
             { "<Leader>lc", vim.lsp.codelens.run, desc ='Run' },
