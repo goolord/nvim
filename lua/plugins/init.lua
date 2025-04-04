@@ -134,40 +134,28 @@ require("lazy").setup({
     },
 
     {
-        'nvim-telescope/telescope.nvim',
-        config = require('plugins.telescope'),
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            -- extensions
-            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-            { 'gbrlsnchs/telescope-lsp-handlers.nvim' },
-            { "AckslD/nvim-neoclip.lua" },
+        'folke/snacks.nvim',
+        priority = 1000,
+        lazy = false,
+        --@type snacks.Config
+        opts = {
+            picker = {
+                enabled = true,
+                layout = {
+                    layout = {
+                        width = 0.9,
+                        height = 0.9,
+                    },
+                },
+            },
+            input = { enabled = true },
         }
     },
 
-    -- better vim.ui
     {
-        "stevearc/dressing.nvim",
-        config = function()
-            require('dressing').setup {
-                select = { telescope = require('telescope.themes').get_cursor({
-                    borderchars = {
-                        results = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-                        prompt = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-                        preview = { ' ', ' ', ' ', '▏', '▏', ' ', ' ', '▏' },
-                    },
-                    layout_config = {
-                        width = function (self, max_columns, max_lines)
-                            local resolver = require "telescope.config.resolve"
-                            return resolver.resolve_width({0.5, max = max_columns - 5, min = 70 })(self, max_columns, max_lines)
-                        end
-                    },
-                    initial_mode = "normal",
-                }),
-                },
-                input = { enabled = false },
-            }
-        end
+        "gbprod/yanky.nvim",
+        opts = {
+        },
     },
 
     {

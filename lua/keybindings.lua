@@ -12,6 +12,10 @@ keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true, remap = true
 
 local function telescope(provider) return '<CMD>Telescope ' .. provider .. '<CR>' end
 
+local function snacks(provider)
+    return function () Snacks.picker[provider]() end
+end
+
 local function tabularize(regex) return ':Tabularize ' .. regex end
 
 wk.add {
@@ -20,23 +24,23 @@ wk.add {
   { "<Leader>A", ":Alpha<CR>", desc = "Open alpha" },
   { "<Leader>d", ":NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
   { "<Leader>f", group = "Find" },
-  { "<Leader>f/", telescope'search_history', desc = "Search history" },
-  { "<Leader>f:", telescope'command_history', desc = "Command history" },
-  { "<Leader>fM", telescope'marks', desc = "Marks" },
-  { "<Leader>f_", telescope'', desc = "Providers" },
-  { "<Leader>fb", telescope'buffers', desc = "Buffers" },
-  { "<Leader>ff", telescope'find_files', desc = "Files" },
-  { "<Leader>fg", telescope'live_grep', desc = "Grep" },
-  { "<Leader>fh", telescope'oldfiles', desc = "File history" },
-  { "<Leader>fj", telescope'jumplist', desc = "Jumps" },
-  { "<Leader>fl", telescope'loclist', desc = "Loclist" },
-  { "<Leader>fm", telescope'keymaps', desc = "Maps" },
-  { "<Leader>fq", telescope'quickfix', desc = "Quickfix" },
-  { "<Leader>fr", telescope'registers', desc = "Registers" },
-  { "<Leader>ft", telescope'tags', desc = "Tags" },
-  { "<Leader>fx", telescope'resume', desc = "Resume last" },
-  { "<Leader>fy", telescope'neoclip', desc = "Yanks" },
-  { "<Leader>fs", telescope'lsp_dynamic_workspace_symbols', desc = "Workspace symbols" },
+  { "<Leader>f/", snacks'search_history', desc = "Search history" },
+  { "<Leader>f:", snacks'command_history', desc = "Command history" },
+  { "<Leader>fM", snacks'marks', desc = "Marks" },
+  -- { "<Leader>f_", telescope'', desc = "Providers" },
+  { "<Leader>fb", snacks'buffers', desc = "Buffers" },
+  { "<Leader>ff", snacks'smart', desc = "Files" },
+  { "<Leader>fg", snacks'grep', desc = "Grep" },
+  { "<Leader>fh", snacks'recent', desc = "File history" },
+  -- { "<Leader>fj", telescope'scope', desc = "Jumps" },
+  { "<Leader>fl", snacks'loclist', desc = "Loclist" },
+  { "<Leader>fm", snacks'keymaps', desc = "Maps" },
+  { "<Leader>fq", snacks'qflist', desc = "Quickfix" },
+  { "<Leader>fr", snacks'registers', desc = "Registers" },
+  -- { "<Leader>ft", telescope'tags', desc = "Tags" },
+  { "<Leader>fx", snacks'resume', desc = "Resume last" },
+  { "<Leader>fy", snacks'yanky', desc = "Yanks" },
+  { "<Leader>fs", snacks'lsp_workspace_symbols', desc = "Workspace symbols" },
   { "<Leader>r", group = "Trouble" },
   { "<Leader>rl", ":Trouble loclist<CR>", desc = "Toggle loclist" },
   { "<Leader>rq", ":Trouble quickfix<CR>", desc = "Toggle quickfix" },

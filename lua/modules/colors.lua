@@ -92,19 +92,16 @@ local function apply_colors()
     hl('CoqtailChecked', {bg = '#1d3320'})
     hl('CoqtailSent'   , {bg = '#79750e'})
 
-    -- telescope
-    hl('TelescopeBorder', {bg = dark_bg, fg = vim.g.terminal_color_8})
-    hl('TelescopePromptPrefix', {bg = vim.g.terminal_color_0, fg = vim.g.terminal_color_1})
-    link('TelescopeNormal', 'DarkNormal')
-    link('TelescopePreviewNormal', 'Normal')
-
-    link('TelescopePromptBorder', 'Normal')
-    link('TelescopePromptNormal', 'Normal')
-    hl('TelescopePromptTitle', {bg = vim.g.terminal_color_1, fg = vim.g.terminal_color_0, bold = true})
-
-    hl('TelescopePreviewBorder', {bg = nil, fg = dark_bg, bold = true})
-    hl('TelescopePreviewTitle', {bg = vim.g.terminal_color_11, fg = vim.g.terminal_color_0, bold = true})
-    link('TelescopePreviewLine', 'Visual')
+    -- snacks
+    link('SnacksPickerDir', 'Comment')
+    link('SnacksPickerTotals', 'Comment')
+    hl('SnacksPickerBox', { bg = dark_bg })
+    hl('SnacksPickerBorder', { bg = dark_bg, fg = dark_bg })
+    hl('SnacksPickerInputBorder', { bg = dark_bg, fg = vim.g.terminal_color_8 })
+    hl('SnacksPickerPrompt', { bg = dark_bg })
+    hl('SnacksPickerList', { bg = dark_bg })
+    hl('SnacksPickerInput', { bg = dark_bg })
+    link('SnacksPickerTitle', 'CursorLine')
 
     -- fidget
     link('FidgetTitle', 'Pmenu', {blend=10})
