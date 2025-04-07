@@ -86,13 +86,15 @@ require("lazy").setup({
             require('plugins.snippets'),
         }
     },
+
     -- gui
     { 'echasnovski/mini.icons',
-      config = function ()
-        local mini = require('mini.icons')
-        mini.mock_nvim_web_devicons()
-      end
+        config = function ()
+            local mini = require('mini.icons')
+            mini.mock_nvim_web_devicons()
+        end
     },
+
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
@@ -107,6 +109,7 @@ require("lazy").setup({
             )
         end
     },
+
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
@@ -263,7 +266,9 @@ require("lazy").setup({
         end
     },
 
-}, {
+},
+
+{
     -- defaults = { lazy = true },
     dev = { path = "~/Dev" },
     -- install = { colorscheme = { "tokyonight", "habamax" } },
