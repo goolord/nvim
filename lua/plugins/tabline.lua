@@ -1,6 +1,6 @@
 local fn = vim.fn
 local M = {}
-local icons = require("nvim-web-devicons")
+local icons = require('mini.icons')
 
 local function highlight(text, group)
     return table.concat({'%#', group, '#', text, '%*'})
