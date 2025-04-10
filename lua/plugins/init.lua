@@ -154,6 +154,12 @@ require("lazy").setup({
                         height = 0.9,
                     },
                 },
+                formatters = {
+                    file = {
+                        truncate = 9000,
+                        filename_only = false,
+                    }
+                }
             },
             input = { enabled = true },
         },
