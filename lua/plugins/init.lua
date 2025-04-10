@@ -21,7 +21,7 @@ local colorscheme =
         vim.cmd.colors('base16-tomorrow-min')
     end,
     dependencies = {
-        'nvim-tree/nvim-web-devicons',
+        'echasnovski/mini.icons',
     },
     lazy = false,
     priority = 1000,
@@ -86,9 +86,15 @@ require("lazy").setup({
             require('plugins.snippets'),
         }
     },
+
     -- gui
-    { 'nvim-tree/nvim-web-devicons' },
-    { 'echasnovski/mini.icons' },
+    { 'echasnovski/mini.icons',
+        config = function ()
+            local mini = require('mini.icons')
+            mini.mock_nvim_web_devicons()
+        end
+    },
+
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
@@ -103,11 +109,12 @@ require("lazy").setup({
             )
         end
     },
+
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
             colorscheme[1],
-            'nvim-tree/nvim-web-devicons'
+            'echasnovski/mini.icons'
         },
         config = function()
             require('plugins.statusline')()
@@ -116,7 +123,7 @@ require("lazy").setup({
 
     {
         'nvim-tree/nvim-tree.lua',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        dependencies = { 'echasnovski/mini.icons' },
         config = function() require('plugins.nvim-tree')() end,
     },
 
@@ -259,7 +266,9 @@ require("lazy").setup({
         end
     },
 
-}, {
+},
+
+{
     -- defaults = { lazy = true },
     dev = { path = "~/Dev" },
     -- install = { colorscheme = { "tokyonight", "habamax" } },
