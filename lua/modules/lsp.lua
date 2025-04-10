@@ -20,7 +20,7 @@ return function()
             { "<Leader>lc", vim.lsp.codelens.refresh, desc = 'Refresh' },
             { "<Leader>lc", vim.lsp.codelens.run, desc ='Run' },
             { "<Leader>li", function () Snacks.picker.lsp_implementations () end, desc = 'Implementation' },
-            { "<Leader>lr", function () Snacks.picker.lsp_references () end, desc = 'References' },
+            { "<Leader>lr", function () Snacks.picker.lsp_references () end, nowait = true, desc = 'References' },
             { "<Leader>ls", name = "+set" },
             { "<Leader>lsl", vim.diagnostic.set_loclist, desc= 'Loclist' },
             { "<Leader>lsq", vim.diagnostic.set_qflist, desc ='Quickfix list' },
