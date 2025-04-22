@@ -142,6 +142,7 @@ require("lazy").setup({
 
     {
         'folke/snacks.nvim',
+        dev = true,
         priority = 1000,
         lazy = false,
         --@type snacks.Config
@@ -159,7 +160,7 @@ require("lazy").setup({
                         truncate = 9000,
                         filename_only = false,
                     }
-                }
+                },
             },
             input = { enabled = true },
         },
@@ -199,7 +200,7 @@ require("lazy").setup({
         'neovim/nvim-lspconfig',
         dependencies = { 'saghen/blink.cmp' },
         config = require('modules.lsp'),
-        ft = { 'haskell', 'rust', 'lua', 'purescript', 'elm', 'css', 'scss', 'sass', 'less', 'typescript' }
+        ft = { 'haskell', 'rust', 'lua', 'purescript', 'elm', 'css', 'scss', 'sass', 'less', 'typescript', 'swift' }
     },
 
     {

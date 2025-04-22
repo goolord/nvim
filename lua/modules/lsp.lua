@@ -149,4 +149,9 @@ return function()
         capabilities = capabilities
     }
 
+    lspconfig.sourcekit.setup {
+        on_attach = custom_on_attach,
+        capabilities = capabilities
+    }
+
 end

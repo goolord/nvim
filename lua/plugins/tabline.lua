@@ -11,15 +11,6 @@ local inactive_tab = 'TabLine'
 local default_name = '[No Name]'
 local separator = '%='
 
-local function get_extension(f)
-    local match = f:match("^.+(%..+)$")
-    local ext = ""
-    if match ~= nil then
-        ext = match:sub(2)
-    end
-    return ext
-end
-
 function M.render()
     local tabline = {}
 
@@ -36,8 +27,7 @@ function M.render()
         end
 
         local modified = fn.getbufvar(bufnr, '&mod')
-
-        local ext = get_extension(bufname)
+        local icon, _, _ = icons.get('file', bufname)
 
         table.insert(tabline, table.concat({
             '%',
@@ -49,7 +39,7 @@ function M.render()
             ' ',
             tab,
             ': ',
-            icons.get_icon(bufname, ext, { default = true }),
+            icon,
             ' ',
             bufname,
             ' ',

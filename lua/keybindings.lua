@@ -37,7 +37,7 @@ wk.add {
   { "<Leader>fm", snacks'keymaps', desc = "Maps" },
   { "<Leader>fq", snacks'qflist', desc = "Quickfix" },
   { "<Leader>fr", snacks'registers', desc = "Registers" },
-  -- { "<Leader>ft", telescope'tags', desc = "Tags" },
+  { "<Leader>ft", snacks'tags', desc = "Tags" },
   { "<Leader>fx", snacks'resume', desc = "Resume last" },
   { "<Leader>fy", snacks'yanky', desc = "Yanks" },
   { "<Leader>fs", snacks'lsp_workspace_symbols', desc = "Workspace symbols" },
