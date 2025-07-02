@@ -40,6 +40,7 @@ wk.add {
   { "<Leader>ft", snacks'tags', desc = "Tags" },
   { "<Leader>fx", snacks'resume', desc = "Resume last" },
   { "<Leader>fy", snacks'yanky', desc = "Yanks" },
+  { "<Leader>fd", snacks'diagnostics', desc = "Diagnostics" },
   { "<Leader>fs", snacks'lsp_workspace_symbols', desc = "Workspace symbols" },
   { "<Leader>r", group = "Trouble" },
   { "<Leader>rl", ":Trouble loclist<CR>", desc = "Toggle loclist" },
