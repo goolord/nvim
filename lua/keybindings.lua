@@ -42,6 +42,7 @@ wk.add {
   { "<Leader>fy", snacks'yanky', desc = "Yanks" },
   { "<Leader>fd", snacks'diagnostics', desc = "Diagnostics" },
   { "<Leader>fs", snacks'lsp_workspace_symbols', desc = "Workspace symbols" },
+  { "<Leader>fi", function () require("import").pick() end, desc = "Imports" },
   { "<Leader>r", group = "Trouble" },
   { "<Leader>rl", ":Trouble loclist toggle<CR>", desc = "Toggle loclist" },
   { "<Leader>rq", ":Trouble quickfix toggle<CR>", desc = "Toggle quickfix" },

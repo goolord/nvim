@@ -257,6 +257,14 @@ require("lazy").setup({
     },
 
     {
+        'piersolenski/import.nvim',
+        opts = {
+            picker = "snacks",
+            insert_at_top = true,
+        }
+    },
+
+    {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         config = function()
