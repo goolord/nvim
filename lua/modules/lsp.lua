@@ -1,6 +1,5 @@
 return function()
     local wk = require("which-key")
-    local lspconfig = require('lspconfig')
 
     local function custom_on_attach(client, bufnr)
         -- keymaps
@@ -82,11 +81,13 @@ return function()
         }
     }
 
-    lspconfig.hls.setup {
+    vim.lsp.config("*", {
+        capabilities = capabilities
+    })
+
+    vim.lsp.config("hls", {
         -- cmd = { 'static-ls' },
         -- on_attach = static_ls_on_attach,
-        on_attach = custom_on_attach,
-        capabilities = capabilities,
         settings = {
             haskell = {
                 plugin = {
@@ -96,20 +97,10 @@ return function()
                 }
             }
         }
-    }
-
-    lspconfig.rust_analyzer.setup {
-        on_attach = custom_on_attach,
-        capabilities = capabilities
-    }
-
-    lspconfig.purescriptls.setup {
-        on_attach = custom_on_attach,
-        capabilities = capabilities
-    }
+    })
 
     local runtime_path = {}
-    lspconfig.lua_ls.setup {
+    vim.lsp.config("lua_ls", {
         on_attach = function(client, bufnr)
             runtime_path = vim.split(package.path, ';')
             table.insert(runtime_path, "lua/?.lua")
@@ -132,26 +123,25 @@ return function()
                 telemetry = { enable = false },
             },
         },
+    })
+
+    vim.lsp.config("elmls", {})
+    vim.lsp.config("cssls", {})
+    vim.lsp.config("ts_ls", {})
+    vim.lsp.config("sourcekit", {})
+    vim.lsp.config("rust_analyzer", {})
+    vim.lsp.config("purescriptls", {})
+
+    vim.lsp.enable {
+        "sourcekit", "ts_ls", "cssls", "elmls", "lua_ls",
+        "purescriptls", "rust_analyzer"
     }
 
-    lspconfig.elmls.setup {
-        on_attach = custom_on_attach,
-        capabilities = capabilities
-    }
-
-    lspconfig.cssls.setup {
-        on_attach = custom_on_attach,
-        capabilities = capabilities
-    }
-
-    lspconfig.ts_ls.setup {
-        on_attach = custom_on_attach,
-        capabilities = capabilities
-    }
-
-    lspconfig.sourcekit.setup {
-        on_attach = custom_on_attach,
-        capabilities = capabilities
-    }
+    vim.api.nvim_create_autocmd("LspAttach", {
+        pattern = "*",
+        callback = function (args)
+            custom_on_attach(vim.lsp.get_client_by_id(args.data.client_id), args.buf)
+        end,
+    })
 
 end
