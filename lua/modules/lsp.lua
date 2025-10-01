@@ -134,7 +134,7 @@ return function()
 
     vim.lsp.enable {
         "sourcekit", "ts_ls", "cssls", "elmls", "lua_ls",
-        "purescriptls", "rust_analyzer"
+        "purescriptls", "rust_analyzer", "hls"
     }
 
     vim.api.nvim_create_autocmd("LspAttach", {
