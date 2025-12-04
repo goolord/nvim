@@ -301,7 +301,7 @@ require("lazy").setup({
             "nvim-treesitter/nvim-treesitter",
         },
         opts = {
-            -- NOTE: The log_level is in `opts.opts`
+            ignore_warnings = true,
             opts = {
                 log_level = "DEBUG", -- or "TRACE"
             },
