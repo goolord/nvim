@@ -54,6 +54,7 @@ require("lazy").setup({
     {
         'goolord/nvim-colorscheme-convert',
         dev = true,
+        cmd = { 'ColorschemeDump' },
     },
 
     -- completion
@@ -301,6 +302,7 @@ require("lazy").setup({
 
     {
         "olimorris/codecompanion.nvim",
+        cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCmd" },
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
