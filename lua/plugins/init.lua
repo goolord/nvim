@@ -1,3 +1,4 @@
+vim.loader.enable()
 vim.cmd.packadd('cfilter')
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -28,7 +29,6 @@ local colorscheme =
 }
 
 require("lazy").setup({
-    { 'lewis6991/impatient.nvim', rocks = 'mpack' },
 
     { 'godlygeek/tabular' },
     { 'akinsho/toggleterm.nvim',  config = require('plugins.toggleterm') },

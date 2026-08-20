@@ -131,10 +131,11 @@ return function()
     vim.lsp.config("sourcekit", {})
     vim.lsp.config("rust_analyzer", {})
     vim.lsp.config("purescriptls", {})
+    vim.lsp.config("zls", {})
 
     vim.lsp.enable {
         "sourcekit", "ts_ls", "cssls", "elmls", "lua_ls",
-        "purescriptls", "rust_analyzer", "hls"
+        "purescriptls", "rust_analyzer", "hls", "zls"
     }
 
     vim.api.nvim_create_autocmd("LspAttach", {
