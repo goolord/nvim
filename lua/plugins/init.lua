@@ -30,7 +30,12 @@ local colorscheme =
 
 require("lazy").setup({
 
-    { 'godlygeek/tabular' },
+    {
+        'godlygeek/tabular',
+        init = function()
+            vim.g.no_default_tabular_maps = 1
+        end,
+    },
     { 'akinsho/toggleterm.nvim',  config = require('plugins.toggleterm') },
     { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } },
     { 'tpope/vim-abolish' },
@@ -319,23 +324,33 @@ require("lazy").setup({
     dev = { path = "~/Dev" },
     -- install = { colorscheme = { "tokyonight", "habamax" } },
     checker = { enabled = false },
+    rocks = { enabled = false },
+    pkg = { enabled = false },
     performance = {
         cache = {
             enabled = true,
             -- disable_events = {},
         },
-        disabled_plugins = {
-            "gzip",
-            "netrwPlugin",
-            "tarPlugin",
-            "tohtml",
-            "tutor",
-            "zipPlugin",
-            "fzf",
-            "vimball",
-            "spellfile",
-            "getscript",
-            "rrhelper",
+        reset_packpath = true,
+        rtp = {
+            reset = true,
+            disabled_plugins = {
+                "gzip",
+                "netrwPlugin",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+                "matchit",
+                "matchparen",
+                "fzf",
+                "vimball",
+                "spellfile",
+                "getscript",
+                "rrhelper",
+                "logipat",
+                "2html_plugin",
+            },
         },
     },
 })
