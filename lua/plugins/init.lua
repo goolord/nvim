@@ -271,18 +271,17 @@ require("lazy").setup({
 
     {
         'nvim-treesitter/nvim-treesitter',
+        branch = 'main',
+        lazy = false,
         build = ':TSUpdate',
         config = function()
-            require 'nvim-treesitter.configs'.setup {
-                highlight = {
-                    enable = true,
-                    disable = { "haskell" }
-                },
-                textobjects = { enable = true },
-                incremental_selection = { enable = true,
-                    keymaps = { init_selection = '<CR>', scope_incremental = '<CR>', node_incremental = '<TAB>',
-                        node_decremental = '<S-TAB>', }, },
-            }
+            vim.api.nvim_create_autocmd('FileType', {
+                callback = function(ev)
+                    if ev.match ~= 'haskell' then
+                        pcall(vim.treesitter.start, ev.buf)
+                    end
+                end,
+            })
         end
     },
 

@@ -79,6 +79,13 @@ wk.add {
     { "<C-l>", '<cmd>wincmd l<cr>', desc = 'Window right' },
 }
 
+wk.add {
+    { "<CR>", "van", desc = "Start treesitter selection" },
+    { "<CR>", "an", desc = "Expand treesitter selection", mode = "x" },
+    { "<Tab>", "an", desc = "Expand treesitter selection", mode = "x" },
+    { "<S-Tab>", "in", desc = "Shrink treesitter selection", mode = "x" },
+}
+
 -- other
 -- breaks <C-I> jump because terminals are dumb
 -- {'n', '<tab>', '<C-W>w', {noremap = true, silent = true} )

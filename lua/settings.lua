@@ -44,4 +44,10 @@ vim.opt.writebackup   = true
 
 vim.cmd.syntax('sync minlines=256')
 
+-- Ensure Neovim uses standard cmd options when spawning subshells on Windows
+if vim.fn.has("win32") == 1 then
+  vim.opt.shell = "cmd.exe"
+  vim.opt.shellcmdflag = "/s /c"
+end
+
 require('modules.diagnostic')
