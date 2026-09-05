@@ -44,10 +44,20 @@ vim.opt.writebackup   = true
 
 vim.cmd.syntax('sync minlines=256')
 
--- Ensure Neovim uses standard cmd options when spawning subshells on Windows
+-- Ensure Neovim uses PowerShell when spawning subshells on Windows
 if vim.fn.has("win32") == 1 then
-  vim.opt.shell = "cmd.exe"
-  vim.opt.shellcmdflag = "/s /c"
+  local powershell_options = {
+    shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
+    shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
+    shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
+    shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
+    shellquote = "",
+    shellxquote = "",
+  }
+
+  for option, value in pairs(powershell_options) do
+    vim.opt[option] = value
+  end
 end
 
 require('modules.diagnostic')

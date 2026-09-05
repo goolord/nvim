@@ -10,7 +10,7 @@ return function()
         shade_terminals = true,
         size = vim.o.columns * 0.5,
         start_in_insert = false,
-        shell = 'zsh',
+        shell = vim.o.shell,
         highlights = {
             Normal = {
                 link = 'DarkNormal'

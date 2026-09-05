@@ -276,10 +276,13 @@ require("lazy").setup({
         build = ':TSUpdate',
         config = function()
             vim.api.nvim_create_autocmd('FileType', {
+                group = vim.api.nvim_create_augroup('treesitter_highlight', { clear = true }),
                 callback = function(ev)
-                    if ev.match ~= 'haskell' then
-                        pcall(vim.treesitter.start, ev.buf)
+                    if ev.match == 'haskell' then
+                        pcall(vim.treesitter.stop, ev.buf)
+                        return
                     end
+                    pcall(vim.treesitter.start, ev.buf)
                 end,
             })
         end
